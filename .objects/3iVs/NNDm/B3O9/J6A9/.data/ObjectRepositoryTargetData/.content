@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="QM6Igg0QmUWJrKVfcKZHMg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://minetrevampdt.maricoapps.biz/pdp-report" DesignTimeRectangle="544, 366, 88, 40" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Distributor Code'" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='Distributor Code' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' aaname='Distributor Code' check:innerText='Distributor Code' /&gt;" Guid="5ec9c677-36ff-4e4e-bbae-ea0ca27b5c41" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAsCAYAAADozd+ZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKuSURBVHhe7ZrNjcIwEIXpiC6gFPqgAO5wpgDOSNwoggI4cubq1UO81duHAwmQCSvmk0YQe+KfzwY21o5KEkoKDyaFB5PCg0nhwaTwYFJ4MK2F7/f7MhqNbmI2m5Xz+XzNKuVwOJTxeFym02k5nU7X0tdAO2gP7aJ9v/5PvCycgXrQRfh6vb7ci9d79CWcc5rP59eS/uksXHc05Xp5WzDRNsKddwnngv8b4YDlnDwXgTscubgHOYzdbndTxnwuwmKxuJQh73g8/hGswtE/3msbwBfTF4n1DJYDzomh7Wo7y+XyUt9lw7wsnANAHXJcuE8M0UY4455wzdN8jO9Z4dz1Hhxfre+PFO73AZcCavkuy/sE7NeFNgkHlItcgP7Qr97nZdq3jrstvX+l8Bo5mgfuCdeyJuHalpc9I7yWA7Stppy2vO1Hk4NmGQaFwRHdKWyjJrdW5pPkNfK4wzk+9st2OC7fGMCF+26ulYULr4XKdeGcuAYnqHWe31a4B9umTMZkMrncXxOOYLnfx+D4fCxdeVk4J0geCW/6hHh+G+G43mw2v21o27ozUY/xuyi2wxyW+1y1XR9LV1oLT95DCg8mhQeTwoNJ4cGk8GBSeDApPJgUHkwKD2ZQ4fr4zcBjMx6fn4GP5Poo/mkMJrzpbCaF94AeGrmc1WqVwt8Nj0Af7Wb/FHi+LhxecXKI9ypcc7xuCAYRziNYP9pV2p5L13IoVY9/Ne712zcfKRyyIA05PBf3Mu5+LgDgIlE4r9kPF0nvieYjv1Ioxg/5uVC432UC/w5nvsfXCdePOuUQ/Gji3yIe7fDaolGwC9dFGZpBhAMK86DAR/VN388ICm/KwSdhKAYTDmpCdMf7XylaB7Qeddvt9iav1sfXCv9GUngwKTyYFB5MCg8mhQeTwkMp5QdnRAqPq6zw/gAAAABJRU5ErkJggg==" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="3e5cb937c2c53c4f81d9d0eac7a04f42.png" xmlns="">037MqUhYvw0-fLf54FlPbRA</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

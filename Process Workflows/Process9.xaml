@@ -1,0 +1,574 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process_Template1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem_DataRow" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_InputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_UserID" Type="InArgument(x:String)" />
+    <x:Property Name="in_ApplicationID" Type="InArgument(x:String)" />
+    <x:Property Name="in_TenantID" Type="InArgument(x:String)" />
+    <x:Property Name="in_Password" Type="InArgument(x:String)" />
+    <x:Property Name="in_FileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_SiteUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_DriveName" Type="InArgument(x:String)" />
+    <x:Property Name="in_TemporarySheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_PermanentSheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_NewFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_NewTemporarySheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_NewPermanentSheet" Type="InArgument(x:String)" />
+    <x:Property Name="io_dt_Permanent" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_dt_Temporary" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_CopyPasteRange" Type="InArgument(x:String)" />
+    <x:Property Name="in_ExcelColumncount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_InputTempFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_OMS_ExcludedFile" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process_Template1.in_UserID>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_UserID>
+  <this:Process_Template1.in_ApplicationID>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_ApplicationID>
+  <this:Process_Template1.in_TenantID>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_TenantID>
+  <this:Process_Template1.in_Password>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_Password>
+  <this:Process_Template1.in_FileName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_FileName>
+  <this:Process_Template1.in_SiteUrl>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_SiteUrl>
+  <this:Process_Template1.in_DriveName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_DriveName>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1514,1210</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process_Template1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Exclusion_master_processing" sap:VirtualizedContainerService.HintSize="1298,1145" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_ProcessFolder" />
+      <Variable x:TypeArguments="x:String" Name="str_ProcessFilesPath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1236,1034" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Flowchart sap2010:Annotation.AnnotationText="1. Open the exclusion master file in Excel. &#xA;2. Go to the &quot;Temporary&quot; worksheet and select columns A to I&#xA;3. Copy the selected columns.&#xA;4. Go to the &quot;Permanent&quot; worksheet and select columns A to I.&#xA;5. Copy the selected columns.&#xA;6. Open a new Excel file.&#xA;7. Paste the copied columns from the &quot;Temporary&quot; worksheet to columns A to I in the new Excel file.&#xA;8. Paste the copied columns from the &quot;Permanent&quot; worksheet to columns A to I in the new Excel file.&#xA;9 .Save the new Excel file as the &quot;Exclusion Master&quot;." DisplayName="Process 9 - Exclusion_Master_Processing" sap:VirtualizedContainerService.HintSize="1104,784" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+          <Flowchart.Variables>
+            <Variable x:TypeArguments="x:Boolean" Name="bool_TemporaryColumnsPresent" />
+            <Variable x:TypeArguments="x:Boolean" Name="bool_TemporaryDataExists" />
+            <Variable x:TypeArguments="x:Boolean" Name="bool_PermanantColumnsPresent" />
+            <Variable x:TypeArguments="x:Boolean" Name="bool_PermanantDataExists" />
+            <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Process_Config" />
+          </Flowchart.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <av:Point x:Key="ShapeLocation">10,122.5</av:Point>
+              <av:Size x:Key="ShapeSize">60,75</av:Size>
+              <x:Double x:Key="Width">1070</x:Double>
+              <av:PointCollection x:Key="ConnectorLocation">70,160 120,160</av:PointCollection>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Flowchart.StartNode>
+            <x:Reference>__ReferenceID4</x:Reference>
+          </Flowchart.StartNode>
+          <FlowStep x:Name="__ReferenceID3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">360,98</av:Point>
+                <av:Size x:Key="ShapeSize">200,124</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">560,160 620,160</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="All the variables required to complete this process needs to be defined here. Excluding the local variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_ApplicationID]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("ApplicationID").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_TenantID]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("TenantID").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_UserID]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("UserID").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_Password]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("Passowrd").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_SiteUrl]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("SiteURL").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_DriveName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("DriveName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_FileName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("FileName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_InputFilePath]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("InputFilePath").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_TemporarySheet]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("TemporarySheet").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PermanentSheet]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("PermanentSheet").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NewFileName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NewFileName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OutputFilePath]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("ProcessFilesPath").ToString+"\"]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NewTemporarySheet]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NewTemporarySheet").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NewPermanentSheet]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NewPermanentSheet").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[str_ProcessFolder]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_TransactionItem_DataRow("Process Name").ToString.Trim.Replace(" ","_")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[str_ProcessFilesPath]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("ProcessFilesPath").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_CopyPasteRange]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("CopyPasteRange").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[in_ExcelColumncount]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(Process_Config("ExcelColumncount").ToString)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_InputTempFolder]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("ProcessInputFiles").ToString+"\"]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OMS_ExcludedFile]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("OMS_ExcludedFile").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID0">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">620,113</av:Point>
+                    <av:Size x:Key="ShapeSize">200,94</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">820,160 870,160</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Open the exclusion master file in Excel." DisplayName="Process Workflows\Exclusion_master_processing\Process_9.1.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Process Workflows\Exclusion_master_processing\Process_9.1.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_ApplicationID">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ApplicationID" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TenantID">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TenantID" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_UserID">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_UserID" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Password">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Password" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_FileName">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FileName" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_SiteUrl">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SiteUrl" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_DriveName">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_DriveName" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputTempFolder" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">870,98</av:Point>
+                        <av:Size x:Key="ShapeSize">200,124</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">970,222 970,278</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Go to the &quot;Temporary&quot; worksheet and select columns A to I &amp; Copy the selected columns." DisplayName="Process Workflows\Exclusion_master_processing\Process_9.2 &amp; Process_9.3.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process Workflows\Exclusion_master_processing\Process_9.2 &amp; Process_9.3.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputTempFolder" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_TemporarySheet">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TemporarySheet" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_FileName">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FileName" />
+                        </InArgument>
+                        <OutArgument x:TypeArguments="x:Int32" x:Key="in_Rowcount" />
+                        <InArgument x:TypeArguments="x:String" x:Key="in_CopyPasteRange">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CopyPasteRange" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExcelColumncount">
+                          <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_ExcelColumncount" />
+                        </InArgument>
+                        <OutArgument x:TypeArguments="x:Int32" x:Key="in_NewExcelRowcount" />
+                        <OutArgument x:TypeArguments="x:String" x:Key="in_Exception" />
+                        <InArgument x:TypeArguments="x:String" x:Key="in_NewFileName">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NewFileName" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_NewTemporarySheet">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NewTemporarySheet" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                        </InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                    <FlowStep.Next>
+                      <FlowStep x:Name="__ReferenceID2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">870,278</av:Point>
+                            <av:Size x:Key="ShapeSize">200,124</av:Size>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Go to the &quot;Permanent&quot; worksheet and select columns A to I. &amp; Copy the selected columns." DisplayName="Process Workflows\Exclusion_master_processing\Process_9.4 &amp; Process_9.5.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process Workflows\Exclusion_master_processing\Process_9.4 &amp; Process_9.5.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputTempFolder" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PermanentSheet">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PermanentSheet" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FileName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FileName" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="x:Int32" x:Key="in_Rowcount" />
+                            <InArgument x:TypeArguments="x:String" x:Key="in_CopyPasteRange">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CopyPasteRange" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_ExcelColumncount">
+                              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_ExcelColumncount" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="x:Int32" x:Key="in_NewExcelRowcount" />
+                            <OutArgument x:TypeArguments="x:String" x:Key="in_Exception" />
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NewFileName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NewFileName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NewPermanentSheet">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NewPermanentSheet" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OMS_ExcludedFile">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OMS_ExcludedFile" />
+                            </InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeWorkflowFile>
+                      </FlowStep>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+          <x:Reference>__ReferenceID0</x:Reference>
+          <x:Reference>__ReferenceID1</x:Reference>
+          <x:Reference>__ReferenceID2</x:Reference>
+          <FlowStep x:Name="__ReferenceID4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">120,105.5</av:Point>
+                <av:Size x:Key="ShapeSize">200,109</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">320,160 360,160</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Process parameters, file path and other values to add in dictionary" DisplayName="Common Workflows\ProcessMasterfile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Common Workflows\ProcessMasterfile.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessMasterFilePath">[System.IO.Path.GetFullPath("Process Workflows\Exclusion_master_processing\ExclusionMasterFile.xlsx")]</InArgument>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Master">[Process_Config]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID3</x:Reference>
+            </FlowStep.Next>
+          </FlowStep>
+        </Flowchart>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="si:FileNotFoundException" sap:VirtualizedContainerService.HintSize="1202,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="si:FileNotFoundException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="si:FileNotFoundException" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Fatal]" Message="[exception.Message]" />
+          </ActivityAction>
+        </Catch>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1202,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="450,317" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[exception.Message]" />
+              <Rethrow sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

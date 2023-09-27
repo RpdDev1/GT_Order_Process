@@ -1,0 +1,3 @@
+﻿Dear Team,<br><br>Process of RPA {Your Process Name} has Interrupted Due to Application Login Failure.<br>Kindly Check the Application and Credentials.<br><br>
+Thanks and Regards,<br>RPA Team<br>-------------------------------------------------------------------<br>
+This is auto generated email, please do no reply on this email.

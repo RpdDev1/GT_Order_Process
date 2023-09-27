@@ -1,0 +1,328 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process15_3" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_OutputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_NewFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_NewFileSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CustomerMasterFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CustomerMasterSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_InputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_FilteredColumnName" Type="InArgument(x:String)" />
+    <x:Property Name="li_Filtered_OrderTypes" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_VMIValue" Type="InArgument(x:String)" />
+    <x:Property Name="in_NonVMIValue" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process15_3.in_NewFileName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process15_3.in_NewFileName>
+  <this:Process15_3.li_Filtered_OrderTypes>
+    <InArgument x:TypeArguments="scg:List(x:String)" />
+  </this:Process15_3.li_Filtered_OrderTypes>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1234,3426</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process15_3_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms.Primitives</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="1. Apply vlookup from the Customer Master file to get the order type for each row in the Excel file.&#xA;2. Filter the &quot;Order Type&quot; column in the Excel file and select the required order type.&#xA;3. Copy the filtered data to a blank text file." DisplayName="Apply vlookup from the Customer Master file to get the order type for each row in the Excel file." sap:VirtualizedContainerService.HintSize="865,3361" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_SalesOrder" />
+      <Variable x:TypeArguments="x:Boolean" Name="columnHasData" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Apply vlookup from the Customer Master file to get the order type for each row in the Excel file. and saving result in Order Type Column" Code="Try&#xA;    ' Initialize Excel Application&#xA;    Dim excelApp As New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Open Source Workbook (Customer Master.xlsx)&#xA;    Dim sourceWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_MasterPath))&#xA;&#xA;    ' Open Destination Workbook&#xA;    Dim destinationWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_SalePath))&#xA;&#xA;    ' Get Destination Worksheet&#xA;    Dim destinationWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(destinationWorkbook.Sheets(in_SaleSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Get Source Worksheet (Customer Master.xlsx)&#xA;    Dim sourceWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(sourceWorkbook.Sheets(in_MasterSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Loop through rows in the destination worksheet, starting from the second row (assuming headers are in the first row)&#xA;    Dim rowCount As Integer = destinationWorksheet.UsedRange.Rows.Count&#xA;    For row As Integer = 2 To rowCount&#xA;        ' Assuming the lookup value is in column A (column 1) of the destination worksheet&#xA;        Dim lookupCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 1), Microsoft.Office.Interop.Excel.Range)&#xA;        Dim lookupValue As String = If(lookupCell.Value2 IsNot Nothing, lookupCell.Value2.ToString(), String.Empty)&#xA;&#xA;        ' Construct the VLOOKUP formula as a string&#xA;        Dim vlookupFormula As String = &quot;=VLOOKUP(&quot; &amp; lookupValue &amp; &quot;, '[&quot; &amp; sourceWorkbook.Name &amp; &quot;]&quot; &amp; in_MasterSheet &amp; &quot;'!$F:$I, 4, FALSE)&quot;&#xA;&#xA;        ' Perform VLOOKUP using Evaluate&#xA;        Dim result As Object = excelApp.Evaluate(vlookupFormula)&#xA;&#xA;        If result IsNot Nothing Then&#xA;            Dim resultString As String = result.ToString()&#xA;&#xA;            ' Update the result in column I (column 9) for the current row in the destination worksheet&#xA;            Dim resultCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 9), Microsoft.Office.Interop.Excel.Range)&#xA;            resultCell.Value = resultString&#xA;&#xA;            ' Rename the column header to &quot;Order Type&quot; for cell 9 (assuming it's in row 1)&#xA;            Dim columnHeaderCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(1, 9), Microsoft.Office.Interop.Excel.Range)&#xA;            columnHeaderCell.Value =  in_OrderTypeColumn&#xA;        Else&#xA;            Console.WriteLine(&quot;Value not found in the source worksheet.&quot;)&#xA;        End If&#xA;    Next&#xA;&#xA;    ' Save and Close Workbooks&#xA;    sourceWorkbook.Save()&#xA;    destinationWorkbook.Save()&#xA;    sourceWorkbook.Close()&#xA;    destinationWorkbook.Close()&#xA;&#xA;    ' Quit Excel Application&#xA;    excelApp.Quit()&#xA;&#xA;    ' Release COM objects&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorksheet)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorksheet)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorkbook)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorkbook)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)&#xA;Catch ex As Exception&#xA;    Console.WriteLine(&quot;An error occurred: &quot; &amp; ex.Message)&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="803,222" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MasterPath">[in_InputFilePath+in_CustomerMasterFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SalePath">[in_OutputFilePath+in_NewFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SaleSheet">[in_NewFileSheetName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MasterSheet">[in_CustomerMasterSheetName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OrderTypeColumn">[in_FilteredColumnName]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Reading Sales order file " Code="Try&#xA;    ' Define the Excel file path and sheet name&#xA;    Dim filePath As String = System.IO.Path.GetFullPath(in_FilePath)&#xA;    Dim sheetName As String = in_SheetName&#xA;&#xA;    ' Initialize Excel application&#xA;    Dim excelApp As Microsoft.Office.Interop.Excel.Application = New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Disable alerts and screen updating for faster execution&#xA;    excelApp.DisplayAlerts = False&#xA;    excelApp.ScreenUpdating = False&#xA;&#xA;    ' Open the Excel workbook in read-only mode&#xA;    Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(filePath, ReadOnly:=True)&#xA;&#xA;    ' Select the specified worksheet&#xA;    Dim worksheet As Microsoft.Office.Interop.Excel.Worksheet = DirectCast(workbook.Sheets(sheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Get the used range of the worksheet&#xA;    Dim usedRange As Microsoft.Office.Interop.Excel.Range = worksheet.UsedRange&#xA;&#xA;    ' Create a DataTable to store the Excel data&#xA;    Dim dataTable As New DataTable(sheetName)&#xA;&#xA;    ' Get values from the used range into a 2D array for faster access&#xA;    Dim values As Object(,) = DirectCast(usedRange.Value, Object(,))&#xA;    Dim rowCount As Integer = values.GetLength(0)&#xA;    Dim colCount As Integer = values.GetLength(1)&#xA;&#xA;    ' Add columns to DataTable using values from the first row&#xA;    For colIndex As Integer = 1 To colCount&#xA;        Dim columnName As String = values(1, colIndex).ToString()&#xA;        dataTable.Columns.Add(columnName, GetType(String))&#xA;    Next&#xA;&#xA;    ' Populate data starting from the second row&#xA;    For rowIndex As Integer = 2 To rowCount&#xA;        Dim dataRow As DataRow = dataTable.NewRow()&#xA;        For colIndex As Integer = 1 To colCount&#xA;            Dim cellValue As Object = values(rowIndex, colIndex)&#xA;            If cellValue IsNot Nothing Then&#xA;                dataRow(colIndex - 1) = cellValue.ToString()&#xA;            Else&#xA;                dataRow(colIndex - 1) = &quot;&quot;&#xA;            End If&#xA;        Next&#xA;        dataTable.Rows.Add(dataRow)&#xA;    Next&#xA;&#xA;    ' Close the Excel workbook and release resources&#xA;    workbook.Close(False)&#xA;&#xA;    ' Enable alerts and screen updating&#xA;    excelApp.DisplayAlerts = True&#xA;    excelApp.ScreenUpdating = True&#xA;&#xA;&#xA;    ' Log a message indicating successful execution&#xA;    Console.WriteLine(&quot;Excel file read successfully, and data is saved to DataTable.&quot;)&#xA;    out_datatable = dataTable&#xA;&#xA;Catch ex As Exception&#xA;    ' Log the exception message&#xA;    Console.WriteLine(&quot;Error reading Excel file: &quot; &amp; ex.Message)&#xA;    Throw ex&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="803,196" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_NewFileSheetName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_OutputFilePath+in_NewFileName]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_datatable">[dt_SalesOrder]</OutArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <Assign sap:VirtualizedContainerService.HintSize="803,81" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[columnHasData]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">[dt_SalesOrder.AsEnumerable().Any(Function(row) Not String.IsNullOrWhiteSpace(row(in_FilteredColumnName).ToString))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If sap2010:Annotation.AnnotationText="Verfying Order type Column is Empty or not" Condition="[columnHasData]" sap:VirtualizedContainerService.HintSize="803,442" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The &quot;+in_FilteredColumnName+&quot; column contains data.&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[new BusinessRuleException(&quot;The &quot;+in_FilteredColumnName+&quot; column is empty.&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="803,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_OutputFilePath+in_FilteredColumnName]" />
+    <Assign sap:VirtualizedContainerService.HintSize="803,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[li_Filtered_OrderTypes]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[dt_SalesOrder.AsEnumerable().Select(Function(row) row(in_FilteredColumnName).ToString()).Distinct().ToList()]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="803,1851" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[li_Filtered_OrderTypes]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="769,1665" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_OP" />
+              <Variable x:TypeArguments="x:String" Name="str_OP" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filter the &quot;Order Type&quot; column in the Excel file and select the required order type." DataTable="[dt_SalesOrder]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="727,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_OP]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                    <ui:FilterOperationArgument.Column>
+                      <InArgument x:TypeArguments="x:String">[in_FilteredColumnName]</InArgument>
+                    </ui:FilterOperationArgument.Column>
+                    <ui:FilterOperationArgument.Operand>
+                      <InArgument x:TypeArguments="x:String">[currentText]</InArgument>
+                    </ui:FilterOperationArgument.Operand>
+                  </ui:FilterOperationArgument>
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <x:Null />
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:FilterDataTable>
+            <ui:OutputDataTable DataTable="[dt_OP]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="727,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[str_OP]" />
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="if order type is VMI order then save file as VMI and if Non VMI order then save file as Non VMI and if ZMt then save file as ZMT" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="727,1214" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If" Condition="[currentText.Contains(in_VMIValue)]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,275" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+in_VMIValue+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[str_OP]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:WriteTextFile>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currentText.Contains(in_NonVMIValue)]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,275" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+in_NonVMIValue+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[str_OP]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:WriteTextFile>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="Else">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,275" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+currentText+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[str_OP]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:WriteTextFile>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:IfElseIf>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEach>
+  </Sequence>
+</Activity>

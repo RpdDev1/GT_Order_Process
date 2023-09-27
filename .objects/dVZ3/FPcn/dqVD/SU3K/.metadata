@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Promo Allocation Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "SU3KfVyb7kmqdIYpdqgRrg",
+  "Reference": "KHM7KCyeR0yxsr5MPZ05VA/SU3KfVyb7kmqdIYpdqgRrg",
+  "ParentRef": "KHM7KCyeR0yxsr5MPZ05VA/dqVDePK_sUGO_ls3tEAp9A",
+  "Created": "2023-09-01T14:36:25.0882221Z",
+  "Updated": "2023-09-01T14:36:25.0882221Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=23.4.8.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=23.8.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

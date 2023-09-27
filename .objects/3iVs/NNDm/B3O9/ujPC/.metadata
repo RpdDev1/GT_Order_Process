@@ -1,0 +1,14 @@
+﻿{
+  "Name": "vf PDP Report",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "ujPCp4FQTEutih8AjOfUbQ",
+  "Reference": "KHM7KCyeR0yxsr5MPZ05VA/ujPCp4FQTEutih8AjOfUbQ",
+  "ParentRef": "KHM7KCyeR0yxsr5MPZ05VA/B3O9bet_pkW-X3hu7X3GNQ",
+  "Created": "2023-09-05T11:27:32.5518612Z",
+  "Updated": "2023-09-05T11:27:32.5518612Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=23.4.8.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=23.8.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="D7k6Z5ROiECXnfCugpPVAg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/ccmslogin.aspx?Info=UserSessionout" DesignTimeRectangle="868, 220, 90, 20" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'OK'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='OK' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='btnOk' type='submit' tag='INPUT' class='' aaname='OK' check:text='OK' /&gt;" Guid="9fb4215d-c713-4047-b029-7a6255c5f3e6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF4AAAAYCAYAAABz00ofAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEBSURBVGhD7djtDYMgEIBh5nEXEn84jWETnAT3MGELNriCoOJHm6iVA3M/3qTSNpFHezFlxhig0kfwSM3wTdNQD1dVFcGnzqEzxr7DT8fUf3PoBI8QwSNVILwGWfuT9glQ8fuDBM44yGG7Zj/bqmUNucLgFQh7srzTy1ov7AYi6C18QBd9OM6kouB1xw/v2tX6Ct5fqNzQXQXB+xFziDje9WHkzPAHv46Megf8iB3D+025CP525+BH8PCaRs3Nzs94WzyGMqooeHPlqcamWrvJWoKevpNBhcG7LjzHhwuWE36B8O+I4JEieKQIHqmf8NOf9dRz7eAJPU07eCptBI+SgQ/6fDs00c539wAAAABJRU5ErkJggg==" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="16e9129b209afb3dbd3d0b8a679eaa92.png" xmlns="">0ZXLYqFNCQE61xxpd4JIQ8w</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

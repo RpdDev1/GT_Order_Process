@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="zka27TwOYE61ehh_z2i62Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://login.microsoftonline.com/5635d8b8-c9b9-4d9a-8a4d-f7cad74dc82a/login" CvElementArea="922, 602, 111, 34" CvTextArea="967, 612, 21, 14" CvTextArgument="No" CvType="Button" DesignTimeRectangle="924, 603, 108, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'No'" FullSelectorArgument="&lt;webctrl aaname='No' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='idBtn_Back' tag='INPUT' type='button' class='win-button button-secondary button ext-button secondary ext-secondary' aaname='No' check:text='No' /&gt;" Guid="42a97dc6-30f1-4d1f-a903-27126ab0ea35" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHAAAAAkCAYAAABR/76qAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE7SURBVHhe7ZexrYQwFASphhqgAQqgCmJCUuqgBEogJKOnd9pgkc92fn/9d6SRsH1Eo+e768JI44DivAGf57FCEgcUlTigqMQBRSUOKCpxQFGJA4pKHFBU4oCiEgcUlTigqEQ64LIs0fd9nOdZnB3HEfM8x33fxVkLEvmAXddVQzmggAi4rmuM4xj7vn+dOaCACIhwiJVfpbWA+CwmlubRlSRNBOQz5FkeEGfp+rqu6uSqSJoJyCAIh3UaEJM5DEPxY6c2pSqSZgJCPCMiYqZx8Mz99H0Enaap2FeQNBUQsRANe3nA2qQ54I/NA0Jel9u2vdF8hf5RawG5n/8/xF66zr8z1SRNBmScfLoYlqrGg0Q64H+WOKCoxAFFJQ4oKnFAUYkDikocUFTigKISBxSVOKCo5A1oNHFAaSI+OIw8ozti+UoAAAAASUVORK5CYII=" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="3482bbed3fb61d7ede53de8442ab146d.png" xmlns="">0YcsyLeM51E2AWzfl06Be5A</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

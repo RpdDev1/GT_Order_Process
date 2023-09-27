@@ -1,0 +1,3 @@
+﻿Dear Team,<br><br>Robot is unable to {your process} for <Company>.<br><br>Please refer the screenshot and the exception message as <exception>.<br><br>
+Thanks and Regards,<br>RPA Team<br>-------------------------------------------------------------------<br>
+This is auto generated email, please do no reply on this email.

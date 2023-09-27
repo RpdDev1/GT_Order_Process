@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="EXDTCkaekkep6WUHsW3b2Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://minetrevampdt.maricoapps.biz/dashboard/dashboard1" DesignTimeRectangle="1862, 141, 46, 45" DesignTimeScaleFactor="1" FriendlyName="'I'" FullSelectorArgument="&lt;webctrl aaname='User Settings' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='User Settings' tag='A' /&gt;&lt;webctrl parentid='dropdownBasic3' tag='I' type='' class='ft-user font-medium-3 blue-grey darken-4' aaname='' /&gt;" Guid="4fc2119e-44a7-4308-bc57-e5e73ab5f901" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABgAAAAXCAYAAAARIY8tAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHKSURBVEhL5ZTdK8NRGMf9NS6UG0qKuDGKsIhJE5GScLHISwp5KxN5KUIKSeTlYjeE0EQkRUjM67LZTDSbt5uvnlO03/md/ba8lVx8Wj3nPOdzfs95ngW4n17xk/wDgevxBQvLq4hPy0RgSDiCwiJRqCuH6cws3M/jUzA+bWCHxiSloqmtC5V1TQgOj4JKnYb9Q5MwxxNFwbnZCnVmDorLqmB33H3Et3cPEB2fjPqWdjhdT5IcHkXB6sYWu/3s4rIkTofWNOuRnp0Pq90hWePxS7BkXJfE6V0a9B1fFxydXCAuRYOK2kY47pwf8ePTSyRpslj83umW5PAoCuimA8NjrHvyinQwzC1iaGySPXhEbAK2dvaEeZ4oCgiqd9/QKEKjVUxEUMtS+UT7eXwK3qFSXF3bWc0f3M/CPSL8FnwWoeD2/gHd/YOSsniDykWTTu8lOksmoG4pra5jydkFJWjt6vUKTTY9OLUyTTx/FiETzC8ZWQJ1iz+1pgmnSaeJp8nn12UCfWcPEjO0OLu0SOJK0KTTpUSdJRPQZ6dqc1nH8GveWFnbZCWlX37t9wUb2zuYmDH4/Jf0xGK7wcj4FMwWm2xNJvhu/rrgFW8Y4tJ00EJYkAAAAABJRU5ErkJggg==" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="[NWaitForReady.Complete]">
+      <imageRef attrName="InformativeScreenshot" originalValue="8cca15ce68e630c1e22052bcb7a5e8ee.png" xmlns="">0xtTjaNvE-EKLnj6iFV4F1A</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

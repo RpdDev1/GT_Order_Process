@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Use another account",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "DMxUoqI24ESMBFyTCdNO6g",
+  "Reference": "KHM7KCyeR0yxsr5MPZ05VA/DMxUoqI24ESMBFyTCdNO6g",
+  "ParentRef": "KHM7KCyeR0yxsr5MPZ05VA/MXIGSi4ockaINHpdSOZGbw",
+  "Created": "2023-09-05T10:20:14.1089628Z",
+  "Updated": "2023-09-05T10:20:14.1089628Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=23.4.8.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=23.8.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

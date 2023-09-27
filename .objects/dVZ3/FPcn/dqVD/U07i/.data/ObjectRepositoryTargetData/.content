@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="Bl-J6QDJsEymszdBRNkP2Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/OMSHome.aspx" DesignTimeRectangle="185, 171, 170, 20" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'AllocationUpload'" FullSelectorArgument="&lt;webctrl tag='A' aaname='AllocationUpload' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='header' tag='TABLE' /&gt;&lt;webctrl tag='A' aaname='AllocationUpload' type='' class='' check:text='AllocationUpload' /&gt;" Guid="b8166ebb-1b46-4b35-8818-d1cec424696d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAK4AAAAYCAYAAABjn8aGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJlSURBVHhe7ZYxcsIwEEVd5jC5BBUFB0jFFaB2yaShyAwVXSqOQM0ZmByCeyheybJ2V7ItJnbGGj4zb8ZhpZXW+6RQGXzwKfBjxX37+AagGIS4p58HAIsH4oIigbigSCAuKBKIC4rkT+IejmvzfrxHz/NyNZuqNvtkbH6mrpPyVbtrMgb6yRP3djbvVRW94P8Qd47Gpvaau87Udc5R3yuQJa5r1jm66XgTp26oZ47Gpvaau87Udc5R3yuQIe7dbFdrs709zH5Xmc0lxHgTdUNpbEW3dINsNOULMdc09Z0/IP6mb3F51E8FMSZ874Som7HpmJaPC/TM3L46bY5uvnxvp0stYhD3ecbFJTFWZ3OgZ3rh7CXzJurnys9ppfSNs43ucjSxnR8XsPOFRLyxXFx6ZlLQ/tp17TwmHK2b2qsnWlPN5bGcOgX2cLX57LO7CLocoj6Qw6i4vOFOFPnSUzLQHH0zu+ZQc8N8Qc8tFDeWicsPVRdz+fW8vr3yeO+a6kCM10l/u0MVamr3nDj8Yi2QxYi4+uU7UgLkNbRH3IFbKG7sNOJqWQbjT4vrbl8/Tty4EHcShsVVL9nCZNHNFo3vhJL/QqnZIWcTo58KvLFqTNxYJm57sDp5lGB8Ht+fEMki88i5UkKex45L1ilrtvvih62nVpDPoLj6RnFQU8KtlmooYRuibugwP46J8U3+0EwnVRjLxW2wIvi54XspX7w/JxNbk8XsXBYbytNbJ8/f1MNl5fllrSCX4Rv3RdHSg+UBcRNA3OUDcUGRQFxQJBAXFEkkbv35BcDiwY0LigTigiJx4hrzC/chb2xdindUAAAAAElFTkSuQmCC" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="0f1604bfa7d4877978bbbce94c3a8df5.png" xmlns="">0eOF_asjEl0i_qraLfSQcvw</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

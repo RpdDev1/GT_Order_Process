@@ -1,0 +1,2 @@
+﻿Dear Team,<br><br>Robot has started RPA {Your Process Name} for <Company>.<br><br>Thanks and Regards,<br>RPA Team<br>-------------------------------------------------------------------<br>
+This is auto generated email, please do no reply on this email.

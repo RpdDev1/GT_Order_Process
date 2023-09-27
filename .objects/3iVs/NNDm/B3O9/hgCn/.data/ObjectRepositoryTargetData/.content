@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="pT9Dc8DwSU2QMxGlhF6lpg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://minetrevampdt.maricoapps.biz/order/download" DesignTimeRectangle="844, 310, 20, 20" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl aria-role='checkbox' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='checkbox' tag='DIV' /&gt;" Guid="4f24b276-640c-46b3-bacd-a8cffbbf212a" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB2SURBVEhL7ZUxCsAwCEV7/4M45CQBL5TN8qAJFgqhaW0XH7hE/A8Xs1kw3wpU1UopJiJLxSwZniGgUWu11trxch9myfCSIcD+JLxDBlmdIWDFt/BZKbgkBVNSMCUFU/4RhJ/r8A8HaGBnxZVi1ofDSRBBsMBsB5u4rP1WnBvSAAAAAElFTkSuQmCC" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="871, 301, 341, 37" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aria-role='textbox' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='textbox' tag='INPUT' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAVkAAAApCAYAAACfp1quAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALFSURBVHhe7d0/T1NRHMbxO/MKujI6OjKRODIymjA58g6QiDEkDkKIETbDYISFNIaJgcBEOmk3TaShlz/FttdoG8U0DTSP/HoP5SIl3gucqd9P8gye267fnJSCgc5tHkjznxhjjN3XrKsmILCMMeZn1tcgeTC6XNfQTEnB1FfGGGMZZ/20jia72ousPZhYqyo6OYvvuACATKyf1tFkaHuRtQITWAC4G+uo9fRaZO2qCwC4O+spkQUAT4gsAHhEZAHAIyILAB4RWQDwiMgCgEdEFgA8IrIAkNRuqrhzpLm1/e4Wt+v60jx1D7MjsgDQdaryTlmPpvv/LYLx9e9qdNxLM7D3ElkAA66j8vaeci6oueclTb63m2yoJ7OXoR1ZjdRy70iLyALAtyONuZCOffj3xhrfcEfc86fFtjtPh8gCGHAdFfO73e4FCxVV3elVbRVW3WuWjtVwp2kQWQAD7pdWFuJb6mThjzvro3SghxbZqX0V3FEaRBbAgGvo7as4srOf3VE/UUXj3ciG2srwiQGRBTDgfiv/Jo7s2MbNHwS0imH8g7HpfRXdWRpEFsDAK2+4/2rrRahCv68PdJq9jxRy7+qZvmFAZAGgHWnWfVUr9zJU/vDEPeioVYu0uBQ/C6ZKWqm5RykRWQAwtYoe3/CLCN1N72p8flcPlo5VzvBLCfZeIgsA5mddc6/Pb7PJuJ5veCHUykbY+67scIbQ2uuJLAAktVuqHkbaKjXVaF383YKOGh+zh5bIAkBqV0M7sv7Dnd+MyAJAJi60z/aUr/3/KktkAcAjIgsAHhFZAPCIyAKAR0QWADwisgDgEZEFAI+ILAB41DeyQzMlRSdn7iUAgNuwjlpPr0V2dLmuibUqoQWAW7J+Wketp9ciexFaK7BddRljjGWb9TMZWFuweXD5D8YYY/c362tgV1xCyxhj9zvrqiT9BXZSBatbHKQAAAAAAElFTkSuQmCC" SearchSteps="Selector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="5f68af48b08ccd570177236f5b2fc34c.png" xmlns="">0XVR3dcNMqEq4qv9o_WY7aw</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

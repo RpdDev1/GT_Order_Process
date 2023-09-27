@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="b5jf0sORVUqJptnm_Kp6eQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/AllocationHomePage.aspx" CvElementArea="1155, 517, 48, 21" CvTextArea="1157, 520, 44, 17" CvTextArgument="Upload" CvType="Button" DesignTimeRectangle="1157, 519, 46, 19" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Upload'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Upload' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='Upload' /&gt;" Guid="ab6e86ff-1887-44b2-a19f-1d8c89f409e0" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADIAAAAXCAYAAABJXhw0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFWSURBVFhH7Zc7bsMwDIZ1wAoI0Lt4CDR36wnksadQYOQG2TL4FD4CK8mUyoeDJnBSxGqGH4FCUuRHUoPN29cJWlB7IO/9EbqPT+i6bhuKtaaaFUgyDMMA0zRtQqnWVLMGiZRLAc+sVPN/AAngjAF3kIGX/l/Q2YM1Fvx5wbZKvIYXSJsgBwfGOPC9jb8mq9oUyByr/FBh/2MzsgE5D9r27lEg6fJAzlgEAxnB7wzYftR+5bzzMOYcCFXuFDlHbNoDQGj3SMEURE1HgDHNNt4cB6HaeQ2/gFxKtARCk8zdVCDKT9yffXF1YowlIHkCZFoldh2I7OydJsJXSZzXTaTsIk2OCWh3chICTMFY8aIxogHs3jId8UZ47A0gSeVhVbERR2G3XCoEferaqSnMBSm/6ou2mCPIdWL2mO/61bpSCELfyF/rBcL0tCCtfI8084W4dTUCcoJvtwLnMf6FjE0AAAAASUVORK5CYII=" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="587fa74949cfa0be992bae73fc2a9584.png" xmlns="">587fa74949cfa0be992bae73fc2a9584.png</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

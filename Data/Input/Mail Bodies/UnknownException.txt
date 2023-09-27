@@ -1,0 +1,3 @@
+﻿Dear Team,<br><br>Robot has found some unknown Exception for RPA Process.<br>Please see the below Exception Message :<br>
+<exception><br><br>Thanks and Regards,<br>RPA Team<br>-------------------------------------------------------------------<br>
+This is auto generated email, please do no reply on this email.

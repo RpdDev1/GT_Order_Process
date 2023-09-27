@@ -1,0 +1,282 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Download_the_FSSAI_Report_From_SAP" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FSSAILicenceFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_FSSAISheet1Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_FSSAILicenSheet2Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_RemoveColumnName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CopyFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_FSSAIOutputPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_FSSAIFileNewName" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Download_the_FSSAI_Report_From_SAP.in_FSSAILicenceFilePath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Download_the_FSSAI_Report_From_SAP.in_FSSAILicenceFilePath>
+  <this:Download_the_FSSAI_Report_From_SAP.in_FSSAISheet1Name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Download_the_FSSAI_Report_From_SAP.in_FSSAISheet1Name>
+  <this:Download_the_FSSAI_Report_From_SAP.in_FSSAILicenSheet2Name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Download_the_FSSAI_Report_From_SAP.in_FSSAILicenSheet2Name>
+  <this:Download_the_FSSAI_Report_From_SAP.in_RemoveColumnName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Download_the_FSSAI_Report_From_SAP.in_RemoveColumnName>
+  <this:Download_the_FSSAI_Report_From_SAP.in_FSSAIFileNewName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Download_the_FSSAI_Report_From_SAP.in_FSSAIFileNewName>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1234,2102</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Download_the_FSSAI_Report_From_SAP_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Remove the Blank Column From the File" DisplayName="10.2" sap:VirtualizedContainerService.HintSize="496,2037" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_FSSAISheet" />
+      <Variable x:TypeArguments="x:String" Name="str_FSSAIColumnCount" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_TemporaryDataTable" />
+      <Variable x:TypeArguments="x:Boolean" Name="bool_FSSAIfilePath" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_CopyDataExportedSheet" />
+      <Variable x:TypeArguments="x:String" Name="in_FSSAIExcelFilePath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Step 2" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;FSSAI Report Processing : Step 2 started&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <Assign DisplayName="Assign - Getting File Name of Downloded Excel File" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_21">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_FSSAIExcelFilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Directory.GetFiles(in_FSSAIOutputPath,"*.XLSX").OrderByDescending(Function(d) New FileInfo(d).CreationTime).First]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - FSSAI file new name" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_22">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_FSSAILicenceFilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_FSSAIOutputPath +"\" + in_FSSAIFileNewName]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:FileExistsX DisplayName="File Exists - checking if the file is exists or not" Exists="[bool_FSSAIfilePath]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_FSSAIExcelFilePath]" />
+    <If Condition="[bool_FSSAIfilePath]" DisplayName="If - File is not Present BussinessRule Exception" sap:VirtualizedContainerService.HintSize="434,589" sap2010:WorkflowViewState.IdRef="If_9">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message - file is exists" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;file is present on the Path&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_24">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw DisplayName="Throw - file not present at perticular path" Exception="[new FileNotFoundException(&quot;file is not present on path&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim excelApp As Microsoft.Office.Interop.Excel.Application&#xA;Dim excelWorkbook As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim excelWorksheet As Microsoft.Office.Interop.Excel.Worksheet&#xA;&#xA;' Replace these with your actual file path and sheet name&#xA;Dim FilePath As String = System.IO.Path.GetFullPath(in_ExcelFilePath)&#xA;Dim SheetName As String =in_ExcelSheetName&#xA;&#xA;excelApp = New Microsoft.Office.Interop.Excel.ApplicationClass()&#xA;excelWorkbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(FilePath))&#xA;excelWorksheet = CType(excelWorkbook.Sheets(SheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;' Get the used range&#xA;Dim dataRange As Microsoft.Office.Interop.Excel.Range = excelWorksheet.UsedRange&#xA;Dim rowCount As Integer = dataRange.Rows.Count&#xA;&#xA;' Delete blank rows using LINQ&#xA;Dim rowsToDelete = From row As Microsoft.Office.Interop.Excel.Range In dataRange.Rows.Cast(Of Microsoft.Office.Interop.Excel.Range)()&#xA;                   Where Not row.Cells.Cast(Of Microsoft.Office.Interop.Excel.Range)().Any(Function(cell) Not String.IsNullOrWhiteSpace(CStr(cell.Value)))&#xA;                   Select row&#xA;&#xA;For Each row As Microsoft.Office.Interop.Excel.Range In rowsToDelete.ToList()&#xA;    row.Delete()&#xA;Next&#xA;&#xA;' Delete blank columns using LINQ&#xA;Dim columnsToDelete = From column As Microsoft.Office.Interop.Excel.Range In dataRange.Columns.Cast(Of Microsoft.Office.Interop.Excel.Range)()&#xA;                      Where Not column.Cells.Cast(Of Microsoft.Office.Interop.Excel.Range)().Any(Function(cell) Not String.IsNullOrWhiteSpace(CStr(cell.Value)))&#xA;                      Select column&#xA;&#xA;For Each column As Microsoft.Office.Interop.Excel.Range In columnsToDelete.ToList()&#xA;    column.Delete()&#xA;Next&#xA;&#xA;' Define the save file path&#xA;Dim SaveFilePath As String = System.IO.Path.GetFullPath(in_ExcelFileNewName)&#xA;&#xA;' Check if the new file already exists and delete it&#xA;If System.IO.File.Exists(SaveFilePath) Then&#xA;    System.IO.File.Delete(SaveFilePath)&#xA;End If&#xA;&#xA;' Save the modified workbook&#xA;excelWorkbook.SaveAs(SaveFilePath)&#xA;excelWorkbook.Close()&#xA;excelApp.Quit()&#xA;&#xA;' Release the Excel objects to avoid memory leaks&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(excelWorksheet)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(excelWorkbook)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)&#xA;&#xA;Console.WriteLine(&quot;Blank rows and columns deleted. Saved to: &quot; &amp; SaveFilePath)&#xA;" DisplayName="Invoke Code - Delete Blank Rows and Columns " sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelFilePath">[in_FSSAIExcelFilePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelSheetName">[in_FSSAISheet1Name]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelFileNewName">[in_FSSAILicenceFilePath]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope - Using New FSSAI" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_4">
+      <ueab:ExcelProcessScopeX.Body>
+        <ActivityAction x:TypeArguments="ui:IExcelProcess">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,651" sap2010:WorkflowViewState.IdRef="Sequence_38">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File - Using New Excel File" sap:VirtualizedContainerService.HintSize="530,540" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_4" ResizeWindow="None" WorkbookPath="[in_FSSAILicenceFilePath]">
+              <ueab:ExcelApplicationCard.Body>
+                <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,271" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ueab:DeleteColumnX ColumnName="[in_RemoveColumnName]" DisplayName="Delete Column - Delete Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="434,160" sap2010:WorkflowViewState.IdRef="DeleteColumnX_2" Range="[Excel.Sheet(in_FSSAISheet1Name)]" />
+                  </Sequence>
+                </ActivityAction>
+              </ueab:ExcelApplicationCard.Body>
+            </ueab:ExcelApplicationCard>
+          </Sequence>
+        </ActivityAction>
+      </ueab:ExcelProcessScopeX.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ueab:ExcelProcessScopeX>
+    <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_CopyFilePath]" DisplayName="Move to the Processing Input folder" sap:VirtualizedContainerService.HintSize="434,159" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[System.IO.Path.GetFullPath(in_FSSAILicenceFilePath)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MoveFile>
+    <ui:DeleteFileX DisplayName="Delete File - Exported file deleting" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_FSSAIExcelFilePath]" />
+    <ui:LogMessage DisplayName="Log Message - Step 2" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;FSSAI Report Processing : Step 2 ended&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

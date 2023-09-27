@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="5mjhYWwy10KGdPCrVsrpzQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="1112, 163, 64, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'OK'" FullSelectorArgument="&lt;ctrl name='OK' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='customerconnect.bpo.capgemini.com says' role='dialog' /&gt;&lt;ctrl name='OK' role='push button' automationid='' check:fulltext='OK' /&gt;" Guid="c8985f94-35f7-4b74-81f5-f852f0b63430" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEQAAAAkCAYAAAAw55zoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK3SURBVGhD7ZrLaxNRFMb939zrwgdIQMRVwW2UNogEpeDGTaWQrVQRotBFIaBEq5vaFhJKNGB2wZhpyKvmNZNMkh7vd2fuzJlm27lKcj84cO5jbvh+uY8kN1fIKKIIkIOSTWvPG3Qt+ZuuPqgtdcDjmvD67bvtu/cUAHn7sbfw0KpENt/3KfhAjsuObLi1UacPh0Pq9GaycZkFj/AKz/Be+OnIegnk4VZTVu4XRvS1aNO9p6cBvWUNeIRXeEZ5Y7sVArnu7xn2eE73nzUiDy5zwGtvOJP57VQ9BKI68HxVgnuGDBDmGTJAmGfIAGGeIQOEeYYMEOYZMkCYZ0gjkBZlf7g0cOXLEM3mZFX6tJlW7UOqiupB5cwrp3tUHouKtk2pyDiXGxDPNQGxKFs7F6PPqXrSo61XXXp9NKGO+IYwOR36hjmQJuXqor/rUi5zcazLDe4Z0gNkx6aOGNs6akXqE/sTUXtO5T2UQyCpA5cmAl5x14r0jyMgnmsBkixMxcji3Q6WhwoPQqfUDvJB1SFLzByASUT6xhMQz7UAyVTmRCOHMgttZ1QcqWXiAZGaTSkf81JRAfFcC5DNEn5OEDNkoc2DYBXwbVstGVvLZqoC4rmePWRvLPaExT0kKfYKMR3ocAdlBUQslV2HBipn/eMIiOd6gKhTg58yJ+IIxilT6/umQyA4leQyw4abi3djhXiuCYiIdJuylamEIOV/DgmXBQeCsthfME1iPnohnusD8p8G9wwZIMwzZIAwz5ABwjxDBgjzDBkgzDNkgDDPkAHCPEMSyI117zoPlzarelF1UzAIgDx66V1lfvGvMu+mV+8qc327GQLhl9354xF1++rz9fKq/ce77MbMgPfIZTf07lM/oLdq8f7zhb9DKP1quPTiTZfuPI7/p7t/HYknlvQKz1wRIEZEfwFnWShQklf8JAAAAABJRU5ErkJggg==" ScopeSelectorArgument="[string.Format(&quot;&lt;wnd app='{0}' cls='*' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="92308c61f0b2c280d6c28a2367b6740a.png" xmlns="">92308c61f0b2c280d6c28a2367b6740a.png</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,198 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequence2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_SheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="out_dt_OMS" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <this:Sequence2.in_FileName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Sequence2.in_FileName>
+  <this:Sequence2.in_SheetName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Sequence2.in_SheetName>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1157,2258</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Sequence2_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Reading OMS ouput file " sap:VirtualizedContainerService.HintSize="472,2193" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="FileExists" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="410,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Sales Order Creation : Step 1 execution started &quot;]" />
+    <ui:FileExistsX sap2010:Annotation.AnnotationText="verifying OMS Output is exist or not in given Path" DisplayName="File Exists" Exists="[FileExists]" sap:VirtualizedContainerService.HintSize="410,164" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[System.IO.Path.GetFullPath(in_OutputFilePath+in_FileName)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:FileExistsX>
+    <If sap2010:Annotation.AnnotationText="verifying OMS Output is exist or not in given Path" Condition="[FileExists]" sap:VirtualizedContainerService.HintSize="410,620" sap2010:WorkflowViewState.IdRef="If_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;OMS output file is present in given Path&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[new BusinessRuleException(&quot;OMS output file is not present in given Path&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_5" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Fetching rowcount of OMS Output file " Code="Try&#xA;    ' Define the Excel file path and sheet name&#xA;    Dim filePath As String = System.IO.Path.GetFullPath(in_FilePath)&#xA;    Dim sheetName As String = in_SheetName&#xA;&#xA;    ' Initialize Excel application&#xA;    Dim excelApp As Microsoft.Office.Interop.Excel.Application = New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Disable alerts and screen updating for faster execution&#xA;    excelApp.DisplayAlerts = False&#xA;    excelApp.ScreenUpdating = False&#xA;&#xA;    ' Open the Excel workbook in read-only mode&#xA;    Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(filePath, ReadOnly:=True)&#xA;&#xA;    ' Select the specified worksheet&#xA;    Dim worksheet As Microsoft.Office.Interop.Excel.Worksheet = DirectCast(workbook.Sheets(sheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Get the used range of the worksheet&#xA;    Dim usedRange As Microsoft.Office.Interop.Excel.Range = worksheet.UsedRange&#xA;&#xA;    ' Create a DataTable to store the Excel data&#xA;    Dim dataTable As New DataTable(sheetName)&#xA;&#xA;    ' Get values from the used range into a 2D array for faster access&#xA;    Dim values As Object(,) = DirectCast(usedRange.Value, Object(,))&#xA;    Dim rowCount As Integer = values.GetLength(0)&#xA;    Dim colCount As Integer = values.GetLength(1)&#xA;&#xA;    ' Add columns to DataTable using values from the first row&#xA;    For colIndex As Integer = 1 To colCount&#xA;        Dim columnName As String = values(1, colIndex).ToString()&#xA;        dataTable.Columns.Add(columnName, GetType(String))&#xA;    Next&#xA;&#xA;    ' Populate data starting from the second row&#xA;    For rowIndex As Integer = 2 To rowCount&#xA;        Dim dataRow As DataRow = dataTable.NewRow()&#xA;        For colIndex As Integer = 1 To colCount&#xA;            Dim cellValue As Object = values(rowIndex, colIndex)&#xA;            If cellValue IsNot Nothing Then&#xA;                dataRow(colIndex - 1) = cellValue.ToString()&#xA;            Else&#xA;                dataRow(colIndex - 1) = &quot;&quot;&#xA;            End If&#xA;        Next&#xA;        dataTable.Rows.Add(dataRow)&#xA;    Next&#xA;&#xA;    ' Close the Excel workbook and release resources&#xA;    workbook.Close(False)&#xA;&#xA;    ' Enable alerts and screen updating&#xA;    excelApp.DisplayAlerts = True&#xA;    excelApp.ScreenUpdating = True&#xA;&#xA;&#xA;    ' Log a message indicating successful execution&#xA;    Console.WriteLine(&quot;Excel file read successfully, and data is saved to DataTable.&quot;)&#xA;    out_datatable = dataTable&#xA;&#xA;Catch ex As Exception&#xA;    ' Log the exception message&#xA;    Console.WriteLine(&quot;Error reading Excel file: &quot; &amp; ex.Message)&#xA;    Throw ex&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="410,196" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SheetName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath+in_FileName" />
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_datatable">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dt_OMS" />
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <If sap2010:Annotation.AnnotationText="Verfying OMS output file is empty or not" Condition="[out_dt_OMS.RowCount &gt;= 1]" sap:VirtualizedContainerService.HintSize="410,620" sap2010:WorkflowViewState.IdRef="If_5">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[in_FileName + &quot; contain &quot;+out_dt_OMS.RowCount.ToString +&quot; rows of data&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[new  BusinessRuleException(in_FileName + &quot; contain &quot;+out_dt_OMS.RowCount.ToString +&quot; rows of data&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_4" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="410,141" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Sales Order Creation : Step 1 execution ended &quot;]" />
+  </Sequence>
+</Activity>

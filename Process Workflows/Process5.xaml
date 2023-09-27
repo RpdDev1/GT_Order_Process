@@ -1,0 +1,1021 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="li_MailMessages" Type="InArgument(scg:List(snm:MailMessage))" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem_DataRow" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_InputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputFilePath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process1.li_MailMessages>
+    <InArgument x:TypeArguments="scg:List(snm:MailMessage)" />
+  </this:Process1.li_MailMessages>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1514,1576</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.Excel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Process5" sap:VirtualizedContainerService.HintSize="1164,1511" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="bool_ManualOrder" />
+      <Variable x:TypeArguments="x:String" Name="str_ProcessFilesPath" />
+      <Variable x:TypeArguments="x:String" Name="str_ProcessFolder" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Process_Config" />
+      <Variable x:TypeArguments="x:Int32" Name="int_MaxRetryCounter" />
+      <Variable x:TypeArguments="x:String" Name="str_ImapServer" />
+      <Variable x:TypeArguments="x:Int32" Name="str_ImapPort" />
+      <Variable x:TypeArguments="x:String" Name="str_Email" />
+      <Variable x:TypeArguments="x:String" Name="str_FilterCondition" />
+      <Variable x:TypeArguments="x:String" Name="str_FilterValue" />
+      <Variable x:TypeArguments="x:String" Name="str_IgnoreExtension" />
+      <Variable x:TypeArguments="x:String" Name="str_InputFileFolder" />
+      <Variable x:TypeArguments="x:String" Name="str_EmailPassword" />
+      <Variable x:TypeArguments="x:Int32" Name="int_ImapPort" />
+      <Variable x:TypeArguments="x:String" Name="in_K_CSHFilterValueFiltercond" />
+      <Variable x:TypeArguments="x:String" Name="str_K_CSHApprover" />
+      <Variable x:TypeArguments="x:String" Name="str_K_CSHFilterValue" />
+      <Variable x:TypeArguments="x:String" Name="str_K_CSHMailFilter" />
+      <Variable x:TypeArguments="s:String[]" Name="Arr_ApprovalKeys" />
+      <Variable x:TypeArguments="x:String" Name="str_EmailAttachmentsFolder" />
+      <Variable x:TypeArguments="x:String" Name="in_AttachmentFileNameInitials" />
+      <Variable x:TypeArguments="x:String" Name="str_ManualSheet" />
+      <Variable x:TypeArguments="s:String[]" Name="Arr_DSCM" />
+      <Variable x:TypeArguments="s:String[]" Name="Arr_SouthEmails" />
+      <Variable x:TypeArguments="s:String[]" Name="Arr_NorthEmails" />
+      <Variable x:TypeArguments="s:String[]" Name="Arr_EastEmails" />
+      <Variable x:TypeArguments="s:String[]" Name="Arr_WestEmails" />
+      <Variable x:TypeArguments="x:String" Name="str_UnitPrice" />
+      <Variable x:TypeArguments="x:String" Name="str_FinalFileName" />
+      <Variable x:TypeArguments="x:String" Name="str_CustomerMasterFile" />
+      <Variable x:TypeArguments="x:String" Name="str_MaterialMasterFile" />
+      <Variable x:TypeArguments="x:String" Name="str_PDPFile" />
+      <Variable x:TypeArguments="x:String" Name="str_CustomerMasterSheet" />
+      <Variable x:TypeArguments="x:String" Name="str_MaterialMasterSheet" />
+      <Variable x:TypeArguments="x:String" Name="str_PDPSheet" />
+      <Variable x:TypeArguments="x:String" Name="str_ManualOrderFile" />
+      <Variable x:TypeArguments="s:String[]" Name="arr_liCustomerMasterClmn" />
+      <Variable x:TypeArguments="s:String[]" Name="arr_CustomerMasterClmn" />
+      <Variable x:TypeArguments="s:String[]" Name="arr_MaterialMasterClmn" />
+      <Variable x:TypeArguments="x:Boolean" Name="bool_AttachmentExist" />
+      <Variable x:TypeArguments="x:String" Name="str_LastClmnforStatus" />
+      <Variable x:TypeArguments="x:String" Name="str_StatusClmn" />
+      <Variable x:TypeArguments="x:String" Name="str_POclmn" />
+      <Variable x:TypeArguments="x:String" Name="str_ManualCustCodeClmn" />
+      <Variable x:TypeArguments="x:Boolean" Name="bool_Approval" />
+      <Variable x:TypeArguments="x:Boolean" Name="bool_UnitPrice" />
+      <Variable x:TypeArguments="x:String" Name="str_ManualSKUClmn" />
+      <Variable x:TypeArguments="x:String" Name="str_MaterialLastClmn" />
+      <Variable x:TypeArguments="x:String" Name="str_Custcode1stclmn" />
+      <Variable x:TypeArguments="x:String" Name="str_CustcodeLastclmn" />
+      <Variable x:TypeArguments="x:String" Name="str_ManualLastClmn" />
+      <Variable x:TypeArguments="x:String" Name="str_Material1stClmn" />
+      <Variable x:TypeArguments="x:String" Name="str_DefaultSheetName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1102,1400" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch.Try>
+        <Flowchart DisplayName="Process 5 - Manual Order Processing" sap:VirtualizedContainerService.HintSize="1064,1150" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <av:Point x:Key="ShapeLocation">10,82.5</av:Point>
+              <av:Size x:Key="ShapeSize">60,75</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">70,120 100,120 100,148.5 120,148.5</av:PointCollection>
+              <x:Double x:Key="Width">1030.5</x:Double>
+              <x:Double x:Key="Height">1113</x:Double>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Flowchart.StartNode>
+            <x:Reference>__ReferenceID16</x:Reference>
+          </Flowchart.StartNode>
+          <FlowDecision x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="If manual order Received?" Condition="[bool_ManualOrder]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <av:Point x:Key="ShapeLocation">500.5,201.4</av:Point>
+                <av:Size x:Key="ShapeSize">79,87</av:Size>
+                <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                <av:PointCollection x:Key="TrueConnector">500.5,244.9 420,244.9 420,375.5 450,375.5</av:PointCollection>
+                <av:PointCollection x:Key="FalseConnector">579.5,244.9 679.5,244.9</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <FlowDecision.True>
+              <FlowStep x:Name="__ReferenceID2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">450,328.5</av:Point>
+                    <av:Size x:Key="ShapeSize">200,94</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">550,422.5 550,461.5</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Check the Attachement present?" DisplayName="Process5.2.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Process Workflows\Manual_Order_Processing\Process5.2.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Password">[str_EmailPassword]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_ImapPort">[int_ImapPort]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_ImapServer">[str_ImapServer]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Email">[str_Email]</InArgument>
+                    <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_ListMailMessages">[li_MailMessages]</InArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AttachmentExist">[bool_AttachmentExist]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                    <InArgument x:TypeArguments="s:String[]" x:Key="in_arrApprovalKeys">[Arr_ApprovalKeys]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_IgnoreExtension">[str_IgnoreExtension]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_SearchTerm">[str_K_CSHFilterValue]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_K_CSHMailFilter">[str_K_CSHMailFilter]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_InputSheet">[str_ManualSheet]</InArgument>
+                    <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailAttachmentsFolder">[str_EmailAttachmentsFolder]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_AttachmentFileNameInitials">[in_AttachmentFileNameInitials]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <FlowStep.Next>
+                  <FlowDecision x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="If manual order Received?" Condition="[bool_AttachmentExist]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <av:Point x:Key="ShapeLocation">510.5,461.5</av:Point>
+                        <av:Size x:Key="ShapeSize">79,87</av:Size>
+                        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                        <av:PointCollection x:Key="TrueConnector">510.5,505 430,505 430,620 460,620</av:PointCollection>
+                        <av:PointCollection x:Key="FalseConnector">589.5,505 679.5,505</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <FlowDecision.True>
+                      <FlowStep x:Name="__ReferenceID8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">460,578.5</av:Point>
+                            <av:Size x:Key="ShapeSize">200,83</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">560,661.5 560,706.5</av:PointCollection>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Approval for the order?" DisplayName="Process5.3.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Process Workflows\Manual_Order_Processing\Process5.3.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_ListMailMessages">[li_MailMessages]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                            <InArgument x:TypeArguments="s:String[]" x:Key="in_arrApprovalKeys">[Arr_ApprovalKeys]</InArgument>
+                            <InArgument x:TypeArguments="s:String[]" x:Key="in_SouthEmails">[Arr_SouthEmails]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_IgnoreExtension">[str_IgnoreExtension]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_AttachmentFileName">[in_AttachmentFileNameInitials]</InArgument>
+                            <InArgument x:TypeArguments="s:String[]" x:Key="in_ArrDSCM">[Arr_DSCM]</InArgument>
+                            <InArgument x:TypeArguments="s:String[]" x:Key="in_NorthEmails">[Arr_NorthEmails]</InArgument>
+                            <InArgument x:TypeArguments="s:String[]" x:Key="in_EastEmails">[Arr_EastEmails]</InArgument>
+                            <InArgument x:TypeArguments="s:String[]" x:Key="in_WestEmails">[Arr_WestEmails]</InArgument>
+                            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolApproval">[bool_Approval]</OutArgument>
+                            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_EmailAttachmentsFolder">[str_EmailAttachmentsFolder]</InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeWorkflowFile>
+                        <FlowStep.Next>
+                          <FlowDecision x:Name="__ReferenceID6" sap2010:Annotation.AnnotationText="If manual order Received?" Condition="[bool_Approval]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <av:Point x:Key="ShapeLocation">520.5,706.5</av:Point>
+                                <av:Size x:Key="ShapeSize">79,87</av:Size>
+                                <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                <av:PointCollection x:Key="TrueConnector">520.5,750 470.5,750</av:PointCollection>
+                                <av:PointCollection x:Key="FalseConnector">599.5,750 679.5,750</av:PointCollection>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <FlowDecision.True>
+                              <FlowStep x:Name="__ReferenceID9">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">270.5,708.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,83</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">370.5,791.5 370.5,841.5</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Download the Excel" DisplayName="Process5.4.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process Workflows\Manual_Order_Processing\Process5.4.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_InputSheet">[str_ManualSheet]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ManualOrderFile">[str_ManualOrderFile]</InArgument>
+                                    <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailAttachmentsFolder">[str_EmailAttachmentsFolder]</InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:InvokeWorkflowFile>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID10">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">270.5,841.5</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,154</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">470.5,918.5 520.5,918.5</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Update the input worksheet(based on the customer code by using vlookup, we need to get the details from the customer master file and the material master file)" DisplayName="Process5.5.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process Workflows\Manual_Order_Processing\Process5.5.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ManualOrderFile">[str_ManualOrderFile]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerMasterFile">[str_CustomerMasterFile]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterFile">[str_MaterialMasterFile]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_PDPFile">[str_PDPFile]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerMasterSheet">[str_CustomerMasterSheet]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterSheet">[str_MaterialMasterSheet]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_PDPSheet">[str_PDPSheet]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ManualOrderSheet">[str_ManualSheet]</InArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_MaterialMasterClmn">[arr_MaterialMasterClmn]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_DefaultSheetName">[str_DefaultSheetName]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_CustcodeLastclmn">[str_CustcodeLastclmn]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ManualLastClmn">[str_ManualLastClmn]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_CustCodeClmn">[str_ManualCustCodeClmn]</InArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_arr_CustomerMasterClmn">[arr_CustomerMasterClmn]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Custcode1stclmn">[str_Custcode1stclmn]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ManualCustCodeClmn">[str_ManualCustCodeClmn]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_MaterialLastClmn">[str_MaterialLastClmn]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Material1stClmn">[str_Material1stClmn]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ManualSKUClmn">[str_ManualSKUClmn]</InArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InvokeWorkflowFile>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID11">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">520.5,877</av:Point>
+                                            <av:Size x:Key="ShapeSize">200,83</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">720.5,918.5 750.5,918.5 750.5,845 840.25,845 840.25,875</av:PointCollection>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If the unit price is empty " DisplayName="Process5.6.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process Workflows\Manual_Order_Processing\Process5.6.xaml">
+                                          <ui:InvokeWorkflowFile.Arguments>
+                                            <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_AttachmentsPath">[str_EmailAttachmentsFolder]</InArgument>
+                                            <InArgument x:TypeArguments="x:Object" x:Key="in_UnitPrice">[str_UnitPrice]</InArgument>
+                                            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolNoUnitPrice">[bool_UnitPrice]</OutArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_ManualOrderFile">[str_ManualOrderFile]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_InputSheet">[str_ManualSheet]</InArgument>
+                                            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+                                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                          </ui:InvokeWorkflowFile.Arguments>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:InvokeWorkflowFile>
+                                        <FlowStep.Next>
+                                          <FlowDecision x:Name="__ReferenceID12" sap2010:Annotation.AnnotationText="If manual order Received?" Condition="[bool_UnitPrice]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <av:Point x:Key="ShapeLocation">820.5,875</av:Point>
+                                                <av:Size x:Key="ShapeSize">79,87</av:Size>
+                                                <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                                <av:PointCollection x:Key="TrueConnector">820.5,918.5 790.5,918.5 790.5,987 620.5,987 620.5,1017</av:PointCollection>
+                                                <av:PointCollection x:Key="FalseConnector">899.5,918.5 930.5,918.5 930.5,1004</av:PointCollection>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <FlowDecision.True>
+                                              <FlowStep x:Name="__ReferenceID13">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">520.5,1017</av:Point>
+                                                    <av:Size x:Key="ShapeSize">200,83</av:Size>
+                                                    <av:PointCollection x:Key="ConnectorLocation">720.5,1058.5 830.5,1058.5</av:PointCollection>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Retrieve Unit Price From SAP" DisplayName="Process5.7.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Process Workflows\Manual_Order_Processing\Process5.7.xaml">
+                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                                                    <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+                                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:InvokeWorkflowFile>
+                                                <FlowStep.Next>
+                                                  <FlowStep x:Name="__ReferenceID0">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <av:Point x:Key="ShapeLocation">830.5,1004</av:Point>
+                                                        <av:Size x:Key="ShapeSize">200,109</av:Size>
+                                                        <av:PointCollection x:Key="ConnectorLocation">740.5,938.5 770.5,938.5 770.5,865 880,865 880,895</av:PointCollection>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="update the &quot;PDP/NPDP&quot; column- finally update the PO number and save" DisplayName="Process5.8.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Process Workflows\Manual_Order_Processing\Process5.8.xaml">
+                                                      <ui:InvokeWorkflowFile.Arguments>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_ManualOrderFile">[str_ManualOrderFile]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_ManualOrderSheet">[str_ManualSheet]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_StatusClmn">[str_StatusClmn]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_LastClmnforStatus">[str_LastClmnforStatus]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_PDPsheet">[str_PDPSheet]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_POclmn">[str_POclmn]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_CustCodeClmn">[str_ManualCustCodeClmn]</InArgument>
+                                                        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+                                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                                      </ui:InvokeWorkflowFile.Arguments>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </ui:InvokeWorkflowFile>
+                                                  </FlowStep>
+                                                </FlowStep.Next>
+                                              </FlowStep>
+                                            </FlowDecision.True>
+                                            <FlowDecision.False>
+                                              <x:Reference>__ReferenceID0</x:Reference>
+                                            </FlowDecision.False>
+                                          </FlowDecision>
+                                        </FlowStep.Next>
+                                      </FlowStep>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowDecision.True>
+                            <FlowDecision.False>
+                              <FlowStep x:Name="__ReferenceID7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">679.5,680.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,139</av:Size>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage sap2010:Annotation.AnnotationText="If manual order mails does not have approvals from DSCM and Jivram (if required) the process workflow is bypassed" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,139" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;No attachments has been found for manual order processing&quot;]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:LogMessage>
+                              </FlowStep>
+                            </FlowDecision.False>
+                          </FlowDecision>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowDecision.True>
+                    <FlowDecision.False>
+                      <FlowStep x:Name="__ReferenceID5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">679.5,435.5</av:Point>
+                            <av:Size x:Key="ShapeSize">200,139</av:Size>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage sap2010:Annotation.AnnotationText="If Manual order mails does not contain attachments then these mails can not be processed, hence process bypassed" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,139" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;No attachments has been found for manual order processing&quot;]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                      </FlowStep>
+                    </FlowDecision.False>
+                  </FlowDecision>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.True>
+            <FlowDecision.False>
+              <FlowStep x:Name="__ReferenceID4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">679.5,190.4</av:Point>
+                    <av:Size x:Key="ShapeSize">200,109</av:Size>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage sap2010:Annotation.AnnotationText="If Manual order mails are not received, then process flow is bypassed" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;No emails for manual order processing has been found&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </FlowStep>
+            </FlowDecision.False>
+          </FlowDecision>
+          <FlowStep x:Name="__ReferenceID14">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">440,68.4</av:Point>
+                <av:Size x:Key="ShapeSize">200,83</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">540,151.4 540,201.4</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If manual order Received?" DisplayName="Process5.1.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Process Workflows\Manual_Order_Processing\Process5.1.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ImapPort">[int_ImapPort]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ImapServer">[str_ImapServer]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Email">[str_Email]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_FilterCondition">[str_FilterCondition]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_EmailPassword">[str_EmailPassword]</InArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="out_ManualOrder">[bool_ManualOrder]</OutArgument>
+                <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_ListMailMessages">[li_MailMessages]</OutArgument>
+                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID1</x:Reference>
+            </FlowStep.Next>
+          </FlowStep>
+          <x:Reference>__ReferenceID2</x:Reference>
+          <x:Reference>__ReferenceID3</x:Reference>
+          <x:Reference>__ReferenceID4</x:Reference>
+          <x:Reference>__ReferenceID5</x:Reference>
+          <x:Reference>__ReferenceID6</x:Reference>
+          <x:Reference>__ReferenceID7</x:Reference>
+          <x:Reference>__ReferenceID8</x:Reference>
+          <x:Reference>__ReferenceID9</x:Reference>
+          <x:Reference>__ReferenceID10</x:Reference>
+          <x:Reference>__ReferenceID11</x:Reference>
+          <x:Reference>__ReferenceID12</x:Reference>
+          <x:Reference>__ReferenceID13</x:Reference>
+          <x:Reference>__ReferenceID0</x:Reference>
+          <FlowStep x:Name="__ReferenceID16">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">120,94</av:Point>
+                <av:Size x:Key="ShapeSize">200,109</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">220,203 220,276</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Process parameters, file path and other values to add in dictionary" DisplayName="Common Workflows\ProcessMasterfile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Common Workflows\ProcessMasterfile.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessMasterFilePath">[System.IO.Path.GetFullPath("Process Workflows\Manual_Order_Processing\ManualOrderMasterFile.xlsx")]</InArgument>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Master">[Process_Config]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID15">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">120,276</av:Point>
+                    <av:Size x:Key="ShapeSize">200,124</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">320,338 350,338 350,109.9 440,109.9</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:MultipleAssign sap2010:Annotation.AnnotationText="All the variables required to complete this process needs to be defined here. Excluding the local variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="64">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_83">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_EmailAttachmentsFolder]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_EmailAttachmentsFolder").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_84">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Int32">[int_MaxRetryCounter]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Int32">[Cint(Process_Config("int_MaxRetryCounter"))]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_85">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_ImapServer]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_ImapServer").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_86">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Int32">[int_ImapPort]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Int32">[Cint(Process_Config("int_ImapPort"))]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_87">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_Email]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_Email").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_88">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_EmailPassword]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_EmailPassword").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_89">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_FilterValue]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_FilterValue").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_90">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_FilterCondition]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">["SUBJECT """+str_FilterValue+""""]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_91">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_IgnoreExtension]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_IgnoreExtension").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_92">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_K_CSHApprover]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_K_CSHApprover").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_93">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_K_CSHMailFilter]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">["FROM """+str_K_CSHApprover+""""]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_94">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_K_CSHFilterValue]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_K_CSHFilterValue").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_95">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="s:String[]">[Arr_ApprovalKeys]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Split(Process_Config("Arr_ApprovalKeys").ToString,",")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_96">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[in_AttachmentFileNameInitials]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_AttachmentFileName").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_97">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_ManualSheet]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_ManualSheet").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_98">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="s:String[]">[Arr_DSCM]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Split(Process_Config("Arr_DSCM").ToString,",")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_99">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="s:String[]">[Arr_SouthEmails]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Split(Process_Config("Arr_SouthEmails").ToString,",")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_100">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="s:String[]">[Arr_NorthEmails]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Split(Process_Config("Arr_NorthEmails").ToString,",")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_101">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="s:String[]">[Arr_EastEmails]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Split(Process_Config("Arr_EastEmails").ToString,",")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_102">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="s:String[]">[Arr_WestEmails]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Split(Process_Config("Arr_WestEmails").ToString,",")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_103">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_UnitPrice]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_UnitPrice").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_104">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_FinalFileName]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_FinalFileName").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_105">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_CustomerMasterFile]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_CustomerMasterFile").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_106">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_CustomerMasterSheet]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_CustomerMasterSheet").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_107">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_MaterialMasterFile]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_MaterialMasterFile").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_108">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_MaterialMasterSheet]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_MaterialMasterSheet").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_109">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_PDPFile]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_PDPFile").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_110">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_PDPSheet]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_PDPSheet").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_112">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="s:String[]">[arr_CustomerMasterClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Split(Process_Config("arr_CustomerMasterClmn").ToString,",")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_113">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="s:String[]">[arr_MaterialMasterClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Split(Process_Config("arr_MaterialMasterClmn").ToString,",")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_114">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_LastClmnforStatus]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_LastClmnforStatus").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_115">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_StatusClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_StatusClmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_116">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_POclmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_POclmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_119">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_DefaultSheetName]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_DefaultSheetName").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_118">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[in_OutputFilePath]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[in_Config("ProcessFilesPath").ToString+"\"]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_111">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_ManualOrderFile]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[in_OutputFilePath+"\"+str_FinalFileName]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_120">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_Custcode1stclmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_Custcode1stclmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_121">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_CustcodeLastclmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_CustcodeLastclmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_122">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_ManualLastClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_ManualLastClmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_123">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_Material1stClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_Material1stClmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_124">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_MaterialLastClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_MaterialLastClmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_125">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_ManualSKUClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_ManualSKUClmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_117">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_ManualCustCodeClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_ManualCustCodeClmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_127">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[str_ManualSKUClmn]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Process_Config("str_ManualSKUClmn").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:MultipleAssign>
+                <FlowStep.Next>
+                  <x:Reference>__ReferenceID14</x:Reference>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+          <x:Reference>__ReferenceID15</x:Reference>
+        </Flowchart>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1068,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="450,317" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[exception.Message]" />
+              <Rethrow sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="1068,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="450,231" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Fatal]" Message="[exception.Message]" />
+              <Rethrow sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

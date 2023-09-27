@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="sGx2CShKJUqxVBGeqsIU0w" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/AllocationProcess.aspx" DesignTimeRectangle="679, 401, 104, 19" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Promo Allocation'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='INPUT' aaname='Promo Allocation' name='*PromoAllocation' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='INPUT' aaname='Promo Allocation' name='*PromoAllocation' check:text='Promo Allocation' /&gt;" Guid="b128496b-7b8f-4261-b504-4e2852d78f7a" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGwAAAAXCAYAAADug6rPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJDSURBVGhD7ZlBzoMgEIW9oElP48J4ja7sSWx6jC48QZcegZ8ZHDoMMK3tn4oJJC+pAsPjfdCNjantUK0CO1jzwB6Phzmfz6bruqrCBFyADzQPDF7ebjezLEtVYQIuwAeaBwYkU4OryhDwgVaBHUQqsPnSmqZpIg3XuFApmnrwOJgp9b6fot8/0XVIevpEr4GdRjOzCW7x1ox39q4YTWawwQwWiDxUvwUGPpiHXYEtsxlPjWkvM3tXhtCvBZHyvSuwf9TXwGDzbT+YFv4uaex9dM8ofhtp7ogbwn6Yw8engqY+NWRXG0PCeuG/gAYM95lZn8Knfg4h8ObXcz6C8fKG5fJZfQ898yP2vB2Y+Et0pvl1D0+XC4P6aTP0vIYhQAdz/fpubPZm49ynD/DFx2aBBWGu/nxIdMDWOvwgwDyWTVBT3rBgDSUfAkl1RB6g18CggBAvEBq1kqcpMCgCiJ61sZkDxPr4WC3QLDwQ988BUX9SErQCTMsnWk/Usdp+w4TkhuM5nwKLzeb9uLHa4UpDig+FHi4T3QaUPSxvAlPz2QOYeoI2AYvDzPqBNRPv05Dyv1Hcv3LD5LzwOQ9MzWcXYGIRrOENbgEm13d9HCAJPKTe83C4z8BzEKDz89xP3h/WIG90294BpuWzDzAr2gCKG9gGDIT1qZZcB6TcAqoH9bPArFxo6xrRfl0N6vde+R7tnElkRb5xvLxVuXy+BVZVniqwg6kCO5giYPV7WLlKfg+rX5zLFXCJvjjXdoxWgR2qGfMHMHwZO2aNwoYAAAAASUVORK5CYII=" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="9de84f9766888dfd7516b4419b635bb1.png" xmlns="">9de84f9766888dfd7516b4419b635bb1.png</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

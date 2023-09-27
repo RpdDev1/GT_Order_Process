@@ -1,0 +1,806 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process_Template1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem_DataRow" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_InputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_Email" Type="InArgument(x:String)" />
+    <x:Property Name="in_Password" Type="InArgument(x:String)" />
+    <x:Property Name="in_ImapServer" Type="InArgument(x:String)" />
+    <x:Property Name="in_MailFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_SubjectFilter" Type="InArgument(x:String)" />
+    <x:Property Name="in_ImapPort" Type="InArgument(x:Int32)" />
+    <x:Property Name="out_NPLPMail" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="li_MailMessages" Type="InArgument(scg:List(snm:MailMessage))" />
+    <x:Property Name="in_IgnoreExtension" Type="InArgument(x:String)" />
+    <x:Property Name="in_NPLPFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_NPLPSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_AllocationQuantityColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_BalanceQuantityColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_NPLPMaterialCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_NPLPCustomerCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderQuantityColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderCustomerCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderParentcode" Type="InArgument(x:String)" />
+    <x:Property Name="in_NPLPConcatenate" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderConcatenate" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_NPLPVlookupColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_PDPSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_PDPFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderVlookupColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_NPLPSheet2Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_InputTempFolder" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process_Template1.in_SubjectFilter>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_SubjectFilter>
+  <this:Process_Template1.li_MailMessages>
+    <InArgument x:TypeArguments="scg:List(snm:MailMessage)" />
+  </this:Process_Template1.li_MailMessages>
+  <this:Process_Template1.in_IgnoreExtension>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_IgnoreExtension>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1514,1294</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process_Template1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="NPLP File Processing" sap:VirtualizedContainerService.HintSize="813,1229" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="751,1118" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Flowchart sap2010:Annotation.AnnotationText="[Process 4]&#xA;[Process NPLP File Processing]&#xA;" DisplayName="Process 4 - NPLP_File_Processing" sap:VirtualizedContainerService.HintSize="713,890" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <Flowchart.Variables>
+            <Variable x:TypeArguments="x:String" Name="str_ProcessFolder" />
+            <Variable x:TypeArguments="x:String" Name="str_ProcessFilesPath" />
+            <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Process_Config" />
+          </Flowchart.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <av:Point x:Key="ShapeLocation">10,52.5</av:Point>
+              <av:Size x:Key="ShapeSize">60,75</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">70,90 120,90</av:PointCollection>
+              <x:Double x:Key="Width">679</x:Double>
+              <x:Double x:Key="Height">795.5</x:Double>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Flowchart.StartNode>
+            <x:Reference>__ReferenceID9</x:Reference>
+          </Flowchart.StartNode>
+          <FlowStep x:Name="__ReferenceID1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">400,28</av:Point>
+                <av:Size x:Key="ShapeSize">200,124</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">500,152 500,225.49999999999997</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="All the variables required to complete this process needs to be defined here. Excluding the local variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[str_ProcessFolder]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_TransactionItem_DataRow("Process Name").ToString.Trim.Replace(" ","_")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[str_ProcessFilesPath]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("ProcessFilesPath").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_Email]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("Email").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_Password]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("Password").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OutputFilePath]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("ProcessFilesPath").ToString+"\"]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_ImapServer]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("ImapServer").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_MailFolder]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("MailFolder").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_SubjectFilter]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("SubjectFilter").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[in_ImapPort]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(Process_Config("ImapPort").ToString)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_IgnoreExtension]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("IgnoreExtension").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NPLPSheetName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NPLPSheetName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NPLPFileName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NPLPFileName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_AllocationQuantityColumn]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("AllocatedQuantityColumn").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_BalanceQuantityColumn]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("BalancedQuantityColumn").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderQuantityColumn]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("OrderQtyColumn").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NPLPCustomerCode]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NPLPCustomerCode").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NPLPMaterialCode]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NPLPMaterialCode").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderParentcode]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("OrderParentcode").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderCustomerCode]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("OrderCustomerCode").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NPLPConcatenate]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NPLPConcatenate").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderConcatenate]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("OrderConcatenate").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderSheetName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("OrderSheetName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderFileName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("OrderFileName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NPLPVlookupColumn]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NPLPVlookupColumn").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PDPSheetName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("PDPSheetName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PDPFileName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("PDPFileName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderVlookupColumn]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("OrderVlookupColumn").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_NPLPSheet2Name]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_Config("NPLPSheet2Name").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_InputTempFolder]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("ProcessInputFiles").ToString+"\"]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">400,225.49999999999997</av:Point>
+                    <av:Size x:Key="ShapeSize">200,109</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">500,334.5 500,364.49999999999994 490,364.49999999999994 490,386.5</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Is Any Previous NPLP file Pending or New NPLP Mail received?" DisplayName="Process Workflows\NPLP_File_Processing\Process_4.1&amp;4.2.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Process Workflows\NPLP_File_Processing\Process_4.1&amp;4.2.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Password">[in_Password]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[in_InputTempFolder]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Email">[in_Email]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_ImapPort">[in_ImapPort]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_ImapServer">[in_ImapServer]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_MailFolder">[in_MailFolder]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_SubjectFilter">[in_SubjectFilter]</InArgument>
+                    <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="io_li_Messgaes" />
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_NPLPMail">[out_NPLPMail]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_IgnoreExtension">[in_IgnoreExtension]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_NPLPFileName">[in_NPLPFileName]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[in_OutputFilePath]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheetName">[in_NPLPSheetName]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <FlowStep.Next>
+                  <FlowDecision x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Is Any Previous NPLP file Pending or New NPLP Mail received?" Condition="[out_NPLPMail]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <av:Point x:Key="ShapeLocation">450.5,386.5</av:Point>
+                        <av:Size x:Key="ShapeSize">79,87</av:Size>
+                        <av:PointCollection x:Key="FalseConnector">529.5,430 560,430 560,524</av:PointCollection>
+                        <av:PointCollection x:Key="TrueConnector">450.5,430 230,430 230,330 200,330</av:PointCollection>
+                        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <FlowDecision.True>
+                      <FlowStep x:Name="__ReferenceID4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">0,260.5</av:Point>
+                            <av:Size x:Key="ShapeSize">200,139</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">100,399.5 100,425.5</av:PointCollection>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Concatenate the customer code and parent code, and then perform a VLOOKUP between the order file and the NPLP file" DisplayName="Process Workflows\NPLP_File_Processing\Process_4.3.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,139" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Process Workflows\NPLP_File_Processing\Process_4.3.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputTempFolder" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPFileName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPFileName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_BalanceQuantityColumn">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_BalanceQuantityColumn" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_AllocationQuantityColumn">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_AllocationQuantityColumn" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheetName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPSheetName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderQuantityColumn">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderQuantityColumn" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPMaterialCode">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPMaterialCode" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPCustomerCode">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPCustomerCode" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderCustomerCode">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderCustomerCode" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderParentcode">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderParentcode" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPConcatenate">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPConcatenate" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderConcatenate">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderConcatenate" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPVlookupColumn">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPVlookupColumn" />
+                            </InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeWorkflowFile>
+                        <FlowStep.Next>
+                          <FlowStep x:Name="__ReferenceID5">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <av:Point x:Key="ShapeLocation">0,425.5</av:Point>
+                                <av:Size x:Key="ShapeSize">200,109</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">100,534.5 100,554</av:PointCollection>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Delete the order line items from the order file where the VLOOKUP result is not NA" DisplayName="Process Workflows\NPLP_File_Processing\Process_4.4.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Process Workflows\NPLP_File_Processing\Process_4.4.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderFileName">[in_OrderFileName]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderSheetName">[in_OrderSheetName]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[in_InputTempFolder]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderCustomerCode">[in_OrderCustomerCode]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderParentcode">[in_OrderParentcode]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderConcatenate">[in_OrderConcatenate]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheetName">[in_NPLPSheetName]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPFileName">[in_NPLPFileName]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_PDPSheetName">[in_PDPSheetName]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_PDPFileName">[in_PDPFileName]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderVlookupColumn">[in_OrderVlookupColumn]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheet2Name">[in_NPLPSheet2Name]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPVlookupColumn">[in_NPLPVlookupColumn]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[in_OutputFilePath]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InvokeWorkflowFile>
+                            <FlowStep.Next>
+                              <FlowStep x:Name="__ReferenceID7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">0,554</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">100,606 100,664</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                  <ui:CommentOut.Body>
+                                    <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Retriving Unit price fromSAP" DisplayName="Retrieve Unit Price from SAP.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Common Workflows\Retrieve Unit Price from SAP.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryInterval" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_OrderFileName" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_OrderSheetName" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_TemporarySheetName" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_CustomerCodeFolder" />
+                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_OrderQuantity" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SAPAppName" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SAPClient" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SAPUserName" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SAPPassword" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Tcode" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Language" />
+                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_NumofRetries" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SAPConnectionName" />
+                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutSAP" />
+                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxRetryCounter" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_TotalUnitPriceColumn" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_OrderType" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SalesOrganisation" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_DistributionChannel" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Division" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_NetValue" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_CustomerCodeColumn" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                                          </InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:InvokeWorkflowFile>
+                                    </Sequence>
+                                  </ui:CommentOut.Body>
+                                </ui:CommentOut>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID8">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">0,664</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,94</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">200,711 230,711 230,571 460,571</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Assigning Value to Balanced Quantity" DisplayName="Process Workflows\NPLP_File_Processing\Process_4.7.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process Workflows\NPLP_File_Processing\Process_4.7.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_IgnoreExtension" />
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_OldOrderFilePath" />
+                                        <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_ListMailMessages" />
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_OldOrderFileName" />
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
+                                        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow" />
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[in_InputTempFolder]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_NPLPFileName">[in_NPLPFileName]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheetName">[in_NPLPSheetName]</InArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InvokeWorkflowFile>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID0">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">460,524</av:Point>
+                                            <av:Size x:Key="ShapeSize">200,94</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">560,618 560,646</av:PointCollection>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Checking Yesterdays NPLP file" DisplayName="Process Workflows\NPLP_File_Processing\Process_4.10.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Process Workflows\NPLP_File_Processing\Process_4.10.xaml">
+                                          <ui:InvokeWorkflowFile.Arguments>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPFileName">[in_NPLPFileName]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheetName">[in_NPLPSheetName]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPConcatenate">[in_NPLPConcatenate]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPVlookupColumn">[in_NPLPVlookupColumn]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderCustomerCode">[in_OrderCustomerCode]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderParentcode">[in_OrderParentcode]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPCustomerCode">[in_NPLPCustomerCode]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPMaterialCode">[in_NPLPMaterialCode]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[in_InputTempFolder]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderFileName">[in_OrderFileName]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderSheetName">[in_OrderSheetName]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_PDPFileName">[in_PDPFileName]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_PDPSheetName">[in_PDPSheetName]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderVlookupColumn">[in_OrderVlookupColumn]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheet2Name">[in_NPLPSheet2Name]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_BalanceQuantityColumn">[in_BalanceQuantityColumn]</InArgument>
+                                          </ui:InvokeWorkflowFile.Arguments>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:InvokeWorkflowFile>
+                                        <FlowStep.Next>
+                                          <FlowStep x:Name="__ReferenceID6">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">460,646</av:Point>
+                                                <av:Size x:Key="ShapeSize">200,109</av:Size>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Checking Day before yesterdays file&#xA;" DisplayName="Process Workflows\NPLP_File_Processing\Process_4.11.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process Workflows\NPLP_File_Processing\Process_4.11.xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPFileName">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPFileName" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputTempFolder" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheetName">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPSheetName" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPCustomerCode">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPCustomerCode" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPMaterialCode">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPMaterialCode" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPConcatenate">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPConcatenate" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPVlookupColumn">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPVlookupColumn" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_BalanceQuantityColumn">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_BalanceQuantityColumn" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheet2Name">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NPLPSheet2Name" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderSheetName">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderSheetName" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderFileName">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderFileName" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_OrderVlookupColumn">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderVlookupColumn" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_PDPFileName">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PDPFileName" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_PDPSheetName">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PDPSheetName" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                                                </InArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:InvokeWorkflowFile>
+                                          </FlowStep>
+                                        </FlowStep.Next>
+                                      </FlowStep>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowStep.Next>
+                          </FlowStep>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowDecision.True>
+                    <FlowDecision.False>
+                      <x:Reference>__ReferenceID0</x:Reference>
+                    </FlowDecision.False>
+                  </FlowDecision>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+          <FlowStep x:Name="__ReferenceID9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">120,35.5</av:Point>
+                <av:Size x:Key="ShapeSize">200,109</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">320,90 400,90</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Process parameters, file path and other values to add in dictionary" DisplayName="Common Workflows\ProcessMasterfile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Common Workflows\ProcessMasterfile.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessMasterFilePath">[System.IO.Path.GetFullPath("Process Workflows\NPLP_File_Processing\NPLPMasterFile.xlsx")]</InArgument>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Master">[Process_Config]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID1</x:Reference>
+            </FlowStep.Next>
+          </FlowStep>
+          <x:Reference>__ReferenceID2</x:Reference>
+          <x:Reference>__ReferenceID3</x:Reference>
+          <x:Reference>__ReferenceID4</x:Reference>
+          <x:Reference>__ReferenceID5</x:Reference>
+          <x:Reference>__ReferenceID0</x:Reference>
+          <x:Reference>__ReferenceID6</x:Reference>
+          <x:Reference>__ReferenceID7</x:Reference>
+          <x:Reference>__ReferenceID8</x:Reference>
+        </Flowchart>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="717,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="450,231" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[exception.Message]" />
+              <Rethrow sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

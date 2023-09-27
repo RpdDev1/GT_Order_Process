@@ -1,0 +1,2 @@
+﻿Dear Team,<br><br>Robot has completed processing of RPA {Your Process Name} Process.<br><br>Please Refer below Bot Execution details.<br><br><Table><br><br>Thanks and Regards,<br>
+RPA Team<br>-------------------------------------------------------------------<br>This is auto generated email, please do no reply on this email.

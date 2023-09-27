@@ -1,0 +1,575 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="Queue Transaction item to be processed." Name="in_TransactionItem_Queue" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="DataRow Transaction item to be processed." Name="in_TransactionItem_DataRow" Type="InArgument(sd:DataRow)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>562,3306</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="572,3201" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="int_ProcessId" />
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="bool_inputFileRequired" />
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="bool_outputFileRequired" />
+      <Variable x:TypeArguments="x:String" Name="BracketRemove" />
+      <Variable x:TypeArguments="x:String" Name="str_InputFilePath" />
+      <Variable x:TypeArguments="x:String" Name="str_OutputFilePath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process: &quot;+in_TransactionItem_DataRow(&quot;Process Name&quot;).ToString]" />
+    <If Condition="[in_TransactionItem_DataRow(&quot;ProcessId&quot;).ToString &lt;&gt; &quot;&quot;]" sap:VirtualizedContainerService.HintSize="510,444" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="476,262" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[int_ProcessId]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[CInt(in_TransactionItem_DataRow("ProcessId").ToString)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,196" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[int_ProcessId]" />
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_13" />
+      </If.Else>
+    </If>
+    <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[bool_inputFileRequired]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">[if(in_TransactionItem_DataRow("Input").ToString.Trim &lt;&gt; "",True,False)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[str_InputFilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_TransactionItem_DataRow("Input").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[str_OutputFilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_TransactionItem_DataRow("Output").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Switch x:TypeArguments="x:Int32" DisplayName="Prerequisite - Switch" Expression="[int_ProcessId]" sap:VirtualizedContainerService.HintSize="510,695" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence x:Key="1" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_17">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process Workflows\Process1.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process Workflows\Process1.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[str_InputFilePath]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[str_OutputFilePath]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_ID" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_Password" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_MinetUrl" />
+            <InArgument x:TypeArguments="x:String" x:Key="BrowserAppName" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_IgnoreExtension" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_PDPfileName" />
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxRetryCounter" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_PDPSheetName" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_TemporarySheetName" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_PDPFilePath" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2" DisplayName="Process Workflows\Process2.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Process Workflows\Process2.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="str_PDPsheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderSheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="BrowserAppName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_MinetPassword" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_MinetUserName" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_MinetUrl" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_ImapServer" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="In_ImapPort" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_IgnoreExtension" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxRetryCounter" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_MailFolder" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_SubjectFilter" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_FilterCondition" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_PDPFileName" />
+          <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="li_MailMessages" />
+          <InArgument x:TypeArguments="x:String" x:Key="In_PDPsheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_TemporarySheetName" />
+          <InArgument x:TypeArguments="s:String[]" x:Key="in_StatusColumnValue" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderlastColumnName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailPassword" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_Email" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderNewColumnName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderVlookupCell" />
+          <InArgument x:TypeArguments="s:String[]" x:Key="in_RemoveColumnName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_TotalUnitPriceColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ConfirmedCasesColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_UnitPriceColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderConfirmationModeColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_AutoSaveFilter" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ConfirmedQtyColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_DClassFlagColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NonDClassFilter" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_DClassFIlter" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ConfirmedOrderColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MOKValue" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_PONumberColumn" />
+          <InArgument x:TypeArguments="s:String[]" x:Key="in_LastRemoveColumns" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <x:Null x:Key="3" />
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="4" DisplayName="Process Workflows\Process4.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Process Workflows\Process4.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_Email" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_Password" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ImapServer" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MailFolder" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_SubjectFilter" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ImapPort" />
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_NPLPMail" />
+          <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="li_MailMessages" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_IgnoreExtension" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NPLPFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheetName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_AllocationQuantityColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_BalanceQuantityColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NPLPMaterialCode" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NPLPCustomerCode" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderQuantityColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderCustomerCode" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderParentcode" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NPLPConcatenate" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderConcatenate" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderSheetName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NPLPVlookupColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_PDPSheetName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_PDPFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrderVlookupColumn" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NPLPSheet2Name" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="5" DisplayName="Process Workflows\Process5.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Process Workflows\Process5.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="li_MailMessages" />
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="6" DisplayName="Process Workflows\Process6.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Process Workflows\Process6.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[str_InputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[str_OutputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="7" DisplayName="Process Workflows\Process7.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Process Workflows\Process7.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[str_InputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[str_OutputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Tcode" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MaterialCodeFrom" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MaterialCodeTo" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_Plant" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ExportFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ExportSheetName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnValue" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow1" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow2" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterSheetName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_SAPAppName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_StockFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_StockSheetName" />
+          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Stock" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NAValue" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OMS_StockReportFile" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="8" DisplayName="Process Workflows\Process8.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Process Workflows\Process8.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ApplicationID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_TenantID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_UserID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_Password" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NewFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_SheetName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnValue" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_SiteUrl" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_DriveName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_CopyPasteRange" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExcelColumncount" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OMS_SubstitueFile" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="9" DisplayName="Process Workflows\Process9.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Process Workflows\Process9.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_UserID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ApplicationID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_TenantID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_Password" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_SiteUrl" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_DriveName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_TemporarySheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_PermanentSheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NewFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NewTemporarySheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_NewPermanentSheet" />
+          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Permanent" />
+          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Temporary" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_CopyPasteRange" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExcelColumncount" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OMS_ExcludedFile" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="10" DisplayName="Process Workflows\Process10.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process Workflows\Process10.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[str_InputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[str_OutputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CopyFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_SAPAppName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FSSAIOutputPath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_TocodeforFSSAI" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FSSAISheet1Name" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FSSAILicenSheet2Name" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FSSAILicenceFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_RemoveColumnName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FSSAILicenceNewName" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_Time_CheckAppState" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="int_RepeatTabsTimes" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FSSAIExcelFilePath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="11" DisplayName="Process Workflows\Process11.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process Workflows\Process11.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">[in_TransactionItem_DataRow]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[str_InputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[str_OutputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ApplicationID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_TenantID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_UserID" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_Password" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_SiteUrl" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ReasonCodeMasterFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FoodBrandMasterFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_PromoRationFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterSheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ReasonCodeSheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FoodBrandSheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_PromoRationSheet" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_DriveName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterNewFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ReasonCodeNewFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FoodBrandNewFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_PromoRationNewFileName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_OMS_CollateFilesPath" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="12" DisplayName="Process Workflows\Process12.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Process Workflows\Process12.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+          </InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem_DataRow">
+            <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem_DataRow" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_InputFilePath" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_OutputFilePath" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Url" />
+          <InArgument x:TypeArguments="x:String" x:Key="BrowserAppName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_UserName" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_Password" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFolderPath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_FileConfig" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_IgnoreExtensions" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutDownload" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_InputTempFolder" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <x:Null x:Key="13" />
+      <x:Null x:Key="14" />
+      <x:Null x:Key="15" />
+      <x:Null x:Key="16" />
+      <x:Null x:Key="17" />
+      <x:Null x:Key="18" />
+      <x:Null x:Key="19" />
+    </Switch>
+    <If Condition="[File.Exists(in_Config(&quot;ProcessFilesPath&quot;).ToString+&quot;\&quot;+in_TransactionItem_DataRow(&quot;Input&quot;).ToString) OR NOT bool_inputFileRequired]" DisplayName="Input File Verification - If" sap:VirtualizedContainerService.HintSize="510,440" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="300,80" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[new BusinessRuleException(&quot;File not Found: &quot;+in_TransactionItem_DataRow(&quot;Input&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="[&quot;Process Workflows\Process&quot;+int_ProcessId.ToString+&quot;.xaml&quot;]">
+            <ui:InvokeWorkflowFile.Arguments>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <Assign sap:VirtualizedContainerService.HintSize="510.4,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[bool_outputFileRequired]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">[if(in_TransactionItem_DataRow("Output").ToString.Trim &lt;&gt; "",True,False)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[File.Exists(in_Config(&quot;ProcessFilesPath&quot;).ToString+&quot;\&quot;+in_TransactionItem_DataRow(&quot;Output&quot;).ToString) OR Not bool_outputFileRequired]" DisplayName="Output File Verification - If" sap:VirtualizedContainerService.HintSize="510.4,445.6" sap2010:WorkflowViewState.IdRef="If_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="300,82.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="377.6,180" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[new BusinessRuleException(&quot;File not Generated: &quot;+in_TransactionItem_DataRow(&quot;Output&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="510.4,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+  </Sequence>
+</Activity>

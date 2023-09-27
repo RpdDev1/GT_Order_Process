@@ -1,0 +1,196 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process_7_6" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_dt_Stock" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_MaterialMasterFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_MaterialMasterSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_StockFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_StockSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_InputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_ColumnRemoveRow1" Type="InArgument(x:String)" />
+    <x:Property Name="in_ColumnRemoveRow2" Type="InArgument(x:String)" />
+    <x:Property Name="in_NAValue" Type="InArgument(x:String)" />
+    <x:Property Name="in_OMS_StockReportFile" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1514,1862</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process_7_6_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Update the parent code and parent SKU from the material master based on the material code. If the value is NA, make it blank." DisplayName="Update the parent code and parent SKU from the material master based on the material code. If the value is NA, make it blank." sap:VirtualizedContainerService.HintSize="726,1797" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_MaterialMaster" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="664,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Stock Reporting Processing : Step 6 execution started &quot;]" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Making empty of  parent code and parent SKU columns " Code="Try&#xA;    ' Create an Excel application&#xA;    Dim excelApp As New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Open the Excel workbook&#xA;    Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_FilePath))&#xA;    ' Specify the sheet name&#xA;    Dim sheet As Microsoft.Office.Interop.Excel.Worksheet = DirectCast(workbook.Sheets(in_SheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Specify the column names you want to check&#xA;    Dim columnName1 As String = in_ColumnName1&#xA;    Dim columnName2 As String = in_ColumnName2&#xA;&#xA;    ' Get the used range of the sheet&#xA;    Dim usedRange As Microsoft.Office.Interop.Excel.Range = sheet.UsedRange&#xA;&#xA;    ' Find the column indices for the specified column names&#xA;    Dim columnIndex1 As Integer = -1&#xA;    Dim columnIndex2 As Integer = -1&#xA;&#xA;    For colIndex As Integer = 1 To usedRange.Columns.Count&#xA;        Dim column As Microsoft.Office.Interop.Excel.Range = DirectCast(usedRange.Cells(1, colIndex), Microsoft.Office.Interop.Excel.Range)&#xA;        If column.Value IsNot Nothing Then&#xA;            Dim columnName As String = column.Value.ToString()&#xA;            If columnName = columnName1 Then&#xA;                columnIndex1 = colIndex&#xA;            ElseIf columnName = columnName2 Then&#xA;                columnIndex2 = colIndex&#xA;            End If&#xA;        End If&#xA;    Next&#xA;&#xA;    ' Loop through the rows and check if both columns are not empty, clear the cell contents&#xA;    For Each row As Microsoft.Office.Interop.Excel.Range In usedRange.Rows&#xA;        If columnIndex1 &gt; 0 AndAlso columnIndex2 &gt; 0 Then&#xA;            Dim cell1 As Microsoft.Office.Interop.Excel.Range = DirectCast(row.Cells(1, columnIndex1), Microsoft.Office.Interop.Excel.Range)&#xA;            Dim cell2 As Microsoft.Office.Interop.Excel.Range = DirectCast(row.Cells(1, columnIndex2), Microsoft.Office.Interop.Excel.Range)&#xA;&#xA;            If cell1.Value IsNot Nothing AndAlso cell2.Value IsNot Nothing Then&#xA;                Dim cell1Value As String = cell1.Value.ToString()&#xA;                Dim cell2Value As String = cell2.Value.ToString()&#xA;&#xA;                If Not String.IsNullOrEmpty(cell1Value) AndAlso Not String.IsNullOrEmpty(cell2Value) Then&#xA;                    ' Check if the row is not the header row (assuming it's the first row)&#xA;                    If row.Row &gt; 1 Then&#xA;                        cell1.Clear()&#xA;                        cell2.Clear()&#xA;                    End If&#xA;                End If&#xA;            End If&#xA;        End If&#xA;    Next&#xA;&#xA;    ' Save and close the Excel workbook&#xA;    workbook.Save()&#xA;    workbook.Close()&#xA;    excelApp.Quit()&#xA;&#xA;Catch ex As Exception&#xA;    Throw New Exception(&quot;An error occurred: &quot; &amp; ex.Message)&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="664,207" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName1">[in_ColumnRemoveRow1]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName2">[in_ColumnRemoveRow2]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_OutputFilePath+in_StockFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_StockSheetName]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="applying vlookup on parent code Column" Code="' Initialize Excel Application&#xA;Dim excelApp As New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;' Open Source Workbook (6. Material Master.xlsx)&#xA;Dim sourceWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_MasterPath))&#xA;&#xA;' Open Destination Workbook&#xA;Dim destinationWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_StockPath))&#xA;&#xA;' Get Destination Worksheet&#xA;Dim destinationWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(destinationWorkbook.Sheets(in_StockSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;' Get Source Worksheet (6. Material Master.xlsx)&#xA;Dim sourceWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(sourceWorkbook.Sheets(in_MasterSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;' Loop through rows in the destination worksheet, starting from the second row (assuming headers are in the first row)&#xA;Dim rowCount As Integer = destinationWorksheet.UsedRange.Rows.Count&#xA;For row = 2 To rowCount&#xA;    ' Assuming the lookup value is in column C of the destination worksheet&#xA;    Dim lookupCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 3), Microsoft.Office.Interop.Excel.Range)&#xA;    Dim lookupValue As String = lookupCell.Value2?.ToString()&#xA;&#xA;    ' Construct the VLOOKUP formula as a string&#xA;    Dim vlookupFormula As String = &quot;=VLOOKUP(&quot; &amp; lookupValue &amp; &quot;, '[&quot; &amp; sourceWorkbook.Name &amp; &quot;]Sheet1'!$A:$C, 3, FALSE)&quot;&#xA;&#xA;    ' Perform VLOOKUP using Evaluate&#xA;    Dim result As Object = excelApp.Evaluate(vlookupFormula)&#xA;&#xA;    If result IsNot Nothing Then&#xA;        Dim resultString As String = result.ToString()&#xA;&#xA;        ' Check if the result is numeric&#xA;        If Double.TryParse(resultString, Nothing) Then&#xA;            ' Update the result in column E for the current row in the destination worksheet&#xA;            Dim resultCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 5), Microsoft.Office.Interop.Excel.Range) ' Assuming you want to put the result in column E&#xA;            resultCell.Value = resultString&#xA;        Else&#xA;            Console.WriteLine(&quot;Value not found in the source worksheet or the result is not numeric.&quot;)&#xA;        End If&#xA;    Else&#xA;        Console.WriteLine(&quot;Value not found in the source worksheet.&quot;)&#xA;    End If&#xA;Next&#xA;&#xA;' Save and Close Workbooks&#xA;sourceWorkbook.Save()&#xA;destinationWorkbook.Save()&#xA;sourceWorkbook.Close()&#xA;destinationWorkbook.Close()&#xA;&#xA;' Quit Excel Application&#xA;excelApp.Quit()&#xA;&#xA;' Release COM objects&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorksheet)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorksheet)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorkbook)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorkbook)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="664,196" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MasterPath">[in_InputFilePath+in_MaterialMasterFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StockPath">[in_OutputFilePath+in_StockFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StockSheet">[in_StockSheetName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MasterSheet">[in_MaterialMasterSheetName]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="applying vlookup on parent SKU Column" Code="' Initialize Excel Application&#xA;Dim excelApp As New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;' Open Source Workbook (6. Material Master.xlsx)&#xA;Dim sourceWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_MasterPath))&#xA;&#xA;' Open Destination Workbook&#xA;Dim destinationWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_StockPath))&#xA;&#xA;' Get Destination Worksheet&#xA;Dim destinationWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(destinationWorkbook.Sheets(in_StockSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;' Get Source Worksheet (6. Material Master.xlsx)&#xA;Dim sourceWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(sourceWorkbook.Sheets(in_MasterSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;' Loop through rows in the destination worksheet, starting from the second row (assuming headers are in the first row)&#xA;Dim rowCount As Integer = destinationWorksheet.UsedRange.Rows.Count&#xA;For row = 2 To rowCount&#xA;    ' Assuming the lookup value is in column C of the destination worksheet&#xA;    Dim lookupCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 5), Microsoft.Office.Interop.Excel.Range)&#xA;    Dim lookupValue As String = lookupCell.Value2?.ToString()&#xA;&#xA;    ' Construct the VLOOKUP formula as a string&#xA;    Dim vlookupFormula As String = &quot;=VLOOKUP(&quot; &amp; lookupValue &amp; &quot;, '[&quot; &amp; sourceWorkbook.Name &amp; &quot;]Sheet1'!$C:$D, 2, FALSE)&quot;&#xA;&#xA;    ' Perform VLOOKUP using Evaluate&#xA;    Dim result As Object = excelApp.Evaluate(vlookupFormula)&#xA;&#xA;    If result IsNot Nothing Then&#xA;        ' Convert the result to a string without converting to integer&#xA;        Dim resultString As String = result.ToString()&#xA;&#xA;        ' Update the result in column E for the current row in the destination worksheet&#xA;        Dim resultCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 6), Microsoft.Office.Interop.Excel.Range) ' Assuming you want to put the result in column E&#xA;        resultCell.Value = resultString&#xA;    Else&#xA;        Console.WriteLine(&quot;Value not found in the source worksheet.&quot;)&#xA;    End If&#xA;Next&#xA;&#xA;' Save and Close Workbooks&#xA;sourceWorkbook.Save()&#xA;destinationWorkbook.Save()&#xA;sourceWorkbook.Close()&#xA;destinationWorkbook.Close()&#xA;&#xA;' Quit Excel Application&#xA;excelApp.Quit()&#xA;&#xA;' Release COM objects&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorksheet)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorksheet)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorkbook)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorkbook)&#xA;System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="664,196" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MasterPath">[in_InputFilePath+in_MaterialMasterFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StockPath">[in_OutputFilePath+in_StockFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StockSheet">[in_StockSheetName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MasterSheet">[in_MaterialMasterSheetName]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If parent code and parent SKU columns rows contain any NA value then that row make it blank" Code="Try&#xA;    ' Create an Excel application&#xA;    Dim excelApp As New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Open the Excel workbook&#xA;    Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_FilePath))&#xA;    &#xA;    ' Specify the sheet name&#xA;    Dim sheet As Microsoft.Office.Interop.Excel.Worksheet = DirectCast(workbook.Sheets(in_SheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Specify the column names you want to check&#xA;    Dim columnName1 As String = in_ColumnName1&#xA;    Dim columnName2 As String =in_ColumnName2&#xA;&#xA;    ' Get the used range of the sheet&#xA;    Dim usedRange As Microsoft.Office.Interop.Excel.Range = sheet.UsedRange&#xA;&#xA;    ' Find the column indices for the specified column names&#xA;    Dim columnIndex1 As Integer = -1&#xA;    Dim columnIndex2 As Integer = -1&#xA;&#xA;    For colIndex As Integer = 1 To usedRange.Columns.Count&#xA;        Dim column As Microsoft.Office.Interop.Excel.Range = DirectCast(usedRange.Cells(1, colIndex), Microsoft.Office.Interop.Excel.Range)&#xA;        If column.Value IsNot Nothing Then&#xA;            Dim columnName As String = column.Value.ToString()&#xA;            If columnName = columnName1 Then&#xA;                columnIndex1 = colIndex&#xA;            ElseIf columnName = columnName2 Then&#xA;                columnIndex2 = colIndex&#xA;            End If&#xA;        End If&#xA;    Next&#xA;&#xA;    ' Loop through the rows and check if both columns contain -2146826246, clear the cell contents&#xA;    For Each row As Microsoft.Office.Interop.Excel.Range In usedRange.Rows&#xA;        If columnIndex1 &gt; 0 AndAlso columnIndex2 &gt; 0 Then&#xA;            Dim cell1 As Microsoft.Office.Interop.Excel.Range = DirectCast(row.Cells(1, columnIndex1), Microsoft.Office.Interop.Excel.Range)&#xA;            Dim cell2 As Microsoft.Office.Interop.Excel.Range = DirectCast(row.Cells(1, columnIndex2), Microsoft.Office.Interop.Excel.Range)&#xA;&#xA;            If cell1.Value IsNot Nothing AndAlso cell2.Value IsNot Nothing Then&#xA;                Dim cell1Value As String = cell1.Value.ToString()&#xA;                Dim cell2Value As String = cell2.Value.ToString()&#xA;&#xA;                If cell1Value = in_NA Then&#xA;                    cell1.Clear()&#xA;                End If&#xA;&#xA;                If cell2Value = in_NA Then&#xA;                    cell2.Clear()&#xA;                End If&#xA;            End If&#xA;        End If&#xA;    Next&#xA;&#xA;    ' Save and close the Excel workbook&#xA;    workbook.Save()&#xA;    workbook.Close()&#xA;    excelApp.Quit()&#xA;&#xA;Catch ex As Exception&#xA;    Throw New Exception(&quot;An error occurred: &quot; &amp; ex.Message)&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="664,207" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName1">[in_ColumnRemoveRow1]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName2">[in_ColumnRemoveRow2]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_OutputFilePath+in_StockFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_StockSheetName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_NA">[in_NAValue]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process - Excel Sheet" sap:VirtualizedContainerService.HintSize="664,133" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="Excel">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:KillProcess>
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_OMS_StockReportFile]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="664,154" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_OutputFilePath+in_StockFileName]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="664,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Stock Reporting Processing : Step 6 execution ended &quot;]" />
+  </Sequence>
+</Activity>

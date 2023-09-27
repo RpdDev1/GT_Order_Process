@@ -1,0 +1,710 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process_Template1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem_DataRow" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_InputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_ApplicationID" Type="InArgument(x:String)" />
+    <x:Property Name="in_TenantID" Type="InArgument(x:String)" />
+    <x:Property Name="in_UserID" Type="InArgument(x:String)" />
+    <x:Property Name="in_Password" Type="InArgument(x:String)" />
+    <x:Property Name="in_SiteUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_MaterialMasterFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_ReasonCodeMasterFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_FoodBrandMasterFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_PromoRationFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_MaterialMasterSheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_ReasonCodeSheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_FoodBrandSheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_PromoRationSheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_DriveName" Type="InArgument(x:String)" />
+    <x:Property Name="in_MaterialMasterNewFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_ReasonCodeNewFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_FoodBrandNewFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_PromoRationNewFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_InputTempFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_OMS_CollateFilesPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process_Template1.in_ApplicationID>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_ApplicationID>
+  <this:Process_Template1.in_TenantID>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_TenantID>
+  <this:Process_Template1.in_UserID>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_UserID>
+  <this:Process_Template1.in_Password>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_Password>
+  <this:Process_Template1.in_SiteUrl>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_SiteUrl>
+  <this:Process_Template1.in_MaterialMasterFileName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_MaterialMasterFileName>
+  <this:Process_Template1.in_ReasonCodeMasterFileName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_ReasonCodeMasterFileName>
+  <this:Process_Template1.in_FoodBrandMasterFileName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_FoodBrandMasterFileName>
+  <this:Process_Template1.in_PromoRationFileName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_PromoRationFileName>
+  <this:Process_Template1.in_MaterialMasterSheet>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_MaterialMasterSheet>
+  <this:Process_Template1.in_ReasonCodeSheet>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_ReasonCodeSheet>
+  <this:Process_Template1.in_FoodBrandSheet>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_FoodBrandSheet>
+  <this:Process_Template1.in_PromoRationSheet>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_PromoRationSheet>
+  <this:Process_Template1.in_DriveName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process_Template1.in_DriveName>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1514,1135</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process_Template1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Collate_Other_Master_Report" sap:VirtualizedContainerService.HintSize="1068,1070" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_ProcessFolder" />
+      <Variable x:TypeArguments="x:String" Name="str_ProcessFilesPath" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Process_Config" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1006,959" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Flowchart sap2010:Annotation.AnnotationText="1. Copy the Material Master from the shared drive to the processing folder.&#xA;2. Copy the Reason Code Master from the shared drive to the processing folder.&#xA;3. Copy the Food Brand Master from the shared drive to the processing folder&#xA;4. Copy the Promo Ration Details Master from the shared drive to the processing folder" DisplayName="[Collate_Other_Master_Report]" sap:VirtualizedContainerService.HintSize="968,709" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <av:Point x:Key="ShapeLocation">40,92.5</av:Point>
+              <av:Size x:Key="ShapeSize">60,75</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">100,130 150,130</av:PointCollection>
+              <x:Double x:Key="Width">934</x:Double>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Flowchart.StartNode>
+            <x:Reference>__ReferenceID5</x:Reference>
+          </Flowchart.StartNode>
+          <FlowStep x:Name="__ReferenceID4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">430,53.5</av:Point>
+                <av:Size x:Key="ShapeSize">200,153</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">630,130 700,130</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence sap2010:Annotation.AnnotationText="All the variables required to complete this process needs to be defined here. Excluding the local variables." DisplayName="Assign sequence" sap:VirtualizedContainerService.HintSize="200,153" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MultipleAssign sap2010:Annotation.AnnotationText="All the variables required to complete this process needs to be defined here. Excluding the local variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="423,856" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[str_ProcessFolder]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem_DataRow("Process Name").ToString.Trim.Replace(" ","_")]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[str_ProcessFilesPath]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[in_Config("ProcessFilesPath").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_ApplicationID]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("ApplicationID").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_TenantID]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("TenantID").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_UserID]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("UserID").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_Password]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("Passoword").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_SiteUrl]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("SiteURL").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_MaterialMasterFileName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("MaterialMasterFileName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_ReasonCodeMasterFileName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("ReasonCodeMasterFileName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_FoodBrandMasterFileName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("FoodBrandMasterFileName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_PromoRationFileName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("PromoRationFileName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_InputFilePath]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("InputFilePath").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_OutputFilePath]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[in_Config("ProcessFilesPath").ToString+"\"]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_MaterialMasterSheet]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("MaterialMasterSheet").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_ReasonCodeSheet]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("ReasonCodeSheet").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_FoodBrandSheet]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("FoodBrandSheet").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_PromoRationSheet]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("PromoRationSheet").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_37">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_DriveName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("DriveName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_MaterialMasterNewFileName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("MaterialMasterNewFileName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_ReasonCodeNewFileName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("ReasonCodeNewFileName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_FoodBrandNewFileName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("FoodBrandNewFileName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_41">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_PromoRationNewFileName]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("PromoRationNewFileName").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_InputTempFolder]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[in_Config("ProcessInputFiles").ToString+"\"]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_43">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[in_OMS_CollateFilesPath]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Process_Config("OMS_CollateFilesPath").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+            </Sequence>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID0">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">700,75.5</av:Point>
+                    <av:Size x:Key="ShapeSize">200,109</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">800,184.5 800,325.5</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Copy the Material Master from the shared drive to the processing folder." DisplayName="Process Workflows\Collate_Other_Master_Report\Process_11.1.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Process Workflows\Collate_Other_Master_Report\Process_11.1.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_ApplicationID">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ApplicationID" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TenantID">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TenantID" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_UserID">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_UserID" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Password">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Password" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_SiteUrl">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SiteUrl" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_DriveName">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_DriveName" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputFilePath" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterFileName">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MaterialMasterFileName" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterSheet">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MaterialMasterSheet" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterNewFileName">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MaterialMasterNewFileName" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_OMS_CollateFilesPath">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OMS_CollateFilesPath" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">700,325.5</av:Point>
+                        <av:Size x:Key="ShapeSize">200,109</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">700,380 640,380</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Copy the Reason Code Master from the shared drive to the processing folder." DisplayName="Process Workflows\Collate_Other_Master_Report\Process_11.2.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Process Workflows\Collate_Other_Master_Report\Process_11.2.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ApplicationID">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ApplicationID" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_TenantID">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TenantID" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_UserID">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_UserID" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_Password">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Password" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_SiteUrl">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SiteUrl" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_DriveName">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_DriveName" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputFilePath" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ReasonCodeMasterFileName">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ReasonCodeMasterFileName" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ReasonCodeSheet">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ReasonCodeSheet" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ReasonCodeNewFileName">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ReasonCodeNewFileName" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OMS_CollateFilesPath">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OMS_CollateFilesPath" />
+                        </InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                    <FlowStep.Next>
+                      <FlowStep x:Name="__ReferenceID2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">440,325.5</av:Point>
+                            <av:Size x:Key="ShapeSize">200,109</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">440,380 360,380</av:PointCollection>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Copy the Food Brand Master from the shared drive to the processing folder" DisplayName="Process Workflows\Collate_Other_Master_Report\Process_11.3.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process Workflows\Collate_Other_Master_Report\Process_11.3.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FoodBrandMasterFileName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FoodBrandMasterFileName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ApplicationID">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ApplicationID" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_TenantID">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TenantID" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_UserID">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_UserID" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Password">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Password" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_SiteUrl">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SiteUrl" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_DriveName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_DriveName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputFilePath" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FoodBrandSheet">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FoodBrandSheet" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FoodBrandNewFileName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FoodBrandNewFileName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OMS_CollateFilesPath">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OMS_CollateFilesPath" />
+                            </InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeWorkflowFile>
+                        <FlowStep.Next>
+                          <FlowStep x:Name="__ReferenceID3">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <av:Point x:Key="ShapeLocation">160,318</av:Point>
+                                <av:Size x:Key="ShapeSize">200,124</av:Size>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Copy the Promo Ration Details Master from the shared drive to the processing folder" DisplayName="Process Workflows\Collate_Other_Master_Report\Process_11.4.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process Workflows\Collate_Other_Master_Report\Process_11.4.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_ApplicationID">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ApplicationID" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_TenantID">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TenantID" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_UserID">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_UserID" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_Password">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Password" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_SiteUrl">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SiteUrl" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_DriveName">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_DriveName" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputFilePath" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_PromoRationFileName">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PromoRationFileName" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_PromoRationSheet">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PromoRationSheet" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_PromoRationNewFileName">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PromoRationNewFileName" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OMS_CollateFilesPath">
+                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OMS_CollateFilesPath" />
+                                </InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InvokeWorkflowFile>
+                          </FlowStep>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+          <x:Reference>__ReferenceID0</x:Reference>
+          <x:Reference>__ReferenceID1</x:Reference>
+          <x:Reference>__ReferenceID2</x:Reference>
+          <x:Reference>__ReferenceID3</x:Reference>
+          <FlowStep x:Name="__ReferenceID5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">150,75.5</av:Point>
+                <av:Size x:Key="ShapeSize">200,109</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">350,130 430,130</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Process parameters, file path and other values to add in dictionary" DisplayName="Common Workflows\ProcessMasterfile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Common Workflows\ProcessMasterfile.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessMasterFilePath">[System.IO.Path.GetFullPath("Process Workflows\Collate_Other_Master_Report\CollateMasterFile.xlsx")]</InArgument>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Master">[Process_Config]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID4</x:Reference>
+            </FlowStep.Next>
+          </FlowStep>
+        </Flowchart>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="si:FileNotFoundException" sap:VirtualizedContainerService.HintSize="972,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="si:FileNotFoundException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="si:FileNotFoundException" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[exception.Message]" />
+          </ActivityAction>
+        </Catch>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="972,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="450,231" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[exception.Message]" />
+              <Rethrow sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

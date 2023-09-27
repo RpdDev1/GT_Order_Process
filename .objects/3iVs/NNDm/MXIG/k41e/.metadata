@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Password Back Arrow",
+  "Type": "Element",
+  "TaxonomyType": "Icon",
+  "Id": "k41eO25GZkSK_TAvvFlezw",
+  "Reference": "KHM7KCyeR0yxsr5MPZ05VA/k41eO25GZkSK_TAvvFlezw",
+  "ParentRef": "KHM7KCyeR0yxsr5MPZ05VA/MXIGSi4ockaINHpdSOZGbw",
+  "Created": "2023-09-07T17:43:29.4408516Z",
+  "Updated": "2023-09-07T17:43:29.4408516Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=23.4.8.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=23.8.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

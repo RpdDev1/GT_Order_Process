@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="-jF0tNcS1ESBQNPolnN_zQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="299, 9, 24, 22" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Close'" FullSelectorArgument="&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Close' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Close' role='push button' automationid='' check:text='Close' /&gt;" Guid="482c7968-8a11-4b3f-b831-b499b271a86a" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADFSURBVEhL7ZPLDoIwEEX9Uxdu/AURfFQJqaCI0fifpfvRqW3AROuMaQiLnuVt0pM7nU5gYKIwOFEYnHEK68sN9kUJWmubdCilQOQSmuvdJn5IwuJwgulsDsuVgLbtpChLMmHOZHW2qR+SEC9GmZNi008ZBfIb9tsk2RYW6eYlW+/eWv+CtTT9VtxmDrYQl8cJc1mx2iF/jlSYsZqWz5FyWo5zaWjforapH5IQL0u/bCNK8aw8Njbxw1qaEERhcKIwOAMLAR58rQAw1Bj6SwAAAABJRU5ErkJggg==" ScopeSelectorArgument="[string.Format(&quot;&lt;wnd app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="e343ebda1fcbfe2ad15cac6c65636829.png" xmlns="">0E41F8MucuECNf8KyDTdeDw</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

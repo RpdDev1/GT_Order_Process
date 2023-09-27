@@ -1,0 +1,354 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequence1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="BrowserAppName" Type="InArgument(x:String)" />
+    <x:Property Name="int_Delays" Type="InArgument(x:Int32)" />
+    <x:Property Name="int_Delay" Type="InArgument(x:Int32)" />
+    <x:Property Name="str_Companycode" Type="InArgument(x:String)" />
+    <x:Property Name="str_UploadSupplierInvoices" Type="InArgument(x:String)" />
+    <x:Property Name="str_ExcelFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="str_UploadDescription" Type="InArgument(x:String)" />
+    <x:Property Name="str_URL" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Sequence1.BrowserAppName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Sequence1.BrowserAppName>
+  <this:Sequence1.int_Delays>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Sequence1.int_Delays>
+  <this:Sequence1.int_Delay>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Sequence1.int_Delay>
+  <this:Sequence1.str_Companycode>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Sequence1.str_Companycode>
+  <this:Sequence1.str_UploadSupplierInvoices>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Sequence1.str_UploadSupplierInvoices>
+  <this:Sequence1.str_ExcelFilePath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Sequence1.str_ExcelFilePath>
+  <this:Sequence1.str_UploadDescription>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Sequence1.str_UploadDescription>
+  <this:Sequence1.str_URL>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Sequence1.str_URL>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1234,3188</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Sequence1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Upload Supplier Invoices" sap:VirtualizedContainerService.HintSize="1112,3123" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Assining All Variables" sap:VirtualizedContainerService.HintSize="1050,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[BrowserAppName]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">chrome.exe</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_UploadSupplierInvoices]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">Upload Supplier Invoices</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[int_Delays]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">60</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_Companycode]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">1710</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[int_Delay]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">5</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_UploadDescription]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">This is  a test</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_ExcelFilePath]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">Data\Input\SampleUpload.xlsx</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_URL]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">https://my305028.s4hana.ondemand.com/ui#Shell-home</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Upload Supplier Invoices Screen" sap:VirtualizedContainerService.HintSize="1050,2920" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Never" ScopeGuid="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,2753" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NCheckState DisplayName="Check App State 'All'" sap:VirtualizedContainerService.HintSize="954,747" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Timeout="[int_Delays]" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,530" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="False" ClickBeforeMode="None" DisplayName="Type into Search " EmptyFieldMode="None" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="WindowMessages" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Text="[str_UploadSupplierInvoices]" Version="V3">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui#Shell-home" ContentHash="dEYxnjP880aRi6JRH0MyUg" CvTextArgument="Search" CvType="Text" DesignTimeRectangle="735, 92, 440, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Search'" FullSelectorArgument="&lt;webctrl tag='INPUT' name='search' placeholder='Search' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' name='search' placeholder='Search' /&gt;" Guid="7a2561e1-6498-44e4-b750-7dfb0bf96e97" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAbwAAAAeCAYAAABXE6uOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPNSURBVHhe7dtbT5RXGMXxfhPvm6aXpjFpvLFekKptTa3Y0hpFPFLEFq1oLA2eesCAkhqtRjH1VKwtREUjRtEiBQsGRDxQkKOcBhC+wFPW08wUh+GG0abp/l/8MpPZ+31n7lbWfp95ZXRs3AAA+L8j8AAAQSDwAABBIPAAAEEg8AAAQSDwAABBIPAAAEEg8AAAQSDwAABBIPAAAEFIOvAetLbZtvwCe2PeYpv12pv27odr7Fz5ZYuMjCbc/7K0PPrT0jO3+muidQBA2JIKvMbmh7Y4bZ39+FOZtXd2O73fvnOfdfX2JbzmZamorLLsrTutb2Ao4ToAIGxJBd6Bwydsz76DNvJsLOH6v0m/RRKtAQAw48AbHh2z/G+LvVV19jydds/lypu2ZHlm7Liz6nZdbP3+w9bYcejrc1I8PJ8ODPpatLHtLvje3ptokTqq7OjutYLiozY3JdVenT3fsnN3eavs6RuwDTl53i71me41b1GaVVX/810AgLAl1fCqa+st5f2VHjDrP//SLl29Yf2DEV9T6ztVWm5rN+2wew8e29DwiJWcPm+Zm7/yUHvS1Wu5E2F37WaNP++ra2iyBR+ssuq6Br9ebe2tdz62C1euW3dvn7W2d9qK9Vvs2Mlzfn1re4cHro5VFYaLlq22vL1F/kyxraPLw/LrwkPP/V4AQLiSHloZjIzYrZo/PHzU1BRwanzNE+1t+brN/hrde/3W75a6MsvDbvI9RE1t1ae5dvdeizc2BaiGX7Sm8Nx/qMS+Kz4y0RqfTblWbVDfq2CM7ldb/KHk7JS9AIAwJR14k9XcuevHjwqtM+cv+DFmvJwde61/KOJ7NNyi48nomqYsFVrxE5dPunrsk7U5sfYXL/75ne6xJnv7tPsBAOF5oYGnppeRtc0bno4TpztS1DHkRxmb7MZvtbG/L6iNfVN02NtZ/MSlwnHpiix/nXwfibbByqrbsc8amlq8XT5u63huLwAgXDMKvIbG+z4kUl5xLfZ3BL1fmJphv1666ntOlpZ5K9NgykBk2AOp8OBxf6/2pwam5qYjUT2n0/O6Xy7+fW18Y9O+ZekbPRT1d4emlkc+zFLf2DylDYruo2EY3Tv6GQAgbDMKPIWWhkfeXpLuR5F6drfxi3yrrW+M/UVBgyV6jqaBFq0rgBR+WtMQS9rqz/xaTW4eP/WzP79TM0vU2ETTndqrazT1WVpW4b8jvg3y/A4AkMgLPdIEAOC/isADAASBwAMABIHAAwAEgcADAASBwAMABIHAAwAEgcADAASBwAMABIHAAwAEYNz+AigduqrdSuQRAAAAAElFTkSuQmCC" InformativeScreenshot="e25d7f6a8df5693a3adcb0c6d910d52b.png" Reference="hz4LrFmUMEiEUgYjo26OTg/youWlb13ukWeAu-LH37Tmg" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvElementArea="660, 86, 559, 38" CvTextArea="674, 97, 18, 13" CvTextArgument="All" CvType="InputBox" DesignTimeRectangle="668, 89, 64, 32" ElementType="InputBox" FriendlyName="'Search'" FullSelectorArgument="&lt;webctrl innertext='AllAll' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl innertext='AllAll' tag='DIV' type='' class='sapMSlt sapMSltDefault sapMSltMinWidth sapMSltAutoAdjustedWidth sapMSltHoverable sapMSltWithArrow searchSelect' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEQAAAAeCAYAAACVBrgjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHtSURBVGhD7ZlLSwJRFMf9Jn2BPkCbaFObVkEQFRRUglCJhrXIyF4YWEiFEFQQFLSI2tSmFkWURBb2IpCe9hotw0dPXJ7mXBhxji5G0hDmCD+Yuf87M94f5947MAaQfz/JJCQ+PhkZw9f3T9ZArxiyNeoZFkJgIQQWQmAhBBZCYCGEnIXcP0nQaLRCR/cASC8RVeaanIGllTVxfHoRAJO1T+4fUvUpdnIWsrm9B+02BxjNvXB4fK7KdCcklniHYZcHNrZ2YW5hGTyzi6pcd0ICV7dikNd3D6I6sFIepXAqL6QQvF9VTXPq/hRsxxz7Zcu1kpOQ1fVNUSFYKeHIG3TZneA98KfyQgrZ8fqgpLRcQKXguZJhv/QsVzQLiURj0Ds0LqaL0ja/tApjU7MQf/8Q54WeMtmk5FMGolmIUrLKwxXqWsxwE3wQff5jDUmXkk4+ZCCahWA19DsnIPj4LAaJXN4EobNnUOw82Oe/FlUqJV8yEE1C8H0D3zvSp4sC7jZO97RYV1DIqHwceo0IIfWtFtg/OoFoPJFx3V9RpORTBqJJCA6qoc0idhea4W7TZLKJDP9cRXUDOEYnQQq/gn3EDWWVteDzn2VcV6xonjJ6gYUQWAiBhRBYCIGFEFgIgYUQWAiBP2US+GO3ik/4BcQ1163xFgyCAAAAAElFTkSuQmCC" SearchSteps="Selector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="False" ClickType="Single" DelayBefore="[int_Delay]" DisplayName="Click 'Create Sales Orders Dropdown'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui?sap-language=EN&amp;help-mixedLanguages=false#Action-search&amp;/top=10&amp;filter=%7B%22dataSource%22%3A%7B%22type%22%3A%22Category%22%2C%22id%22%3A%22All%22%2C%22label%22%3A%22All%22%2C%22labelPlural%22%3A%22All%22%7D%2C%22searchTerm%22%3A%22Create%20Sales%20Orders%22%2C%22rootCondition%22%3A%7B%22type%22%3A%22Complex%22%2C%22operator%22%3A%22And%22%2C%22conditions%22%3A%5B%5D%7D%7D" ContentHash="oXO6-3w670mCh9K9fGRDWA" DesignTimeRectangle="814, 225, 132, 24" DesignTimeScaleFactor="1" FriendlyName="'Create Sales Orders Dropdown'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl innertext='{0}' tag='SPAN' /&gt;&quot;, str_UploadSupplierInvoices)]" FuzzySelectorArgument="&lt;webctrl innertext='Create Sales Orders' tag='SPAN' type='' class='sapMText sapUiSelectable sapMTextNoWrap sapMTextMaxWidth suggestText suggestNavItem suggestListItemCell' aaname='' check:text='Create Sales Orders' /&gt;" Guid="2e78444b-d299-4761-944b-988543ed8078" ImageBase64="" InformativeScreenshot="102704e0ecb9841561a7e87dd0d9cfcd.png" Reference="hz4LrFmUMEiEUgYjo26OTg/JfG9Mj4yl0mJx7OaTnxPbQ" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,207" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log for search bar is not loaded" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Search bar is not loaded properly&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui?sap-language=EN&amp;help-mixedLanguages=false#ProductTrialOffer-displayTrialCenter&amp;/s4hana_us/tours" ContentHash="RmUYF566t0OhifLivHQ97g" DesignTimeRectangle="696, 106, 64, 26" DesignTimeScaleFactor="1" FriendlyName="'VF of  All'" FullSelectorArgument="&lt;webctrl tag='SPAN' innertext='All' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' innertext='All' type='' class='sapMSltLabel' aaname='' check:text='All' /&gt;" Guid="3f4edcee-1987-4820-b59f-a0f709f79456" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEQAAAAeCAYAAACVBrgjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGqSURBVGhDY/gPBF+/f////uOnUQzEDJ+/fMUqMVIxAzbBkYxHAwQNjwYIGh4NEDQ8GiBoeDRA0PBogKBhsgKktm3Cf1ldu/9T5ixBET9+5gJYHMaPSisCq0VWM9gxWQFiaO//PyA2679fVAaK+IgMkF0Hjv7XtfH5//DJM7Dnr926C5cbkQGSWljzv6C6FcwGpZC2/hlwuREXIK/evPuvZuoGTiUg/swFK/47+MXA5WkdICDzkM1HxyA5kBpscsRikgJk9aYd4OwC44Oyjby+AzggQHxaB4iFWyjYfGyBAhMHqUGXIwWTFCCwGELHJXWdYHl6ZBlsgQLjUxoYIEx0gMBSw8oN2/5fvXkHjnumzgXXOiA19CpDkAOFmoEBwkQHCKjNgZxdYBhW2+w7cgIeINv3HgKXN6AACUvK/3/v4WMMfZRi5EChVmCAMNEB4hqUAK9d0DGotoHJOfjGgB25Zdf+/8vXbgGnKo/QZAw91MCggKBmYIAwSWXISMCjAYKGRwMEDY8GCBoeDRA0PBogaHg0QNDwaICg4dEAQcOjU5loeHSyGwV/+g8ABkuv3Do9lSMAAAAASUVORK5CYII=" InformativeScreenshot="ce183341e205c147561f0300ba2e4be9.png" Reference="hz4LrFmUMEiEUgYjo26OTg/a1eIIK1SXE61Du6nD6lnkg" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NClick ActivateBefore="False" ClickType="Single" DisplayName="Click 'Create Upload'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui#SupplierInvoice-upload&amp;/?sap-iapp-state--history=TAS1WW9A6GPKVOWZYW7Q1O482WHS5BAABNBBAO14A&amp;sap-iapp-state=ASFYSA1IAXK95GS588GFJNH13XRY12DGNL1E7BPF" ContentHash="rK5_mQS8-k6SmaKP7qmiMw" CvTextArgument="Create Upload" CvType="Text" DesignTimeRectangle="1636, 353, 111, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Create Upload'" FullSelectorArgument="&lt;webctrl innertext='Create Upload' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl innertext='Create Upload' tag='BUTTON' type='' class='sapMBtnBase sapMBtn sapMBarChild' aaname='Create Upload' check:text='Create Upload' /&gt;" Guid="31325e11-2a06-427a-b898-70f5d59a4c90" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHMAAAAkCAYAAAC6yAWpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVHhe7VhbSxtbFD5/K/8hb3kqghVEkJKACKFYhAFBCyUgzEsQCqFQ8tJAUKSQF8OhMC9aOJCGJCY4IWFSW1JR0qCxge+sfZvJZbQJGE7PZn+wwb1mX9Za314X8xcMtIEhUyMYMjWCIVMjGDI1giFTIxgyNYIhUyMYMjWCIVMjGDI1giFTIxgyNcL8ZF52kNup4NnyF0SWviC6WkEq00H3Xn7/Q1Gyhb6ZUymQ6OYrXL6Vv5aS3+ErMrQ+stRASUqeHtcoJOe/Yy4yB6cNxCWJsfUy4gkaq5LUF3RxXy58cnxDbp3usb/K+fwwZI5i+B1Z5lAyxPrwQwoJw5/kqAq27CZqI+KnhXSgIfNRzE5m6QLPmRHJJrpSFA5pbNJF8W0FsaUKCh6JhzcoZc6xuSKcGkvUUagGoTxoeshul2m9+L62fYEa++w1sSVlYsjz0If7sQ5LZYbVKrLODfsQilnJFOsqOPrUgp0Qe8Z1DSGz30XRrmJN2bZeReZjFwP5mdley9ax6etagV24kh8Jwys4b2TpomFlWsgtksxe4Zwr8vvokMaSUtEVqqc7DTiXQ9Telvn++GsXzokL+wVbcw6HR3Mfpf0ypWoiJN/E0esKoszo3TZ6t1eoHdcRZ2daLs6cb+jeCn3YmliygaLTRpYbX0a2NORaTGI+MpnuZeztN5CVukTWyLF07xSZREThldgTt+rIpuvYY7bR3DqU0d4WD3LrjYtCvoE9nuHKyFXZxzvU0sI30c1z2t+AzW0ZuWNGLI5MP4IYSMZrbR2+r506P886lNF0f4eBz4N6EA3U2FRFp3/3DYrcgXRHW4qkw6LpcP3mJTN1oiKxD2dX7v3M5hNkfm4Isne9IBKbLjaZLOFCuGCIwe0v/heDulPYrnxDD1tdOVSyBZHpp9kNpeBDmDCWYSpVBoM7kaXggyBNBUOeMUWmuiNkPPDYHiLT+xCeZoOHOLl33D5FzNq70eIzvmZQbcLeoIfGZcHgdyrbxsrXf9UA4Rc5hIh42cBZ+47mIWQyGX9pVeScDqXKYNTYHuqSeVrdacG7/one9zbs0TOUwfsdfloQmWUcHI+fd1bvyTXj8N6LVPaczvAj6L6LHDmZyTOnIi1MR2YPxW255rHI3G7RSgkVmfzhK2IqyJ7eoEf21d6NPiDlm5HI7HuwFxqZhMf+NYmsVFFsM4eEkRnUhbh1QTXOQyFNzVCC0ijVocHfMoVvUP07afJGiM/VGZctWGy+TI1DuokS+aB7WOVOjCWpOTnpoEgNhkWNR/GhtPGjjdSE7ioTRF814ckUr8iMLIuaeWBRLWfzdWrI+BrlfOoH0m3aF1Iz5aNPFRi9XRzxRqqM1HuP9CS7pR6CzDu6c7RmBjV3oWRyyB8N/JTIGgW7BfdaFbwwMgkTqXTsxwbZzfFOlpomO+9NdHPUIB3I70ToUV3I3HzQIU7rEYIZfvAQZFIjdewiJUlh3azDHyrDEB49JHGG1E92s+pc1s1mP4m0zTD458Lvup9RBitRQ8f+Vqmd7S/49pMdfjc70mPMgPnJ1Bzj9fH/BUPmBAyZGsGQafBHwJCpEQyZGsGQqREMmRrBkKkRDJkawZCpEQyZGsGQqQ2AfwEieDhLM2HNyAAAAABJRU5ErkJggg==" InformativeScreenshot="5aab796487caa3a06f5ab9d6aace1242.png" Reference="hz4LrFmUMEiEUgYjo26OTg/JWQ3xIsHlUmFt8nF-BcnbA" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="False" ClickBeforeMode="None" DisplayName="Type Into  Company Code" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="954,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="WindowMessages" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Text="[str_Companycode]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui#SupplierInvoice-upload&amp;/?sap-iapp-state--history=TAS1WW9A6GPKVOWZYW7Q1O482WHS5BAABNBBAO14A&amp;sap-iapp-state=ASFYSA1IAXK95GS588GFJNH13XRY12DGNL1E7BPF" ContentHash="APM_O3Nk_E2auCS8TCmXhQ" CvType="InputBox" DesignTimeRectangle="635, 398, 317, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Company Code'" FullSelectorArgument="&lt;webctrl tag='DIV' ui5-label='Company Code' ui5-type='Input' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='DIV' ui5-label='Company Code' ui5-type='Input' type='' class='sapMInputBase sapMInputBaseHeightMargin sapMInput sapMInputBaseHasEndIcons sapUiCompSmartFieldValue sapMFocus sapMInputFocused' aaname='' /&gt;" Guid="55401be9-2f71-4e36-9871-bd37b16dfc65" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAUEAAAAeCAYAAACyoaynAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGnSURBVHhe7d0xilNBAMZxb+IFvMKCYGNl4wls1trSThtBxMJGLBc8gI1s4Q1E2MLKQhGb7ZYFETYWOvJpXkgek2gWm5n5/eBr3su2fyYJm3elAAxMBIGhbURw8f1neXl8UW7dOy/XD8/MzLpZupa+pXPrVhHMDfEzs96Xzq2HcBXBFDIveHz0rZx//bG8CtCHdC19S+fSu8kqgtMpUACBXqVv02lwsopgbmQAPZu3TgSBoYgg0LRXr9+Uq9cOti73dxFBoFnvTt5XwzdfXreNCALNyinv5u075dPnL8srm3I993edBkUQaFYi9+jp83KxWCyvbBJBYGgiCHQlMat95jft2Yuj5Sv/EEGgG5f5EkQEgW4kZAlawlZTC54IAt3YN4J5a1w7Hc6JINCEfSKYb4vvP3zyO4DzzwnnRBBowr4nwX8lgkATRBAYmggCQ/sf/ydcI4JAM3LKq4Vv2t++BKkRQWBoWyPo5/WB3u38eX0PWgJ6lq7tfNCSR26a2QhL56qP3IwPH0/L4YO35cbd0+ofm5m1unQtfUvn1m1EEGA0IggMrJRfQL6yoG2U0rAAAAAASUVORK5CYII=" InformativeScreenshot="a6b80a476a063705afe5143b7ddc73e5.png" Reference="hz4LrFmUMEiEUgYjo26OTg/vQ6JCfseHki1vHZHzqTF4g" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Company Code Dropdown" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui#SupplierInvoice-upload&amp;/?sap-iapp-state--history=TAS1WW9A6GPKVOWZYW7Q1O482WHS5BAABNBBAO14A&amp;sap-iapp-state=ASFYSA1IAXK95GS588GFJNH13XRY12DGNL1E7BPF" ContentHash="aVYp9RAtMUqi5S3xBjMWAQ" CvElementArea="635, 515, 347, 32" CvTextArea="650, 524, 33, 13" CvTextArgument="1710" CvType="Button" DesignTimeRectangle="651, 519, 31, 24" DesignTimeScaleFactor="1" FriendlyName="'Company Code Dropdown'" FullSelectorArgument="&lt;webctrl colName='Company Code' innertext='1710' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl colName='Company Code' innertext='1710' tag='SPAN' type='' class='sapMLabel sapUiSelectable sapMLabelWrapped sapMLabelMaxWidth' aaname='' check:text='1710' /&gt;" Guid="c5d5f977-6c05-4e19-9ff8-24d2b9ed3118" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACMAAAAcCAYAAADr9QYhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIoSURBVFhH7ZTbS1RRFMb9T3wW8tUHIRAifBBBg8AKvIHSxTEtTcbBNO8kmqkvhWYEYkYRmiaKDSoiat4107zLzKiTx8tk3si++DbMYc4NpMDm4Tx8cM5ae+/122utvQK+HwH+IhPGSCaMkUwYI5kwRtLAjC86EW+xIf1hGRx7R7L91ftOBF64qFFM0n0sbO6JNU7PCeretCE4NAJdg5PyXmrj5y80tHThUlQcgkLCkZbzGLNOSbFGAfOusw+R128h6V6uBobfDOqryrrXyCt/hs2DU/GfaitFQqoNl68kaGA+dA/hamIa7J+nMeeSUFT1ArezirAi7ctrFDD1b9sxubwusqCGUWvR7UHi3Ry09Q6L/9F5Bxpb7SIQs+UL4/QcI+NRBZo+9ij289K9Y7OyTbdnzgJDCMLwUF87M6SGoY0Z659akG3MJrPKWF7bX8GwN7IKn6K2qVXj04Nh1q4lZ2B4blWxtqTm5b/DDM4siYATSy6N71xh3Ie/ReMWVNaKVKv951qmr44t3Lj5AN0jMxofpQfj+nECa3G1IvD8xi5i71j1G5g3Xt7aF4c9b2yBJbsEX9bcokE5I7zr+CJSrMVY2zmUbRQDci9LwifcbB8Q/6vbB8Lf0T+O6FgLPg1NyU87M/+J4sIyDI3MhnqocWZ4a00Agug1LjOh3kuxL+hnWXgRDj0ORVtpDb6t7yjO0C3T/5IJYyQTxkgmjJH8CyYsWYJ/SMIfFeoC+j7NMMIAAAAASUVORK5CYII=" InformativeScreenshot="bb0ca71a5eaafddb7823f7bc5f503445.png" Reference="hz4LrFmUMEiEUgYjo26OTg/nxGNSqBmxUGdzHWK23fQGw" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="False" ClickBeforeMode="None" DisplayName="Type Into Upload Description" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="954,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="WindowMessages" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Text="[str_UploadDescription]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui#SupplierInvoice-upload&amp;/?sap-iapp-state--history=TASRODT2GG7MNYRHNXEUWXP2KTRVHGD8CXSUN164V&amp;sap-iapp-state=AS3N2U4HZJ9GWYG338905APLGFZMARRT07Y9SL45" ContentHash="V2x-28sstkyQkTHQllzscQ" DesignTimeRectangle="635, 483, 317, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Upload Description'" FullSelectorArgument="&lt;webctrl tag='DIV' ui5-label='Upload Description' ui5-type='Input' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='DIV' ui5-label='Upload Description' ui5-type='Input' type='' class='sapMInputBase sapMInputBaseHeightMargin sapMInput sapUiCompSmartFieldValue' aaname='' /&gt;" Guid="2459d0e9-2270-42a8-866e-8808ba8abbd8" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAUEAAAAeCAYAAACyoaynAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGZSURBVHhe7d1PShsBGMbhuWXBIxRcu5UuegYP47JLbxCLaVFL0RaVLppJk6/zBlM6R3C+54EXwmT/Y/7AzFCv9vt97Xa7Grfb2oxj/d6YmS1n6Vr6ls6ld0eHCObAOG7r+eVX3X9/rJuv32q1vq3VjZnZAjb1LF1L39K59O4YwiE/NtOBx59P9fnLXT38eKo/UykBliRdS9/SufQu3Uv/hpwapoz5Q/yApUvn0rt0L/0bco2cU8QUEqCD9C7dS/+G3CzMtbKzQKCL9C7dS/+GPDW5Xt+9/gXQQ7qX/h0imKcnAJ2keyIItCWCQGsiCLQmgkBrIgi0JoJAayIItCaCQGsiCLQmgkBrIgi0JoJAayIItCaCQGsiCLQ2i6CXqgLd/HupqtfrA93MXq/vQ0tAN7MPLfnkJtBJOjf75Ob/H1+//HRVZx8v6uT0Q717f25mtpila+lbOjf7+HrKmB/jdCBlzClirpVX69vD0xMzsze/qWfpWvqWzqV36V4cIhg5kFPDXCPnZmGempiZLWXpWvqWzh0DWFX1F4UHne9eyaufAAAAAElFTkSuQmCC" InformativeScreenshot="3238dcb2a155c0db924bc35d5c33873e.png" Reference="hz4LrFmUMEiEUgYjo26OTg/mk6bKrwszEShhMoaHhP2pg" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Upload'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui#SupplierInvoice-upload&amp;/?sap-iapp-state--history=TASRODT2GG7MNYRHNXEUWXP2KTRVHGD8CXSUN164V&amp;sap-iapp-state=AS3N2U4HZJ9GWYG338905APLGFZMARRT07Y9SL45" ContentHash="h4yOEJ9KzEWl7vZQXeNUrQ" CvElementArea="1404, 533, 71, 33" CvTextArea="1416, 543, 48, 16" CvTextArgument="Upload" CvType="Button" DesignTimeRectangle="1408, 534, 64, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Upload'" FullSelectorArgument="&lt;webctrl innertext='Upload' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl innertext='Upload' tag='BUTTON' type='' class='sapMBtnBase sapMBtn' aaname='Upload' check:text='Upload' /&gt;" Guid="b31aed6e-b96d-4caa-92cd-cf78113ebbf0" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEQAAAAkCAYAAAAw55zoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALrSURBVGhD7ZXbS1RRFIf7tyIiIoKCiqLCSCxDogtTkmUhQj1YIYkWklB0MaUsIossIjCweqgoeigc5+ZtvMzYODcdnXGuq/NbM2fSNRIONKGwPjic2bP2OXvvb6+9zjpSlqBCBCpEoEIEKkSgQgQqRKBCBCpEoEIEKkSgQgQqRFCUkGv3PbS+vJ++/Ijk/sny9K2f/8d9JQTCSTpQ6+ILv0tBdCFNNU2jRY+hQgQqRFASIei3/biNXr0PUmX9IMdw/+mc5/hyQoIzSWrp9NLWozbuv7/GST19QUqmMhyPxdPU9cZPOy12juP++kOIMtkwzUXT1HhvkjYfGeCr9ZGXLFdGVo+QDRVW2nbMRg23Jqjuxhi3K+oGyRdMFAjBYmqb3dynunGUmh94OIZ2d2+A32kfidGOk3Z+X2fPNO094+SFQ3LKkNb60MtzOGyIv26Irbo4xO1VIwTt3k9hbmOXL7WN8wK/9c8VCMF/iKGPmRG24Shny4mGYYrMpzgTkCUm5pgQFjKyq/yCi/ZUO2jSF+e433jvwfPFH8t/IuSxkcpSCI6Myx3jNlj8rBRiLu7Os1+53oXHCpmAXYc49DUvPItxMB5qBmoH+C81pP2FjyfR1O7J72Q4kuJdxEQ/50TJDIknMvlj87cMQR/0BWaGoA74Q0leHNofv8/yM3e7s3OBkOUyxONL0D6jDpVUiNuzQLtPO3giuywOKjvnyhdB1ADUAmAKQQxnHnUBC8YOh2ZT+QUg3vZkinyBZEENQY1AG4UTRwbSN1VaOYtwISNMIaghLR3ZMVFDzBqEdkmFALc3TvWtY1zQMCCqPXZrPvbnfEPIlqoB6ng5zecY/fCVGRpf4DjqwfN3AX6HOWF8ZbAQ8734yvR9naF0NmE4i5ABkHTq6kj+mOEO8Pzl2xO08ZCVRd/smuLsKjvr5AxbKUULWQmL68VaQ4UIVIigJELWMipEoEIEKkSgQgQqRKBCBCpEoEIEKmQJRL8BhWLngGx0N6cAAAAASUVORK5CYII=" InformativeScreenshot="a6bf96b8a7f9545b1c121f65dca9d85e.png" Reference="hz4LrFmUMEiEUgYjo26OTg/mbawbr41MkWgkE1f2Gb-gQ" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="False" ClickBeforeMode="None" DisplayName="Type Into File Manager" EmptyFieldMode="MultiLine" sap:VirtualizedContainerService.HintSize="954,218" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="HardwareEvents" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Text="[System.IO.Path.GetFullPath(str_ExcelFilePath)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="yL2E7CWXOkCV2TI-jmZmcA" DesignTimeRectangle="197, 465, 538, 24" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'File Manager'" FullSelectorArgument="&lt;wnd ctrlid='1148' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" Guid="e6d03919-71c7-426a-92c0-fba5edb823ef" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAgYAAAATCAYAAADru8WhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABiSURBVHhe7dYxEQAwCAAx/JumC/cmmqjILADAEQMAIMVgxhEA4HdiAABEDACAiAEAEDEAACIGAEDEAACIGAAAEQMAIGIAAEQMAICIAQAQMQAAIgYAQMQAAIgNAAARAwDg7D5uVApdcH5/QQAAAABJRU5ErkJggg==" InformativeScreenshot="2427ec5730389932dba70eec807783b9.png" Reference="hz4LrFmUMEiEUgYjo26OTg/nBkVAath7USt2Yammcm6YQ" ScopeSelectorArgument="[string.Format(&quot;&lt;wnd app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="False" ClickType="Single" DisplayName="Click Open" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="qU3feM-dy0WYTt7RL3Uu7w" DesignTimeRectangle="747, 494, 88, 26" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Open'" FullSelectorArgument="&lt;wnd ctrlid='1' title='*Open' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1' title='*Open' check:text='unchecked' /&gt;" Guid="72c966b7-4091-4bbe-9940-33d71fbb07d9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAeCAYAAAChf3k/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFHSURBVGhD7ZZNCsIwEEZzp+rClQdpvYc7Ee8guJTiRQTpEdyqILjsDcambWqStrZgHBP5Fm+R38WbyUdEnucE+IBwZiCcGUO4WJ7BFzAcG4Nicba90Hx3BY4YFC433e4P4AAIZwbCmYFwZiCcGX+FpwsSQjRE66x7X2D4KbyUPaXVSc1ltJr8h3QPhVdy49SaP20oEgva63MB4p/wXrGyEKrrDxTLF5DKvR2RU96h4kjdVZ9Zv6LqFy/GT+GTDR1ba3rnS3mFNLWvFGwVQ8VREU+V2PpMcmjmX8XgI+wObzL+QfukLobR3TWlZPtM+w4O/BM+KsNtWdqZ3oJBeD+t5y7l6JlrjVvF6MpnCH+P9Q83O76SFSfT7nU7VhApn/IbWS6AcGYgnJlAhYcLhDMD4cyMFg7cMSgcuMdwrA/A94FwZiCclZyeMFJPGQppDf8AAAAASUVORK5CYII=" InformativeScreenshot="886449a2fe932f37621b8831fd871b80.png" Reference="hz4LrFmUMEiEUgYjo26OTg/V0aZL_FslEmTjOF8fxFatw" ScopeSelectorArgument="[string.Format(&quot;&lt;wnd app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Create'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e7bbfdc6-e920-44b0-92ab-af38f07693d5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://my305028.s4hana.ondemand.com/ui#SupplierInvoice-upload&amp;/?sap-iapp-state--history=TASRODT2GG7MNYRHNXEUWXP2KTRVHGD8CXSUN164V&amp;sap-iapp-state=AS3N2U4HZJ9GWYG338905APLGFZMARRT07Y9SL45" ContentHash="-3wbL0rOdki7AvZ8NDFxvA" CvElementArea="1340, 768, 71, 32" CvTextArea="1353, 777, 45, 13" CvTextArgument="Create" CvType="Button" DesignTimeRectangle="1344, 768, 64, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Create'" FullSelectorArgument="&lt;webctrl innertext='Create' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl innertext='Create' tag='BUTTON' type='' class='sapMBtnBase sapMBtn sapMDialogBeginButton sapMBarChild' aaname='Create' check:text='Create' /&gt;" Guid="4e04cc90-923a-418d-9592-8b730a9309cb" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEQAAAAkCAYAAAAw55zoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMKSURBVGhD7Zb7S1RBFMf7tyL6ISLoQVBIFEVPCUvsYagQYhSYUZRFpRVJYT9UBhI9fpAKepdQFpHurrvqurua62td13Tdh3u637M7cj2IeBeFivOB4e7MnTs787lnztwVpMxBhQhUiECFCFSIQIUIVIhAhQhUiECFCFSIQIUIVIggbyGT8RlqaB6izSUeWrmrndbsd1Hl1SAFBhK5Hv8meQkZHE1S4aluFrHuoJu2l/lo67FOWrW7g+sfv8dyPZeeZ28itOVoJ/kC8VzL0uJYSCZDdKMpzDLKLgZoYjI92/7ua4yO1PipzfWb25aDRy0jtOGQ++8RMj6RpgNV3Yua1IU7v7hf45NhWl/k5sWk0hl6+jrCEQWpuEIkhAKMf/1+mCMN97ed8NKX9qxgjIc2U1AHfeEEnbwSpNV7OrhU3+qjyHiK7znFsZCglSMQsjvKfTQaXfhPMWFsI+SXkrN+evEpSs/fjnFbcbWfWj5E+Yr733JRBTkbD3vo8r0Butk0yEILjnspZC3a449T6fleWlvoYrmoj8XSvH0h8O7jIS74XXUtRIlkzrIDll0I3iQmD+KJGSq/FOBo8fZmowtX1Gsbs297xlrDtNXPYKTao8QenWjH/XMN/RxlKPi9qdhDPaFp7uOEvLcM3oK7ZyrXOj9GSOuPCa5DIETaw94U9DV5CNtE3jdjSCGQLfuiLGZLz8eSJVXg6p5iWa9ao5S2coUUYiLEhPz7tthsQfiPWMJ2VmRPrI6uKRZ4uj40ZwyMaY8wEyHYSvbxPlv97XNbLI6FgIWOXSS15pejLE4KAbiHfkVnejiH4FsGEruCcRoYTlJBqZfHbLKE1Vp5BPnFPga2Fuo4zfD8yFiK9lV28TN1D8PcVmFJr3sQ5pfilLyEAPNhhoSHCUIEJvnTO8kywHxCcMpAivmgw0Kw8OFIip9D0kUEmNMCi7SPgW1gtlTN7X5KpjJ8yiBC8Axk77UEYeshHzklbyH/KypEoEIEKkSgQgQqRKBCBCpEoEIEKkSgQgQqRKBC5kD0B7SvHH38n7rxAAAAAElFTkSuQmCC" InformativeScreenshot="7b22cc05c004418251b281c66e017113.png" Reference="hz4LrFmUMEiEUgYjo26OTg/kOye8fRTW0e_9hYAF6wlyg" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:LogMessage DisplayName="file uploaded successfully" sap:VirtualizedContainerService.HintSize="954,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;file uploaded successfully&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" ContentHash="sQRczG5mBUijurWjF8a71g" IconBase64="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" InformativeScreenshot="eaf29172a1b97079b44340a4eb8f2b1f.jpg" Reference="hz4LrFmUMEiEUgYjo26OTg/voVP97Wc302uQjEOKD3oow" Selector="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" Title="Home" Url="[str_URL]" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

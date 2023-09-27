@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="MNIGZeE49kutWpMhEbyYiQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="238, 87, 73, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Restore'" FullSelectorArgument="&lt;ctrl name='Restore' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Restore' role='push button' automationid='' check:text='Restore' /&gt;" Guid="9960275e-6d73-4882-8254-c76e313b16d4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE0AAAAkCAYAAADM8rciAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALQSURBVGhD7Zq/btpQFMb7HHmB9gl4goyVOnTLE7B1yMBQiYk1Q4WUgS1iiKosHiIhVUqlDGRAURZSMcAQIYYaxYpBBMf88ddzbB8HLIv0Uqz+O5/0Sfjec234+ZxjBPcVVMZSaFtoDdqXb094V3Xw5qONvcPv/72ZA/NgLqtKoDXaT5kL1ZGZjyiB9vaTkxmsjsx8RAm011qSG818RAm0rED1ukUKzcAihWZgkUIzsEihGVik0AwsUmgGFu0Q2hTd+Fwi1/ZQqmTF/p0W7RyaezdBsf6A0pUPl47t9kNG7Ese4+toCbs3zpj7fRbtHlryQcdoTlePTZw+159hUX6ZdjOHhwDXF8NovjZB0wmii9F4vzPGPo0fXM3gzuJhzHGSLvOpjzLHXfroJ3G0vjfBQXjd6OZgNEeX5+0p9iojWPYyjGS5g0cUd9AmRPn1tNkCDes+nnOp3KLMYVD751y6BPQ8WmN3XBQyzpVkmhWVusugju7xIS79/g3/yBBDwwJWnW/QELVBAI/6KYMq1D30k9jVa5hblEt58hvlu+5R1oUwzqIPmVa35aJBMIElur0pysdxVqaglXqcNTPUkms5aPCPDpxVAi18/bw2rV2Uuii3nva+NaejJZoWzcXQbi/Ta8gVB+WWj+6IS5ey85THM6DNfFSTdS9DszvbPIA2W5T7gwCOR71njGvuN9SfqpxNRy5O7nx8XllfiEuw2+LjSRjvDSZhOWeXZ0CxK+WZQHNgMdDZHNYptQe+KW2fWsXztba1KEdokm0BZdgQhTMq2bD3sILwO1z58BG38Ug4Rg07au5DlHuLaJhAl+i4uPbAoHJuUxsIY9PQyGsPHXpPIx+143juFyzaIbR/3yKFZmCRQjOwSKEZWKTQDCxSaAYWKTQDixSagUUJNP2zeLMz/yzWbQmbnbktQTfAbHbmBhiWbrVa94tbrVQ/L4VmLOAHAOMtFEuHGmYAAAAASUVORK5CYII=" ScopeSelectorArgument="[string.Format(&quot;&lt;wnd app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="56330a467d507706d847caef7bb8419f.png" xmlns="">0gF3BuCMWM0qZdtRob3Z0vA</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

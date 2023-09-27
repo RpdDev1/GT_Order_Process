@@ -1,0 +1,325 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ueabf="clr-namespace:UiPath.Excel.Activities.Business.Filter;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_OrderSheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_ConfimedCasesColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_StatusColumnValue" Type="InArgument(s:String[])" />
+    <x:Property Name="in_AutoSaveFilter" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderConfirmationModeColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_ConfirmedQtyColumn" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process1.in_OrderFileName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process1.in_OrderFileName>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>828.8,5880</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Business.Filter</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Copy the &quot;TSO Confirmation Qty (In Units)&quot; and &quot; TSO Confirmation Qty (In Cases)&quot; to the &quot;Confirmed Case&quot; and &quot;Confirmed Qty&quot; columns" DisplayName="Process2.9" sap:VirtualizedContainerService.HintSize="822.4,5815.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_FilterFormula1" />
+      <Variable x:TypeArguments="x:String" Name="str_FilterFormula2" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="760,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Minet Order Report Processing: Step 12 execution started &quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="760,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_FilterFormula1]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">["=IF(AND(IF(ISERROR(BC2),TRUE,OR(BC2="+""""+in_StatusColumnValue(0).ToString+""""+",BC2="+""""+in_StatusColumnValue(1).ToString+""""+",BC2="+""""+in_StatusColumnValue(2).ToString+""""+")), AV2="+""""+in_AutoSaveFilter+""""+"),AD2,AH2)"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_FilterFormula2]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">["=IF(AND(IF(ISERROR(BC2),TRUE,OR(BC2="+""""+in_StatusColumnValue(0).ToString+""""+",BC2="+""""+in_StatusColumnValue(1).ToString+""""+",BC2="+""""+in_StatusColumnValue(2).ToString+""""+")), AV2="+""""+in_AutoSaveFilter+""""+"),AE2,AG2)"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="760,4960.8" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2">
+      <ueab:ExcelProcessScopeX.Body>
+        <ActivityAction x:TypeArguments="ui:IExcelProcess">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="726.4,4874.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="664,4762.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" TemplatePath="Data\Input\Order page.xlsx" WorkbookPath="[in_OutputFilePath+in_OrderFileName]">
+              <ueab:ExcelApplicationCard.Body>
+                <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="630.4,4492.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ueab:FilterX ClearFilter="True" ColumnName="[in_OrderConfirmationModeColumn]" DisplayName="Filter" HasHeaders="True" sap:VirtualizedContainerService.HintSize="568,170.4" sap2010:WorkflowViewState.IdRef="FilterX_1" Range="[Excel.Sheet(in_OrderSheet)]">
+                      <ueab:FilterX.FilterArgument>
+                        <ueabf:FilterArgument Mode="Basic">
+                          <ueabf:FilterArgument.AdvancedFiltersArgument>
+                            <ueabf:AdvancedFilterArgument LogicalOperator="And">
+                              <ueabf:AdvancedFilterArgument.Condition1>
+                                <ueabf:AdvancedFilterCondition Value="{x:Null}" Operator="NONE" />
+                              </ueabf:AdvancedFilterArgument.Condition1>
+                              <ueabf:AdvancedFilterArgument.Condition2>
+                                <ueabf:AdvancedFilterCondition Value="{x:Null}" Operator="NONE" />
+                              </ueabf:AdvancedFilterArgument.Condition2>
+                            </ueabf:AdvancedFilterArgument>
+                          </ueabf:FilterArgument.AdvancedFiltersArgument>
+                          <ueabf:FilterArgument.BasicFiltersArgument>
+                            <ueabf:BasicFilterArgument>
+                              <ueabf:BasicFilterArgument.BasicFilters>
+                                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                                  <InArgument x:TypeArguments="x:String">[str_FilterValueOrderConfMode]</InArgument>
+                                </scg:List>
+                              </ueabf:BasicFilterArgument.BasicFilters>
+                            </ueabf:BasicFilterArgument>
+                          </ueabf:FilterArgument.BasicFiltersArgument>
+                        </ueabf:FilterArgument>
+                      </ueab:FilterX.FilterArgument>
+                    </ueab:FilterX>
+                    <Sequence sap2010:Annotation.AnnotationText="Copy &quot;TSO Confirmation Qty (In Units)&quot; to &quot;Confirmed Case&quot;" DisplayName="Copy column seq1" sap:VirtualizedContainerService.HintSize="568,2155.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="Verify &quot;TSO Confirmation Qty (In Units)&quot; column" sap:VirtualizedContainerService.HintSize="505.6,916.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="sd:DataTable" Name="dt_temp" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ueab:ReadRangeX DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="443.2,169.6" sap2010:WorkflowViewState.IdRef="ReadRangeX_1" Range="[Excel.Sheet(in_OrderSheet).Range(&quot;AD:AD&quot;)]" SaveTo="[dt_temp]" />
+                        <If Condition="[dt_temp.Rows.Count&gt;=1]" sap:VirtualizedContainerService.HintSize="443.2,595.2" sap2010:WorkflowViewState.IdRef="If_1">
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="377.6,232" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;TSO Confirmation Qty (In Units) contains data&quot;]" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="377.6,180" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Throw Exception="[new BusinessRuleException(&quot;TSO Confirmation Qty (In Units) does not contain any data&quot;)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                      <ueab:InsertColumnX ColumnFormat="{x:Null}" DisplayName="Insert Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="505.6,210.4" sap2010:WorkflowViewState.IdRef="InsertColumnX_1" NewColumnName="[in_ConfimedCasesColumn]" Range="[Excel.Sheet(in_OrderSheet)]" RelativeColumnName="[in_ConfimedCasesColumn]" RelativePosition="Before" />
+                      <ueab:WriteCellX sap2010:Annotation.AnnotationText="Enter formula in first cell" Cell="[Excel.Sheet(in_OrderSheet).Cell(&quot;AG2&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="505.6,191.2" sap2010:WorkflowViewState.IdRef="WriteCellX_1" Value="[str_FilterFormula1]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ueab:WriteCellX>
+                      <ueab:AutoFillX DisplayName="Auto Fill" sap:VirtualizedContainerService.HintSize="505.6,90.4" sap2010:WorkflowViewState.IdRef="AutoFillX_1" StartRange="[Excel.Sheet(in_OrderSheet).Range(&quot;AG2&quot;)]" />
+                      <ueab:CopyPasteRangeX DestinationRange="[Excel.Sheet(in_OrderSheet).Range(&quot;AH:AH&quot;)]" DisplayName="Copy/Paste Range" ExcludeHeaderFromSourceTable="False" sap:VirtualizedContainerService.HintSize="505.6,241.6" sap2010:WorkflowViewState.IdRef="CopyPasteRangeX_1" PasteOptions="Values" SourceRange="[Excel.Sheet(in_OrderSheet).Range(&quot;AG:AG&quot;)]" Transpose="False" />
+                      <ueab:DeleteColumnX ColumnName="[in_ConfimedCasesColumn]" DisplayName="Delete Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="505.6,161.6" sap2010:WorkflowViewState.IdRef="DeleteColumnX_1" Range="[Excel.Sheet(in_OrderSheet)]" />
+                    </Sequence>
+                    <Sequence sap2010:Annotation.AnnotationText="Copy &quot;TSO Confirmation Qty(In Cases)&quot; to &quot;Confirmed Qty&quot;" DisplayName="Copy column seq2" sap:VirtualizedContainerService.HintSize="568,1975.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="Verify &quot;TSO Confirmation Qty(In Cases)&quot;  column" sap:VirtualizedContainerService.HintSize="505.6,736.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="sd:DataTable" Name="dt_temp" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ueab:ReadRangeX DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="443.2,169.6" sap2010:WorkflowViewState.IdRef="ReadRangeX_2" Range="[Excel.Sheet(in_OrderSheet).Range(&quot;AE:AE&quot;)]" SaveTo="[dt_temp]" />
+                        <If Condition="[dt_temp.Rows.Count&gt;=1]" sap:VirtualizedContainerService.HintSize="443.2,415.2" sap2010:WorkflowViewState.IdRef="If_2">
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="377.6,232" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;TSO Confirmation Qty(In Cases) contains data&quot;]" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Throw Exception="[new BusinessRuleException(&quot;TSO Confirmation Qty(In Cases) does not contain any data&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                      <ueab:InsertColumnX ColumnFormat="{x:Null}" DisplayName="Insert Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="505.6,210.4" sap2010:WorkflowViewState.IdRef="InsertColumnX_2" NewColumnName="[in_ConfirmedQtyColumn]" Range="[Excel.Sheet(in_OrderSheet)]" RelativeColumnName="[in_ConfirmedQtyColumn]" RelativePosition="Before" />
+                      <ueab:WriteCellX sap2010:Annotation.AnnotationText="Enter formula in first cell" Cell="[Excel.Sheet(in_OrderSheet).Cell(&quot;AF2&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="505.6,191.2" sap2010:WorkflowViewState.IdRef="WriteCellX_3" Value="[str_FilterFormula2]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ueab:WriteCellX>
+                      <ueab:AutoFillX DisplayName="Auto Fill" sap:VirtualizedContainerService.HintSize="505.6,90.4" sap2010:WorkflowViewState.IdRef="AutoFillX_2" StartRange="[Excel.Sheet(in_OrderSheet).Range(&quot;AF2&quot;)]" />
+                      <ueab:CopyPasteRangeX DestinationRange="[Excel.Sheet(in_OrderSheet).Range(&quot;AG:AG&quot;)]" DisplayName="Copy/Paste Range" ExcludeHeaderFromSourceTable="False" sap:VirtualizedContainerService.HintSize="505.6,241.6" sap2010:WorkflowViewState.IdRef="CopyPasteRangeX_2" PasteOptions="Values" SourceRange="[Excel.Sheet(in_OrderSheet).Range(&quot;AF:AF&quot;)]" Transpose="False" />
+                      <ueab:DeleteColumnX ColumnName="[in_ConfirmedQtyColumn]" DisplayName="Delete Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="505.6,161.6" sap2010:WorkflowViewState.IdRef="DeleteColumnX_2" Range="[Excel.Sheet(in_OrderSheet)]" />
+                    </Sequence>
+                  </Sequence>
+                </ActivityAction>
+              </ueab:ExcelApplicationCard.Body>
+            </ueab:ExcelApplicationCard>
+          </Sequence>
+        </ActivityAction>
+      </ueab:ExcelProcessScopeX.Body>
+    </ueab:ExcelProcessScopeX>
+    <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="760,134.4" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="760,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Minet Order Report Processing: Step 12 execution ended&quot;]" />
+  </Sequence>
+</Activity>

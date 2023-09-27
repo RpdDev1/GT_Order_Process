@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="-_kzL9YGw0iRNK06uTYL_A" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/OMSHome.aspx" DesignTimeRectangle="1849, 144, 40, 15" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Log out'" FullSelectorArgument="&lt;webctrl aaname='*Log out' tag='STRONG' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='header' tag='TABLE' /&gt;&lt;webctrl aaname='*Log out' tag='STRONG' type='' class='' check:text='Log out' /&gt;" Guid="39e7a17a-519b-4659-806c-b0a754ed4442" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACwAAAATCAYAAADrqO95AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGtSURBVEhL1ZLNTsJAFIXnJfwjUP8eQvBhAF35bwQKxFcATNwBOyIR3EBSUBMRcAM7WAP7LnmG47Qz004RlSCJmcWXzJx77u3pbcnaSQ0qQdZP61AJsnFWg0qQzfM6VELBwBcGVIJsXTYgyI8JzGkEeUn7PzLoTWmeccajE99VEwInsKT9H1keOOvRie/agIAFDiMvaTbtMNWtGmM0KPFaCYbp6jZmArFF+7neazNfbHBA7wcwHmfnWhrzEP9NE4IC33BB0vyVJEbWQ4YP9j0+DNpDeh1a60Rcv+0LwqhIvQv187NTEzPcDcvzSCD2DEHRDhxFUdISfEijwjUnQBmBTtT122fJt3C/FXieN8cD55xZFn8LzM/ss3FN6v21f5nAWvwFAiewpGldPrTL7roYWuVnMwVd9s/yQ79WTTnhtXgZDfu/5TVxH9+5syhkO/EKQXHCNuVgpqFTXR+GPHq/y3u6Rx7dU5P4tp8iP7M/TNMXCNHAs32uRnYSb1iOKtvA5N57N2+R/OJdHUTT37A0H8fOdhiHaDzN8a0Qsqu3oBJkL/kOlSD76RbUoYVPnxLBVb/jDtwAAAAASUVORK5CYII=" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+      <imageRef attrName="InformativeScreenshot" originalValue="f9cf3b98518fad2697d12d3125102850.png" xmlns="">01X3P1FCCx0Gr55YXLMhczQ</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsVariable="False" Name="BrowserAppName" />
+    </scg:List>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

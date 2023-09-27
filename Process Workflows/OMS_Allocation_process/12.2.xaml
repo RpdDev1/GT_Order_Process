@@ -1,0 +1,184 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_12_2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="BrowserAppName" Type="InArgument(x:String)" />
+    <x:Property Name="int_HoverTime" Type="InArgument(x:Int32)" />
+    <x:Property Name="int_CheckAppStateTime" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <this:_12_2.BrowserAppName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_12_2.BrowserAppName>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1102,1720</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_12_2_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Click on &quot;Allocation Upload&quot; under &quot;Allocation&quot;" DisplayName="Click on &quot;Allocation Upload&quot; under &quot;Allocation&quot;" sap:VirtualizedContainerService.HintSize="1112,1655" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="int_CurrentRetryNo" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1050,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;OMS Allocation Process : Step 2 execution started &quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="OMS Home Page" sap:VirtualizedContainerService.HintSize="1050,1151" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Never" ScopeGuid="1019d357-ba33-4cd5-876b-bd74b4af7271" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,984" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NHover DisplayName="Hover 'Allocation'" sap:VirtualizedContainerService.HintSize="954,157" HoverTime="[int_HoverTime]" sap2010:WorkflowViewState.IdRef="NHover_1" InteractionMode="Simulate" ScopeIdentifier="1019d357-ba33-4cd5-876b-bd74b4af7271" Version="V3">
+              <uix:NHover.Target>
+                <uix:TargetAnchorable BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/OMSHome.aspx" ContentHash="4MDyVPPAv0CRZHHD2yfsXQ" DesignTimeRectangle="184, 144, 88, 25" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Allocation'" FullSelectorArgument="&lt;webctrl tag='A' aaname='Allocation ' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='header' tag='TABLE' /&gt;&lt;webctrl tag='A' aaname='Allocation ' type='' class='' check:text='Allocation' /&gt;" Guid="9ba6fe7b-8ec8-4e03-84bc-a681a86bf1d3" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAdCAYAAAAn6wuRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO4SURBVGhD7ZbLa1NBFMbnn1CraOvbjSCKK8GF4MqNC0Fw41J8tcWaFLGF1qobQXcVQQVp6yt9JdYoWp8otk2LC8EYSaqCLbTapEn6UNPH59w7M/fOvbnRVMpsnAM/kjPznTMzX+ZeQpYc7oBGHWTpkU5o1EGWHe2ARh2k5FgnNOrQhiuGlBy/B406yPLyLmjUQVZU3IdGHWRF5T1o1EFWnrgPjTrIqqowFovACMyIR2jeOYa0kUyPoc5D+7+ycMOFkUaMfHXMKTXc2scEAnxMrJ+Ov8/X/yO7a1tReTmM6sudONkYhL+xg36GzE821oETVx5hT10rVpW3efaQIaUnH2Ah1Cdy7FRm0MNKc4FRNhqP0DxoG14vaRYN0d+1h8Vm37l2DEQ/IzU+ifHUGFLpcSRTWaRSafP7WHoCbz98wcELIZQdu+vZQ4aU+R6ieKLomTYOmUPG/AQSEXu+lRtujgWTyBjJdBJnXPMi5NqyyAQfFTGBVtFDjtEhqh9CgqdW0PEz/DJkElHeV+xXRA49QbaerU1KveiaYj+crZVNuBp8icyU0WgO80xoxvz8PKZ//MKthz3YVtHkqCsEWe17jKKRTYxMmosyQ9m8bbhL657zxawfridIc49e+YgaV39MUpOYxjYxJun5Gr5hbizTC63Ixf5YrViTsbfuJr3Fn6jBs0wkGR8d/Ir9DbfzagpBSv2PUSzidZKmmyr1DyNuZjm8CbF565XST/NQkr9Skqj30Mq9RB3ra68n95TD0Z8aFuBax/485uX9Oc+Sn7s5fz2M7+NZU2OEYXg2m0VjoBuby5s9a7wga/zdKA5xQ/LDuBWGxrrF/VQfSvEbnkKDVUtvE+/XwA9o1Mq3S15TaDA6XLh/gZ7O9dm8XO/Qumu5XmZX9Q28GIhhZpbd7bm5OfS9i2NPTbOnvhBkbfUTFEW/eOzpAQqMtVkHonPygd1z1R/txz1UoLdUk0l8dOSsh/0jtnG9bZqhd63h0ju1+bkXxj+SoZHvVDWDkW+jqL0WxqbyO57aQpB1p7pRDNbhB2PSuH3rEwO2xvi+rss2/KyrhwhTJ3oNcNOtoMaIHq4QdY5+9Ck4O8hNs/YYQy9/77PIobeL1bq1+bX57PC1oP1pBOmpn+h6/RY7/S2euj9B1px6Dk3xHLzQjkd9URy6FML6inZPzZ8gG2ueQbMwDlwMY0vVbc+5v0E2nX4GjTrI+poX0KhDG64YsqH2JTTqIBvrXkGjDrK99gE06iDmv30dykIbrjSA31HP/CyaqNhWAAAAAElFTkSuQmCC" InformativeScreenshot="61b6af2db3c5da5fcf8489714d157683.png" Reference="KHM7KCyeR0yxsr5MPZ05VA/5LyiigCg_UOmdPuUlJqgHw" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NHover.Target>
+            </uix:NHover>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'AllocationUpload'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1019d357-ba33-4cd5-876b-bd74b4af7271" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/OMSHome.aspx" ContentHash="Bl-J6QDJsEymszdBRNkP2Q" DesignTimeRectangle="185, 171, 170, 20" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'AllocationUpload'" FullSelectorArgument="&lt;webctrl tag='A' aaname='AllocationUpload' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='header' tag='TABLE' /&gt;&lt;webctrl tag='A' aaname='AllocationUpload' type='' class='' check:text='AllocationUpload' /&gt;" Guid="b8166ebb-1b46-4b35-8818-d1cec424696d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAK4AAAAYCAYAAABjn8aGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJlSURBVHhe7ZYxcsIwEEVd5jC5BBUFB0jFFaB2yaShyAwVXSqOQM0ZmByCeyheybJ2V7ItJnbGGj4zb8ZhpZXW+6RQGXzwKfBjxX37+AagGIS4p58HAIsH4oIigbigSCAuKBKIC4rkT+IejmvzfrxHz/NyNZuqNvtkbH6mrpPyVbtrMgb6yRP3djbvVRW94P8Qd47Gpvaau87Udc5R3yuQJa5r1jm66XgTp26oZ47Gpvaau87Udc5R3yuQIe7dbFdrs709zH5Xmc0lxHgTdUNpbEW3dINsNOULMdc09Z0/IP6mb3F51E8FMSZ874Som7HpmJaPC/TM3L46bY5uvnxvp0stYhD3ecbFJTFWZ3OgZ3rh7CXzJurnys9ppfSNs43ucjSxnR8XsPOFRLyxXFx6ZlLQ/tp17TwmHK2b2qsnWlPN5bGcOgX2cLX57LO7CLocoj6Qw6i4vOFOFPnSUzLQHH0zu+ZQc8N8Qc8tFDeWicsPVRdz+fW8vr3yeO+a6kCM10l/u0MVamr3nDj8Yi2QxYi4+uU7UgLkNbRH3IFbKG7sNOJqWQbjT4vrbl8/Tty4EHcShsVVL9nCZNHNFo3vhJL/QqnZIWcTo58KvLFqTNxYJm57sDp5lGB8Ht+fEMki88i5UkKex45L1ilrtvvih62nVpDPoLj6RnFQU8KtlmooYRuibugwP46J8U3+0EwnVRjLxW2wIvi54XspX7w/JxNbk8XsXBYbytNbJ8/f1MNl5fllrSCX4Rv3RdHSg+UBcRNA3OUDcUGRQFxQJBAXFEkkbv35BcDiwY0LigTigiJx4hrzC/chb2xdindUAAAAAElFTkSuQmCC" InformativeScreenshot="0f1604bfa7d4877978bbbce94c3a8df5.png" Reference="KHM7KCyeR0yxsr5MPZ05VA/U07iEaEoXU2PfHAKXqsrfA" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="Check App State 'VF of Bulk Update'" sap:VirtualizedContainerService.HintSize="954,475" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="1019d357-ba33-4cd5-876b-bd74b4af7271" Timeout="[int_CheckAppStateTime]" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Allocation upload" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Bot is able to click the allocation upload&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Allocation upload not display" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Bot is not able to click the allocation upload&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/AllocationHomePage.aspx" ContentHash="Ps2-IFNaOUKtJlzoOh-a1w" DesignTimeRectangle="29, 332, 76, 15" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'VF of Bulk Update'" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='*Bulk Update*' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='UploadType UploadDate Recordcount' tag='TABLE' /&gt;&lt;webctrl tag='SPAN' aaname='*Bulk Update*' type='' class='ajax__tab_tab' check:text='Bulk Update' /&gt;" Guid="3cb9d2a3-f5da-4db1-bd6d-1c7ab3de84fe" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFAAAAATCAYAAAAH3YpvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOaSURBVFhH7ZI7TFRREIZPYWJhY2FlRWNlaWdnZWdlZ+EjMVpYWNhgggkJkUITLUiMEWJUROWhREIWN2AQUYEAK/iI2Qe7rDx2YRdYEHkVv3fumXP3nnOPGNaEhGQn+Yp5/TNn7hWXGkdRpnTE+UfDKFM64kzDIMqUjjh9/yPKlI44Vfcekgx+wm4rUwmu+TfdC9SxhfE+8llzfQkPLLUafUtYodqFjBbX9XZKAuPr1L+Kbmv+/xEn7/RCMos0zVpfxD0v1otwnoJA+lsxth2yfgtjveTbNa30LsoD5me1uK63U2IY4wOGrfkg4fzOZokTt95CMoNJmrW2gDov5vDlF0Wxko4WY9sQylH1JiI95P9F00bPgjxgbkaL63o7JYrIGvX/Qsia1yllljh+MwzJNFLUv5bHXS8WRieLjoSlfze1SQGkxrhmTB54OfXDUq9rql5Vq+H8asuUzE1rcXO+8lM5qUWm6fE+ruXyGOEDdtryZDxP7aZMfw+bcRtCHKsOQTKFJNeZtpz8zjUh3E7KQckI90Xc/8areT1P3iaGu3yazuDbXIf5KU9Lo4sPaOR1PeUX5+n7+OZRv5rp/NuvyecZ9t6/zTLeYuwnjlZ1QJJGggp+51DrxTpQO8FfZi6t+YlRrhmVSxYmvrr+qznyNjHU6dNUZmhrOJ+6QDU8R6HrBX2tz9jlaNVXDP2myApesZ4L1ylTb7Hu7ttZ5nUtcaSyHZJJxN2GedR4sWC8JiEPGB/m/LD736CQGHf9Nl5ioMPX65mKW+iY50NManFdL+j793tj7lY5jgH3gMtoI1/N4H7zLdvvrkx/g6i41gZJiheZQ7UXC8ar4xvkIT7E+SE+YPyz67dkydvAp3Zfr/OAlvY5uXw2xbomXGvkdb2gX+HXNXapuPYZn/iALY5v7m761t0D99ARh682Q5JEzG3I4oYXcxiU32wpFrH6LzKua/gb+PAyqHkjJheODfr0fei9RHAnNQ+ZpOvrmkY97+qcFC98tXJXrnVM7SPzxfnbvUXu1wxx6MozSCYQpQKbZSa4hhhB/yrHHfH+KB80OuLmm3hof6tPczWL6/4Znh9E9vvMqPX0eS6Zmu3SmsUSx5HJ8q4FNLl5/+5OX6bg1nr9Wq98s76P0ikiDl5uxF7i6Sw9ZAPvm+353UYcuPgYe4knM/KAfc/t+d1G7L/wEHuJx3zAd032/G4j9p1rQJnSEfvO1qNMqdTjD/WHYm1TBIw4AAAAAElFTkSuQmCC" InformativeScreenshot="6777755ede333f579acb709d0adc3c15.png" Reference="KHM7KCyeR0yxsr5MPZ05VA/98NEyLWll0O_ZbWoRh-_7Q" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" ContentHash="_QDHc-4hwEq6iPJe0f1u0g" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAbxSURBVFhHpZZtTFvnFcf9pWuypg3tmjVrGmLeEoMBG2PaJBDb2CkvyQJpvlXtFqRpmrSXT5s67a3pl0nTptXkhdAklEsCbZdG3VsrVe3AhhBCs3ZDi5ZAo21OA5hAOztNmrXhXj9n//M8j415SUe7I/30P+fh+vzPufcasC03YgF3zkzQ0zITrDLAyPshb3ImVEXTQS/NBDn3RmeClcZ0qHIvX6s/9v/HVIPbfjVU1com2kxcra2k6VovqBQM14sIVBpTAbddt/nsoTb2htlUGgWUWcYQ9dWAR0wFOPcgV8r1VMCj8AOfZ59uufzgyWES00a6sUfm8ww0cTZiuPZViLi/Qp1xrohNbV7m3ZiurXChUSzbIIO/QjDKUBlpE4r73BmdhE5ucys4V/X/HoI3h1EsvYFSjTaa9Kmm8W3aSDXPMJGmxkWTNS4BBaoer3ZhCMfSQ/Azh1FMGWU1z5ipxnIA1hq3kDUbaENlJHMxLmul49XljFDqii35LZnwucMZE4XI3khvo41Uzg1lzc1l7aIrOGO0KV3ZupAycWVLWVjbqnC/tNve/h3/nAmboqk2I7mNNpn57jfoxss9ZMYnKR3i5rskZl4la2QXWecqGcGaYn3LQ5JzHpx5BM5kTcNZ70PlS3uMbUYzjYUq1Fb6dknFxDKvr6YbJ3u0JVE8Kah/bBaYdGkqpU8xzNSLZL3jJ/OtChgxbgzhxjDQYbeqoajVXXAbu3M8LzxGzL4fBjO3io1Z39tSRuN1W+nWpTFp8JeYSd8yPqKqZ65R1T4N8qbwdYqOzsprxM0xst6ugZmLDZUOc85aDi3HEOVJGsG74H5hd4u7ZzdVANb+Jq80ZfCsBOv133TLxkein5AXhhmezso1R3ENh4h3K7PhMk1pljJOMXumpMXm7m42ALm6m4S7p1k8+Ys6ury5lN7b7BTMxGP1siFvV/l0UuLROse1eefv4C5xpC7sFdZZJ5lnS8hagtRwiWFzdTdHXScwwIkmTTO9useLIZwUe8RJN177nWy289kPqeJnyTlglNF0rutvdt6QnxFTJ4R5thhm2TgwlINS0NRQ8Yit/HhTsvz4LkpT1rWLth9spL/7yij2cIm4dWmUxuIWudF8MYnbkKTJJF7MTyZguBGGmiEJMSZInS1K2MqMr8JUImSu659/u5piVcWCN4lcnCXXTxNLA7P5dYLKoRH9QlpDRWSeKSSLQW4NaZV1gbCVdu6kUpiWGjuF1C6lj7Q30vkap2zSd/EWlaHpQtgoW7PP+zA0h3WmAEb5wjoDhgowTD7O5uABks7OHUKxk6BAqvjeUz5hxidoMpGi0p/8+zMxiscmProAkzwyB/Ogdgxhl7XKN3CdsJU8v+OvJR2NpNhBqGXuZH2+UQz2n5SbtHRcJycaO38MWD+Ful9dk59JTZ+CGRvlCnMwlyzJBrBecG4Oro/aHB0NRvGxRpqjQQ7gONYgOP/6a0/JZn/+1yyVwLwYKP1A5nP13HkvHhmH9fYWMk+vBw/B9CHBqnOyWE+vM2yOow0tIGPIyPpovQCsdPy8+ioe6rtJjh99QA6YSF0Izg/1/kdee228E4brYLYO2z6I/EGYK6y0Dqzba7MbgZziI/XJTUfqKRsH69E6wXi79ojR9/8hG//pwi0K/jJJm2CYzdeOfUjn/qlevInEu5QYLCFz4CuatTBdK9JqnX5A5hTNUX+WNz1X37rpuTraqJH5kTqRroHwGntE1/nfSgOOi5OWHIaZwEuaDr6m849bsN1aGD+QwWLt/7JUa2CNsPrXGNKcw9HeYN/Y/igxRVrTeRaisH27CPQ8Sa+MvkEX9R3hGL9+lYy/vUJP/P4H5O/wwWiNYkBr//0ytwbuFzIH2H7+f0ZFbaHWosPbKU1hG+ujxKaFhyWkNCT4ZxldwKk/FMHkS8pU6n3YVipZyFlTA/ct/k/ZHg7kFBwOxQraVOOCQyEqBKx8JpXP2ubX2Tze9TDM7hVm9F4YAlaAM605wormxLTl4sAQ9oK2YCzdMP9gkApA/qGgkHCu66XOL7+JZxxdjQHuAathuBqGUNSa2KJbvzB4iPwDtTHZ9EAt5R2sFQznafJY8XNWmR8I0ve7y8mM3I1N71EKrOgqmK4SnM9G7ob5ik83TwcPkbe/NgbIfiAg8vYHpMochvb9Kk9T076VLr+B5xxZxabQu+ZhRe6Kfbxc8+zAIM/YW2F+W/wYxi86Xs4ns28ljL4oMSMrBNdmBPStDGe+758n+G7khv3GhrCfNrT6Re6zPsF5btgn6+q2zTBZobmTzF4QuTNp9q5s/fj1z7H17QKD5Kz/9bYWDNCFAaLQJKCTp/A7PXJHItX7hZFU7wpjtu+OluVvbLP9F5lmWAkTeM7rAAAAAElFTkSuQmCC" InformativeScreenshot="927a87259ae27ba5ddffe8a294f91de1.jpg" Reference="KHM7KCyeR0yxsr5MPZ05VA/dqVDePK_sUGO_ls3tEAp9A" Selector="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" Title="CCMS Home" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="Log Message - OMS allocation" sap:VirtualizedContainerService.HintSize="1050,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;OMS Allocation Process : Step 2 execution ended &quot;]" />
+  </Sequence>
+</Activity>

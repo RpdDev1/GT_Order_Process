@@ -1,0 +1,222 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_12_2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="BrowserAppName" Type="InArgument(x:String)" />
+    <x:Property Name="int_CheckAppStateTime" Type="InArgument(x:Double)" />
+  </x:Members>
+  <this:_12_2.int_CheckAppStateTime>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:_12_2.int_CheckAppStateTime>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1446,1260</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_12_2_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Click on &quot;Promo Allocation&quot;" DisplayName="Click on &quot;Promo Allocation&quot;" sap:VirtualizedContainerService.HintSize="546,1035" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="int_CurrentRetryNo" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_AllocationUpload" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;OMS Allocation Process : Step 6 execution started &quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="OMS Home Page" sap:VirtualizedContainerService.HintSize="484,531" sap2010:WorkflowViewState.IdRef="NApplicationCard_5" InteractionMode="Simulate" OpenMode="Never" ScopeGuid="dd5e7bf7-6fe0-417e-8b46-e517adadf678" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,364" sap2010:WorkflowViewState.IdRef="Sequence_31">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Promo Allocation Button'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="dd5e7bf7-6fe0-417e-8b46-e517adadf678" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://customerconnect.bpo.capgemini.com/OMSMarico/AllocationProcess.aspx" ContentHash="fax4Gl0W0E-UUiGsWvB0bw" DesignTimeRectangle="679, 401, 104, 19" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Promo Allocation Button'" FullSelectorArgument="&lt;webctrl id='tbltog' tableRow='7' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='INPUT' aaname='Promo Allocation' check:text='Promo Allocation' /&gt;" Guid="63c82412-fefd-4abd-9c0c-c6e5e34f1aba" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGwAAAAXCAYAAADug6rPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJDSURBVGhD7ZlBzoMgEIW9oElP48J4ja7sSWx6jC48QZcegZ8ZHDoMMK3tn4oJJC+pAsPjfdCNjantUK0CO1jzwB6Phzmfz6bruqrCBFyADzQPDF7ebjezLEtVYQIuwAeaBwYkU4OryhDwgVaBHUQqsPnSmqZpIg3XuFApmnrwOJgp9b6fot8/0XVIevpEr4GdRjOzCW7x1ox39q4YTWawwQwWiDxUvwUGPpiHXYEtsxlPjWkvM3tXhtCvBZHyvSuwf9TXwGDzbT+YFv4uaex9dM8ofhtp7ogbwn6Yw8engqY+NWRXG0PCeuG/gAYM95lZn8Knfg4h8ObXcz6C8fKG5fJZfQ898yP2vB2Y+Et0pvl1D0+XC4P6aTP0vIYhQAdz/fpubPZm49ynD/DFx2aBBWGu/nxIdMDWOvwgwDyWTVBT3rBgDSUfAkl1RB6g18CggBAvEBq1kqcpMCgCiJ61sZkDxPr4WC3QLDwQ988BUX9SErQCTMsnWk/Usdp+w4TkhuM5nwKLzeb9uLHa4UpDig+FHi4T3QaUPSxvAlPz2QOYeoI2AYvDzPqBNRPv05Dyv1Hcv3LD5LzwOQ9MzWcXYGIRrOENbgEm13d9HCAJPKTe83C4z8BzEKDz89xP3h/WIG90294BpuWzDzAr2gCKG9gGDIT1qZZcB6TcAqoH9bPArFxo6xrRfl0N6vde+R7tnElkRb5xvLxVuXy+BVZVniqwg6kCO5giYPV7WLlKfg+rX5zLFXCJvjjXdoxWgR2qGfMHMHwZO2aNwoYAAAAASUVORK5CYII=" InformativeScreenshot="8e8ddeeb3e0be91d7047ed42f42e9169.png" Reference="KHM7KCyeR0yxsr5MPZ05VA/SU3KfVyb7kmqdIYpdqgRrg" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="Check App State 'VF of Process Generation'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="dd5e7bf7-6fe0-417e-8b46-e517adadf678" Timeout="[int_CheckAppStateTime]" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="3">
+                    <ui:RetryScope.ActivityBody>
+                      <ActivityAction>
+                        <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="1" DisplayName="Click OK" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="dd5e7bf7-6fe0-417e-8b46-e517adadf678" Version="V3">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable ContentHash="5mjhYWwy10KGdPCrVsrpzQ" DesignTimeRectangle="1112, 163, 64, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'VF of OK'" FullSelectorArgument="&lt;ctrl name='OK' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='customerconnect.bpo.capgemini.com says' role='dialog' /&gt;&lt;ctrl name='OK' role='push button' automationid='' check:fulltext='OK' /&gt;" Guid="c8985f94-35f7-4b74-81f5-f852f0b63430" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEQAAAAkCAYAAAAw55zoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK3SURBVGhD7ZrLaxNRFMb939zrwgdIQMRVwW2UNogEpeDGTaWQrVQRotBFIaBEq5vaFhJKNGB2wZhpyKvmNZNMkh7vd2fuzJlm27lKcj84cO5jbvh+uY8kN1fIKKIIkIOSTWvPG3Qt+ZuuPqgtdcDjmvD67bvtu/cUAHn7sbfw0KpENt/3KfhAjsuObLi1UacPh0Pq9GaycZkFj/AKz/Be+OnIegnk4VZTVu4XRvS1aNO9p6cBvWUNeIRXeEZ5Y7sVArnu7xn2eE73nzUiDy5zwGtvOJP57VQ9BKI68HxVgnuGDBDmGTJAmGfIAGGeIQOEeYYMEOYZMkCYZ0gjkBZlf7g0cOXLEM3mZFX6tJlW7UOqiupB5cwrp3tUHouKtk2pyDiXGxDPNQGxKFs7F6PPqXrSo61XXXp9NKGO+IYwOR36hjmQJuXqor/rUi5zcazLDe4Z0gNkx6aOGNs6akXqE/sTUXtO5T2UQyCpA5cmAl5x14r0jyMgnmsBkixMxcji3Q6WhwoPQqfUDvJB1SFLzByASUT6xhMQz7UAyVTmRCOHMgttZ1QcqWXiAZGaTSkf81JRAfFcC5DNEn5OEDNkoc2DYBXwbVstGVvLZqoC4rmePWRvLPaExT0kKfYKMR3ocAdlBUQslV2HBipn/eMIiOd6gKhTg58yJ+IIxilT6/umQyA4leQyw4abi3djhXiuCYiIdJuylamEIOV/DgmXBQeCsthfME1iPnohnusD8p8G9wwZIMwzZIAwz5ABwjxDBgjzDBkgzDNkgDDPkAHCPEMSyI117zoPlzarelF1UzAIgDx66V1lfvGvMu+mV+8qc327GQLhl9354xF1++rz9fKq/ce77MbMgPfIZTf07lM/oLdq8f7zhb9DKP1quPTiTZfuPI7/p7t/HYknlvQKz1wRIEZEfwFnWShQklf8JAAAAABJRU5ErkJggg==" InformativeScreenshot="92308c61f0b2c280d6c28a2367b6740a.png" Reference="KHM7KCyeR0yxsr5MPZ05VA/OTfomif-xUShrPGTmscGZA" ScopeSelectorArgument="[string.Format(&quot;&lt;wnd app='{0}' cls='*' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:RetryScope.ActivityBody>
+                    <ui:RetryScope.Condition>
+                      <ActivityFunc x:TypeArguments="x:Boolean" />
+                    </ui:RetryScope.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:RetryScope>
+                  <ui:LogMessage DisplayName="Log Message - Process Generation completed" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Process Generation completed Successfully!!&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Process Generation is not completed" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Process Generation is not completed Successfully!!&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable ContentHash="GstDY-fYg0iQ9bbNHY4KOA" DesignTimeRectangle="760, 127, 416, 20" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'VF of Process Generation'" FullSelectorArgument="&lt;ctrl name='*' role='dialog' /&gt;&lt;ctrl name='Process Generation competed Successfully*' /&gt;" FuzzySelectorArgument="&lt;ctrl name='customerconnect.bpo.capgemini.com says' role='dialog' /&gt;&lt;ctrl name='Process Generation competed Successfully!!' role='text' automationid='' check:fulltext='Process Generation competed Successfully!!' /&gt;" Guid="546830c9-e355-4684-8e52-840a27bd5989" ImageBase64="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" InformativeScreenshot="8d44d1641022fb78190c9cc92c3fdeac.png" Reference="KHM7KCyeR0yxsr5MPZ05VA/j_wVbUcVkk2aINk9P-VH2A" ScopeSelectorArgument="[string.Format(&quot;&lt;wnd app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" ContentHash="_QDHc-4hwEq6iPJe0f1u0g" IconBase64="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" InformativeScreenshot="927a87259ae27ba5ddffe8a294f91de1.jpg" Reference="KHM7KCyeR0yxsr5MPZ05VA/dqVDePK_sUGO_ls3tEAp9A" Selector="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&quot;, BrowserAppName)]" Title="CCMS Home" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="Log Message - OMS Allocation Process" sap:VirtualizedContainerService.HintSize="484,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;OMS Allocation Process : Step 6 execution ended &quot;]" />
+  </Sequence>
+</Activity>
