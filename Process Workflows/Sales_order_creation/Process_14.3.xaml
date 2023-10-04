@@ -23,7 +23,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,3849</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>996,2793</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -107,7 +107,7 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Copy columns M to T of the allocation file to a blank Excel file." sap:VirtualizedContainerService.HintSize="670,3784" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Copy columns M to T of the allocation file to a blank Excel file." sap:VirtualizedContainerService.HintSize="670,2728" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int_RetryCount" />
       <Variable x:TypeArguments="x:Int32" Name="int_MaxRetries" />
@@ -119,47 +119,64 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="608,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Sales Order Creation : Step 3 execution started &quot;]" />
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Fetching rowcount of OMS Output file " Code="Dim excelApp As Microsoft.Office.Interop.Excel.Application&#xA;Dim excelWorkbook As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim excelWorksheet As Microsoft.Office.Interop.Excel.Worksheet&#xA;&#xA;excelApp = New Microsoft.Office.Interop.Excel.ApplicationClass()&#xA;excelWorkbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(FilePath))&#xA;excelWorksheet = CType(excelWorkbook.Sheets(SheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;' ' Check if the worksheet contains data using LINQ&#xA;Dim dataRange = excelWorksheet.UsedRange&#xA;Dim rowCount As Integer = dataRange.Rows.Count&#xA;FileRowCount = rowCount&#xA;' Print the row count using the Log Message activity&#xA;Console.WriteLine(&quot;Number of rows with data: &quot; &amp; rowCount.ToString())&#xA;excelWorkbook.Close()&#xA;excelApp.Quit()" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="608,196" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
-      <ui:InvokeCode.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="SheetName">[in_SheetName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="FilePath">[in_OutputFilePath+in_FileName]</InArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="FileRowCount">[in_Rowcount]</OutArgument>
-      </ui:InvokeCode.Arguments>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="608,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,441" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Fetching rowcount of OMS Output file " Code="Dim excelApp As Microsoft.Office.Interop.Excel.Application&#xA;Dim excelWorkbook As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim excelWorksheet As Microsoft.Office.Interop.Excel.Worksheet&#xA;&#xA;excelApp = New Microsoft.Office.Interop.Excel.ApplicationClass()&#xA;excelWorkbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(FilePath))&#xA;excelWorksheet = CType(excelWorkbook.Sheets(SheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;' ' Check if the worksheet contains data using LINQ&#xA;Dim dataRange = excelWorksheet.UsedRange&#xA;Dim rowCount As Integer = dataRange.Rows.Count&#xA;FileRowCount = rowCount&#xA;' Print the row count using the Log Message activity&#xA;Console.WriteLine(&quot;Number of rows with data: &quot; &amp; rowCount.ToString())&#xA;excelWorkbook.Close()&#xA;excelApp.Quit()" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="388,196" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="SheetName">[in_SheetName]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="FilePath">[in_OutputFilePath+in_FileName]</InArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="FileRowCount">[in_Rowcount]</OutArgument>
+            </ui:InvokeCode.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeCode>
+          <If sap2010:Annotation.AnnotationText="Verfying OMS output file is empty or not" Condition="[in_Rowcount &gt;= 1]" sap:VirtualizedContainerService.HintSize="388,94" sap2010:WorkflowViewState.IdRef="If_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[in_FileName + &quot; contain &quot;+in_Rowcount.ToString +&quot; rows of data&quot;]" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Throw Exception="[new  BusinessRuleException(in_FileName + &quot; contain &quot;+in_Rowcount.ToString +&quot; rows of data&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeCode>
-    <If sap2010:Annotation.AnnotationText="Verfying OMS output file is empty or not" Condition="[in_Rowcount &gt;= 1]" sap:VirtualizedContainerService.HintSize="608,442" sap2010:WorkflowViewState.IdRef="If_1">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_3">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[in_FileName + &quot; contain &quot;+in_Rowcount.ToString +&quot; rows of data&quot;]" />
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[new  BusinessRuleException(in_FileName + &quot; contain &quot;+in_Rowcount.ToString +&quot; rows of data&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
-        </Sequence>
-      </If.Else>
-    </If>
+    </ui:CommentOut>
     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="608,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -196,9 +213,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[Not (int_RetryCount &lt; int_MaxRetries andalso bool_WriteSuccessful)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="608,2390" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[Not (int_RetryCount &lt; int_MaxRetries andalso bool_WriteSuccessful)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="608,1960" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,2224" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,1794" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -206,13 +223,27 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Copy columns M to T of the allocation file to a blank Excel file." Code="' Variables&#xA;Dim excelApp As Microsoft.Office.Interop.Excel.Application = New Microsoft.Office.Interop.Excel.Application()&#xA;Dim sourceWorkbook As Microsoft.Office.Interop.Excel.Workbook = Nothing&#xA;Dim sourceWorksheet As Microsoft.Office.Interop.Excel.Worksheet = Nothing&#xA;Dim targetWorkbook As Microsoft.Office.Interop.Excel.Workbook = Nothing&#xA;Dim targetWorksheet As Microsoft.Office.Interop.Excel.Worksheet = Nothing&#xA;&#xA;Try&#xA;    ' Specify the file path and sheet name for the source Excel file&#xA;    Dim sourceFilePath As String = System.IO.Path.GetFullPath(Filepath)&#xA;    Dim sourceSheetName As String = SheetName' Change to your source sheet name&#xA;&#xA;    ' Specify the file path for the target Excel file&#xA;    Dim targetFilePath As String = System.IO.Path.GetFullPath(NewFilePath)&#xA;    ' Open the source Excel file&#xA;    sourceWorkbook = excelApp.Workbooks.Open(sourceFilePath)&#xA;    sourceWorksheet = CType(sourceWorkbook.Sheets(sourceSheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Check if the source worksheet has columns A to J&#xA;    Dim columnCount As Integer = sourceWorksheet.UsedRange.Columns.Count&#xA;    Console.WriteLine(columnCount.ToString())&#xA;    If columnCount &gt;= ExcelColumncount Then&#xA;        Console.WriteLine(&quot;M to T range columns are present.&quot;)&#xA;        &#xA;        ' Create a new Excel application and a new workbook&#xA;        targetWorkbook = excelApp.Workbooks.Add()&#xA;        targetWorksheet = CType(targetWorkbook.Sheets(1), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;        ' Copy data from columns A to J in the source worksheet&#xA;        sourceWorksheet.Range(CopyPasteRange).Copy()&#xA;&#xA;        ' Paste data into the target worksheet&#xA;        targetWorksheet.Paste()&#xA;&#xA;        ' Get the pasted row count in the target worksheet&#xA;        Dim rowCount As Integer = targetWorksheet.UsedRange.Rows.Count&#xA;&#x9;&#x9;FileRowCount = rowCount&#xA;&#xA;        ' Save the target workbook with a new name&#xA;        targetWorkbook.SaveAs(targetFilePath)&#xA;&#xA;        ' Display the pasted row count&#xA;        Console.WriteLine(&quot;Pasted Row Count: &quot; &amp; rowCount.ToString())&#xA;&#x9;&#x9;&#xA;    Else&#xA;        Throw New BusinessRuleException(&quot;M to T range columns are not present.&quot;)&#xA;    End If&#xA;&#xA;Catch ex As BusinessRuleException&#xA;    Console.WriteLine(&quot;Error: &quot; &amp; ex.Message)&#xA;Catch ex As Exception&#xA;    Console.WriteLine(&quot;Error: &quot; &amp; ex.Message)&#xA;&#x9; out_Exception =  ex.Message&#xA;&#x9;&#xA;Finally&#xA;    ' Clean up resources&#xA;    targetWorksheet = Nothing&#xA;    If sourceWorkbook IsNot Nothing Then&#xA;        sourceWorkbook.Close(SaveChanges:=False)&#xA;    End If&#xA;    sourceWorksheet = Nothing&#xA;    excelApp.Quit()&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="510,207" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
             <ui:InvokeCode.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="Filepath">[in_OutputFilePath+in_FileName]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="SheetName">[in_SheetName]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="NewFilePath">[in_OutputFilePath+in_NewFileName]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="CopyPasteRange">[in_CopyPasteRange]</InArgument>
-              <OutArgument x:TypeArguments="x:Int32" x:Key="ExcelColumncount">[in_ExcelColumncount]</OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_Exception">[in_Exception]</OutArgument>
-              <OutArgument x:TypeArguments="x:Int32" x:Key="FileRowCount">[in_NewExcelRowcount]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Filepath">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath+in_FileName" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="SheetName">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SheetName" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="NewFilePath">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath+in_NewFileName" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CopyPasteRange">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CopyPasteRange" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="ExcelColumncount">
+                <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="in_ExcelColumncount" />
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_Exception">
+                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="in_Exception" />
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="FileRowCount">
+                <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="in_NewExcelRowcount" />
+              </OutArgument>
             </ui:InvokeCode.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -220,7 +251,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeCode>
-          <If sap2010:Annotation.AnnotationText="Verfying if any exception occur or not" Condition="[in_Exception &lt;&gt; Nothing]" sap:VirtualizedContainerService.HintSize="510,471" sap2010:WorkflowViewState.IdRef="If_2">
+          <If sap2010:Annotation.AnnotationText="Verfying if any exception occur or not" Condition="[in_Exception &lt;&gt; Nothing]" sap:VirtualizedContainerService.HintSize="510,391" sap2010:WorkflowViewState.IdRef="If_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -248,7 +279,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <If sap2010:Annotation.AnnotationText="Verifying able to paste M to T columns to new excel file succesfully or not" Condition="[(in_NewExcelRowcount-1) =io_dt_OMS.RowCount]" sap:VirtualizedContainerService.HintSize="510,913" sap2010:WorkflowViewState.IdRef="If_3">
+          <If sap2010:Annotation.AnnotationText="Verifying able to paste M to T columns to new excel file succesfully or not" Condition="[(in_NewExcelRowcount-1) =io_dt_OMS.RowCount]" sap:VirtualizedContainerService.HintSize="510,563" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>

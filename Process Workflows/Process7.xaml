@@ -7,7 +7,6 @@
     <x:Property Name="in_Tcode" Type="InArgument(x:String)" />
     <x:Property Name="in_MaterialCodeFrom" Type="InArgument(x:String)" />
     <x:Property Name="in_MaterialCodeTo" Type="InArgument(x:String)" />
-    <x:Property Name="in_Plant" Type="InArgument(x:String)" />
     <x:Property Name="in_ExportFileName" Type="InArgument(x:String)" />
     <x:Property Name="in_ExportSheetName" Type="InArgument(x:String)" />
     <x:Property Name="in_ColumnValue" Type="InArgument(x:String)" />
@@ -23,11 +22,24 @@
     <x:Property Name="in_NAValue" Type="InArgument(x:String)" />
     <x:Property Name="in_InputTempFolder" Type="InArgument(x:String)" />
     <x:Property Name="in_OMS_StockReportFile" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderPlantCodeColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_StockPlantColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_StockStoragelocationColumn" Type="InArgument(x:String)" />
+    <x:Property Name="in_PlantCodeD3A7" Type="InArgument(x:String)" />
+    <x:Property Name="in_StorageLocationMA01" Type="InArgument(x:String)" />
+    <x:Property Name="in_StorageLocationMA02" Type="InArgument(x:String)" />
+    <x:Property Name="in_PlantCodeD354" Type="InArgument(x:String)" />
+    <x:Property Name="in_PlantCodeD236" Type="InArgument(x:String)" />
+    <x:Property Name="in_StorageLocationAG01" Type="InArgument(x:String)" />
+    <x:Property Name="in_PlantCodeD242" Type="InArgument(x:String)" />
+    <x:Property Name="in_PlantCodeD245" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_OrderSheetName" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,1203</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1244,1203</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_Template1_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -156,7 +168,7 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:MultipleAssign sap2010:Annotation.AnnotationText="All the variables required to complete this process needs to be defined here. Excluding the local variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
-                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="64">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
                     <ui:AssignOperation.To>
                       <OutArgument x:TypeArguments="x:String">[str_ProcessFolder]</OutArgument>
@@ -195,14 +207,6 @@
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
                       <InArgument x:TypeArguments="x:String">[Process_config("MaterialCodeTo").ToString]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[in_Plant]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[Process_config("Plant").ToString]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
@@ -333,6 +337,110 @@
                       <InArgument x:TypeArguments="x:String">[Process_config("OMS_StockReportFile").ToString]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderPlantCodeColumn]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("OrderPlantCodeColumn").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_StockPlantColumn]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("StockPlantColumn").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_StockStoragelocationColumn]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("StockStoragelocationColumn").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PlantCodeD3A7]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("PlantCodeD3A7").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_37">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_StorageLocationMA01]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("StorageLocationMA01").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_StorageLocationMA02]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("StorageLocationMA02").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PlantCodeD354]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("PlantCodeD354").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PlantCodeD236]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("PlantCodeD236").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_41">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_StorageLocationAG01]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("StorageLocationAG01").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PlantCodeD242]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("PlantCodeD242").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_43">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PlantCodeD245]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("PlantCodeD245").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_44">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderFileName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("OrderFileName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_45">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[in_OrderSheetName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Process_config("OrderSheetName").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
               <sap:WorkflowViewStateService.ViewState>
@@ -406,10 +514,27 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Enter the material code 700000 to 899999 and plant code based on the order report." DisplayName="Process Workflows\Stock_Reporting_processing\Process_7.3.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Process Workflows\Stock_Reporting_processing\Process_7.3.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_MaterialCodeFrom">[in_MaterialCodeFrom]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_MaterialCodeTo">[in_MaterialCodeTo]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_Plant">[in_Plant]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_SAPAppName">[in_SAPAppName]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_MaterialCodeFrom">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MaterialCodeFrom" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_MaterialCodeTo">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MaterialCodeTo" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_SAPAppName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SAPAppName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderFileName">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderFileName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderSheet">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderSheetName" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OrderPlantCodeColumn">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OrderPlantCodeColumn" />
+                            </InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -449,19 +574,69 @@
                                     <av:PointCollection x:Key="ConnectorLocation">290,460 390,460</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove all the line items where the storage location is not equal to &quot;MA01&quot;." DisplayName="Process Workflows\Stock_Reporting_processing\Process_7.5.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Process Workflows\Stock_Reporting_processing\Process_7.5.xaml">
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove all the line items where the storage location is not equal to &quot;MA01&quot;." DisplayName="Process Workflows\Stock_Reporting_processing\Process_7.5.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Process Workflows\Stock_Reporting_processing\Process_7.5.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ExportFileName">[in_ExportFileName]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ExportFileName">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ExportFileName" />
+                                    </InArgument>
                                     <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Export" />
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">[in_ColumnName]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnValue">[in_ColumnValue]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ExportSheetName">[in_ExportSheetName]</InArgument>
-                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Stock">[io_dt_Stock]</InOutArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow1">[in_ColumnRemoveRow1]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow2">[in_ColumnRemoveRow2]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_StockFileName">[in_StockFileName]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[in_OutputFilePath]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_StockSheetName">[in_StockSheetName]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ColumnName" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnValue">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ColumnValue" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ExportSheetName">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ExportSheetName" />
+                                    </InArgument>
+                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Stock">
+                                      <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_dt_Stock" />
+                                    </InOutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow1">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ColumnRemoveRow1" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow2">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ColumnRemoveRow2" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_StockFileName">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StockFileName" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_StockSheetName">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StockSheetName" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_StockPlantColumn">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StockPlantColumn" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_StockStoragelocationColumn">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StockStoragelocationColumn" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_PlantCodeD3A7">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PlantCodeD3A7" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_StorageLocationMA01">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StorageLocationMA01" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_StorageLocationMA02">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StorageLocationMA02" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_PlantCodeD354">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PlantCodeD354" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_PlantCodeD236">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PlantCodeD236" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_StorageLocationAG01">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StorageLocationAG01" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_PlantCodeD242">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PlantCodeD242" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_PlantCodeD245">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PlantCodeD245" />
+                                    </InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -478,41 +653,19 @@
                                         <av:Size x:Key="ShapeSize">200,139</av:Size>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Update the parent code and parent SKU from the material master based on the material code. If the value is NA, make it blank." DisplayName="Process Workflows\Stock_Reporting_processing\Process_7.6.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,170" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process Workflows\Stock_Reporting_processing\Process_7.6.xaml">
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Update the parent code and parent SKU from the material master based on the material code. If the value is NA, make it blank." DisplayName="Process Workflows\Stock_Reporting_processing\Process_7.6.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,139" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process Workflows\Stock_Reporting_processing\Process_7.6.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Stock">
-                                          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_dt_Stock" />
-                                        </InOutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterFileName">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MaterialMasterFileName" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterSheetName">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MaterialMasterSheetName" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputFilePath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_StockFileName">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StockFileName" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_StockSheetName">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StockSheetName" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputFilePath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow1">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ColumnRemoveRow1" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow2">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ColumnRemoveRow2" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_NAValue">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_NAValue" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_OMS_StockReportFile">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OMS_StockReportFile" />
-                                        </InArgument>
+                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Stock">[io_dt_Stock]</InOutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterFileName">[in_MaterialMasterFileName]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_MaterialMasterSheetName">[in_MaterialMasterSheetName]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[in_OutputFilePath]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_StockFileName">[in_StockFileName]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_StockSheetName">[in_StockSheetName]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[in_InputFilePath]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow1">[in_ColumnRemoveRow1]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnRemoveRow2">[in_ColumnRemoveRow2]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_NAValue">[in_NAValue]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_OMS_StockReportFile">[in_OMS_StockReportFile]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">

@@ -20,7 +20,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,3426</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1244,3683</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process15_3_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -55,6 +55,7 @@
       <x:String>System.Windows.Forms</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -119,10 +120,11 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="1. Apply vlookup from the Customer Master file to get the order type for each row in the Excel file.&#xA;2. Filter the &quot;Order Type&quot; column in the Excel file and select the required order type.&#xA;3. Copy the filtered data to a blank text file." DisplayName="Apply vlookup from the Customer Master file to get the order type for each row in the Excel file." sap:VirtualizedContainerService.HintSize="865,3361" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="1. Apply vlookup from the Customer Master file to get the order type for each row in the Excel file.&#xA;2. Filter the &quot;Order Type&quot; column in the Excel file and select the required order type.&#xA;3. Copy the filtered data to a blank text file." DisplayName="Apply vlookup from the Customer Master file to get the order type for each row in the Excel file." sap:VirtualizedContainerService.HintSize="685,3618" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_SalesOrder" />
       <Variable x:TypeArguments="x:Boolean" Name="columnHasData" />
+      <Variable x:TypeArguments="x:Int32" Name="int_Count" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -130,7 +132,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Apply vlookup from the Customer Master file to get the order type for each row in the Excel file. and saving result in Order Type Column" Code="Try&#xA;    ' Initialize Excel Application&#xA;    Dim excelApp As New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Open Source Workbook (Customer Master.xlsx)&#xA;    Dim sourceWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_MasterPath))&#xA;&#xA;    ' Open Destination Workbook&#xA;    Dim destinationWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_SalePath))&#xA;&#xA;    ' Get Destination Worksheet&#xA;    Dim destinationWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(destinationWorkbook.Sheets(in_SaleSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Get Source Worksheet (Customer Master.xlsx)&#xA;    Dim sourceWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(sourceWorkbook.Sheets(in_MasterSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Loop through rows in the destination worksheet, starting from the second row (assuming headers are in the first row)&#xA;    Dim rowCount As Integer = destinationWorksheet.UsedRange.Rows.Count&#xA;    For row As Integer = 2 To rowCount&#xA;        ' Assuming the lookup value is in column A (column 1) of the destination worksheet&#xA;        Dim lookupCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 1), Microsoft.Office.Interop.Excel.Range)&#xA;        Dim lookupValue As String = If(lookupCell.Value2 IsNot Nothing, lookupCell.Value2.ToString(), String.Empty)&#xA;&#xA;        ' Construct the VLOOKUP formula as a string&#xA;        Dim vlookupFormula As String = &quot;=VLOOKUP(&quot; &amp; lookupValue &amp; &quot;, '[&quot; &amp; sourceWorkbook.Name &amp; &quot;]&quot; &amp; in_MasterSheet &amp; &quot;'!$F:$I, 4, FALSE)&quot;&#xA;&#xA;        ' Perform VLOOKUP using Evaluate&#xA;        Dim result As Object = excelApp.Evaluate(vlookupFormula)&#xA;&#xA;        If result IsNot Nothing Then&#xA;            Dim resultString As String = result.ToString()&#xA;&#xA;            ' Update the result in column I (column 9) for the current row in the destination worksheet&#xA;            Dim resultCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 9), Microsoft.Office.Interop.Excel.Range)&#xA;            resultCell.Value = resultString&#xA;&#xA;            ' Rename the column header to &quot;Order Type&quot; for cell 9 (assuming it's in row 1)&#xA;            Dim columnHeaderCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(1, 9), Microsoft.Office.Interop.Excel.Range)&#xA;            columnHeaderCell.Value =  in_OrderTypeColumn&#xA;        Else&#xA;            Console.WriteLine(&quot;Value not found in the source worksheet.&quot;)&#xA;        End If&#xA;    Next&#xA;&#xA;    ' Save and Close Workbooks&#xA;    sourceWorkbook.Save()&#xA;    destinationWorkbook.Save()&#xA;    sourceWorkbook.Close()&#xA;    destinationWorkbook.Close()&#xA;&#xA;    ' Quit Excel Application&#xA;    excelApp.Quit()&#xA;&#xA;    ' Release COM objects&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorksheet)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorksheet)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorkbook)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorkbook)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)&#xA;Catch ex As Exception&#xA;    Console.WriteLine(&quot;An error occurred: &quot; &amp; ex.Message)&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="803,222" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Apply vlookup from the Customer Master file to get the order type for each row in the Excel file. and saving result in Order Type Column" Code="Try&#xA;    ' Initialize Excel Application&#xA;    Dim excelApp As New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Open Source Workbook (Customer Master.xlsx)&#xA;    Dim sourceWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_MasterPath))&#xA;&#xA;    ' Open Destination Workbook&#xA;    Dim destinationWorkbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(System.IO.Path.GetFullPath(in_SalePath))&#xA;&#xA;    ' Get Destination Worksheet&#xA;    Dim destinationWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(destinationWorkbook.Sheets(in_SaleSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Get Source Worksheet (Customer Master.xlsx)&#xA;    Dim sourceWorksheet As Microsoft.Office.Interop.Excel.Worksheet = CType(sourceWorkbook.Sheets(in_MasterSheet), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Loop through rows in the destination worksheet, starting from the second row (assuming headers are in the first row)&#xA;    Dim rowCount As Integer = destinationWorksheet.UsedRange.Rows.Count&#xA;    For row As Integer = 2 To rowCount&#xA;        ' Assuming the lookup value is in column A (column 1) of the destination worksheet&#xA;        Dim lookupCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 1), Microsoft.Office.Interop.Excel.Range)&#xA;        Dim lookupValue As String = If(lookupCell.Value2 IsNot Nothing, lookupCell.Value2.ToString(), String.Empty)&#xA;&#xA;        ' Construct the VLOOKUP formula as a string&#xA;        Dim vlookupFormula As String = &quot;=VLOOKUP(&quot; &amp; lookupValue &amp; &quot;, '[&quot; &amp; sourceWorkbook.Name &amp; &quot;]&quot; &amp; in_MasterSheet &amp; &quot;'!$F:$I, 4, FALSE)&quot;&#xA;&#xA;        ' Perform VLOOKUP using Evaluate&#xA;        Dim result As Object = excelApp.Evaluate(vlookupFormula)&#xA;&#xA;        If result IsNot Nothing Then&#xA;            Dim resultString As String = result.ToString()&#xA;&#xA;            ' Update the result in column I (column 9) for the current row in the destination worksheet&#xA;            Dim resultCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(row, 9), Microsoft.Office.Interop.Excel.Range)&#xA;            resultCell.Value = resultString&#xA;&#xA;            ' Rename the column header to &quot;Order Type&quot; for cell 9 (assuming it's in row 1)&#xA;            Dim columnHeaderCell As Microsoft.Office.Interop.Excel.Range = CType(destinationWorksheet.Cells(1, 9), Microsoft.Office.Interop.Excel.Range)&#xA;            columnHeaderCell.Value =  in_OrderTypeColumn&#xA;        Else&#xA;            Console.WriteLine(&quot;Value not found in the source worksheet.&quot;)&#xA;        End If&#xA;    Next&#xA;&#xA;    ' Save and Close Workbooks&#xA;    sourceWorkbook.Save()&#xA;    destinationWorkbook.Save()&#xA;    sourceWorkbook.Close()&#xA;    destinationWorkbook.Close()&#xA;&#xA;    ' Quit Excel Application&#xA;    excelApp.Quit()&#xA;&#xA;    ' Release COM objects&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorksheet)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorksheet)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(sourceWorkbook)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(destinationWorkbook)&#xA;    System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)&#xA;Catch ex As Exception&#xA;    Console.WriteLine(&quot;An error occurred: &quot; &amp; ex.Message)&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="623,222" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
       <ui:InvokeCode.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_MasterPath">[in_InputFilePath+in_CustomerMasterFileName]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_SalePath">[in_OutputFilePath+in_NewFileName]</InArgument>
@@ -144,7 +146,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeCode>
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Reading Sales order file " Code="Try&#xA;    ' Define the Excel file path and sheet name&#xA;    Dim filePath As String = System.IO.Path.GetFullPath(in_FilePath)&#xA;    Dim sheetName As String = in_SheetName&#xA;&#xA;    ' Initialize Excel application&#xA;    Dim excelApp As Microsoft.Office.Interop.Excel.Application = New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Disable alerts and screen updating for faster execution&#xA;    excelApp.DisplayAlerts = False&#xA;    excelApp.ScreenUpdating = False&#xA;&#xA;    ' Open the Excel workbook in read-only mode&#xA;    Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(filePath, ReadOnly:=True)&#xA;&#xA;    ' Select the specified worksheet&#xA;    Dim worksheet As Microsoft.Office.Interop.Excel.Worksheet = DirectCast(workbook.Sheets(sheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Get the used range of the worksheet&#xA;    Dim usedRange As Microsoft.Office.Interop.Excel.Range = worksheet.UsedRange&#xA;&#xA;    ' Create a DataTable to store the Excel data&#xA;    Dim dataTable As New DataTable(sheetName)&#xA;&#xA;    ' Get values from the used range into a 2D array for faster access&#xA;    Dim values As Object(,) = DirectCast(usedRange.Value, Object(,))&#xA;    Dim rowCount As Integer = values.GetLength(0)&#xA;    Dim colCount As Integer = values.GetLength(1)&#xA;&#xA;    ' Add columns to DataTable using values from the first row&#xA;    For colIndex As Integer = 1 To colCount&#xA;        Dim columnName As String = values(1, colIndex).ToString()&#xA;        dataTable.Columns.Add(columnName, GetType(String))&#xA;    Next&#xA;&#xA;    ' Populate data starting from the second row&#xA;    For rowIndex As Integer = 2 To rowCount&#xA;        Dim dataRow As DataRow = dataTable.NewRow()&#xA;        For colIndex As Integer = 1 To colCount&#xA;            Dim cellValue As Object = values(rowIndex, colIndex)&#xA;            If cellValue IsNot Nothing Then&#xA;                dataRow(colIndex - 1) = cellValue.ToString()&#xA;            Else&#xA;                dataRow(colIndex - 1) = &quot;&quot;&#xA;            End If&#xA;        Next&#xA;        dataTable.Rows.Add(dataRow)&#xA;    Next&#xA;&#xA;    ' Close the Excel workbook and release resources&#xA;    workbook.Close(False)&#xA;&#xA;    ' Enable alerts and screen updating&#xA;    excelApp.DisplayAlerts = True&#xA;    excelApp.ScreenUpdating = True&#xA;&#xA;&#xA;    ' Log a message indicating successful execution&#xA;    Console.WriteLine(&quot;Excel file read successfully, and data is saved to DataTable.&quot;)&#xA;    out_datatable = dataTable&#xA;&#xA;Catch ex As Exception&#xA;    ' Log the exception message&#xA;    Console.WriteLine(&quot;Error reading Excel file: &quot; &amp; ex.Message)&#xA;    Throw ex&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="803,196" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Reading Sales order file " Code="Try&#xA;    ' Define the Excel file path and sheet name&#xA;    Dim filePath As String = System.IO.Path.GetFullPath(in_FilePath)&#xA;    Dim sheetName As String = in_SheetName&#xA;&#xA;    ' Initialize Excel application&#xA;    Dim excelApp As Microsoft.Office.Interop.Excel.Application = New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Disable alerts and screen updating for faster execution&#xA;    excelApp.DisplayAlerts = False&#xA;    excelApp.ScreenUpdating = False&#xA;&#xA;    ' Open the Excel workbook in read-only mode&#xA;    Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(filePath, ReadOnly:=True)&#xA;&#xA;    ' Select the specified worksheet&#xA;    Dim worksheet As Microsoft.Office.Interop.Excel.Worksheet = DirectCast(workbook.Sheets(sheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Get the used range of the worksheet&#xA;    Dim usedRange As Microsoft.Office.Interop.Excel.Range = worksheet.UsedRange&#xA;&#xA;    ' Create a DataTable to store the Excel data&#xA;    Dim dataTable As New DataTable(sheetName)&#xA;&#xA;    ' Get values from the used range into a 2D array for faster access&#xA;    Dim values As Object(,) = DirectCast(usedRange.Value, Object(,))&#xA;    Dim rowCount As Integer = values.GetLength(0)&#xA;    Dim colCount As Integer = values.GetLength(1)&#xA;&#xA;    ' Add columns to DataTable using values from the first row&#xA;    For colIndex As Integer = 1 To colCount&#xA;        Dim columnName As String = values(1, colIndex).ToString()&#xA;        dataTable.Columns.Add(columnName, GetType(String))&#xA;    Next&#xA;&#xA;    ' Populate data starting from the second row&#xA;    For rowIndex As Integer = 2 To rowCount&#xA;        Dim dataRow As DataRow = dataTable.NewRow()&#xA;        For colIndex As Integer = 1 To colCount&#xA;            Dim cellValue As Object = values(rowIndex, colIndex)&#xA;            If cellValue IsNot Nothing Then&#xA;                dataRow(colIndex - 1) = cellValue.ToString()&#xA;            Else&#xA;                dataRow(colIndex - 1) = &quot;&quot;&#xA;            End If&#xA;        Next&#xA;        dataTable.Rows.Add(dataRow)&#xA;    Next&#xA;&#xA;    ' Close the Excel workbook and release resources&#xA;    workbook.Close(False)&#xA;&#xA;    ' Enable alerts and screen updating&#xA;    excelApp.DisplayAlerts = True&#xA;    excelApp.ScreenUpdating = True&#xA;&#xA;&#xA;    ' Log a message indicating successful execution&#xA;    Console.WriteLine(&quot;Excel file read successfully, and data is saved to DataTable.&quot;)&#xA;    out_datatable = dataTable&#xA;&#xA;Catch ex As Exception&#xA;    ' Log the exception message&#xA;    Console.WriteLine(&quot;Error reading Excel file: &quot; &amp; ex.Message)&#xA;    Throw ex&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="623,196" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
       <ui:InvokeCode.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_NewFileSheetName]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_OutputFilePath+in_NewFileName]</InArgument>
@@ -156,7 +158,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeCode>
-    <Assign sap:VirtualizedContainerService.HintSize="803,81" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="623,82" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[columnHasData]</OutArgument>
       </Assign.To>
@@ -164,7 +166,7 @@
         <InArgument x:TypeArguments="x:Boolean">[dt_SalesOrder.AsEnumerable().Any(Function(row) Not String.IsNullOrWhiteSpace(row(in_FilteredColumnName).ToString))]</InArgument>
       </Assign.Value>
     </Assign>
-    <If sap2010:Annotation.AnnotationText="Verfying Order type Column is Empty or not" Condition="[columnHasData]" sap:VirtualizedContainerService.HintSize="803,442" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Verfying Order type Column is Empty or not" Condition="[columnHasData]" sap:VirtualizedContainerService.HintSize="623,442" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -191,8 +193,8 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="803,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_OutputFilePath+in_FilteredColumnName]" />
-    <Assign sap:VirtualizedContainerService.HintSize="803,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="623,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_OutputFilePath+in_FilteredColumnName]" />
+    <Assign sap:VirtualizedContainerService.HintSize="623,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[li_Filtered_OrderTypes]</OutArgument>
       </Assign.To>
@@ -205,13 +207,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="803,1851" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[li_Filtered_OrderTypes]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="623,2106" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[li_Filtered_OrderTypes]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="769,1665" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="589,1920" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_OP" />
               <Variable x:TypeArguments="x:String" Name="str_OP" />
@@ -221,7 +223,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filter the &quot;Order Type&quot; column in the Excel file and select the required order type." DataTable="[dt_SalesOrder]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="727,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_OP]" SelectColumnsMode="Remove">
+            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filter the &quot;Order Type&quot; column in the Excel file and select the required order type." DataTable="[dt_SalesOrder]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="547,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_OP]" SelectColumnsMode="Remove">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                   <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -245,8 +247,24 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:FilterDataTable>
-            <ui:OutputDataTable DataTable="[dt_OP]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="727,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[str_OP]" />
-            <ui:IfElseIf sap2010:Annotation.AnnotationText="if order type is VMI order then save file as VMI and if Non VMI order then save file as Non VMI and if ZMt then save file as ZMT" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="727,1214" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+            <ui:OutputDataTable DataTable="[dt_OP]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="547,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[str_OP]" />
+            <Assign sap:VirtualizedContainerService.HintSize="547,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[str_OP]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[String.Join(Environment.NewLine, str_OP.Split(Environment.NewLine).Skip(1))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="547,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[str_OP]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[str_OP.Replace(",", vbTab)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="if order type is VMI order then save file as VMI and if Non VMI order then save file as Non VMI and if ZMt then save file as ZMT" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="547,1225" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
               <ui:IfElseIf.ConditionBlocks>
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[currentText.Contains(in_VMIValue)]">
@@ -255,12 +273,15 @@
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+in_VMIValue+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[str_OP]">
+                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+in_VMIValue+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_4" Text="[str_OP]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:WriteTextFile>
@@ -275,10 +296,12 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+in_NonVMIValue+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[str_OP]">
+                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+in_NonVMIValue+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_5" Text="[str_OP]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:WriteTextFile>
@@ -293,10 +316,12 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+currentText+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[str_OP]">
+                        <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Copy the filtered data to a blank text file." DisplayName="Write Text File" FileName="[in_OutputFilePath +in_FilteredColumnName+&quot;\&quot;+currentText+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="WriteTextFile_6" Text="[str_OP]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:WriteTextFile>

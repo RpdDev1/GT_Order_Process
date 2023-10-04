@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,2786</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1244,2912</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_6_2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -122,7 +122,7 @@
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Enter the customer codes and refresh the  page by pressing the F5 key" DisplayName="Process_6_2" sap:VirtualizedContainerService.HintSize="1078,2721" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Enter the customer codes and refresh the  page by pressing the F5 key" DisplayName="Process_6_2" sap:VirtualizedContainerService.HintSize="1078,2847" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="str_Customer" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List ( of String)]" Name="str_CopyColumn" />
@@ -137,7 +137,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Step 2" sap:VirtualizedContainerService.HintSize="1016,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Credit Report Proccessing : Step 2 started&quot;]" />
-    <Sequence DisplayName="Step 2" sap:VirtualizedContainerService.HintSize="1016,2217" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Step 2" sap:VirtualizedContainerService.HintSize="1016,2343" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="str_dt_PDP" />
       </Sequence.Variables>
@@ -167,7 +167,8 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:MultipleAssign>
-      <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;    ' Define the Excel file path and sheet name&#xA;    Dim filePath As String = System.IO.Path.GetFullPath(in_FilePath)&#xA;    Dim sheetName As String = in_SheetName&#xA;&#xA;    ' Initialize Excel application&#xA;    Dim excelApp As Microsoft.Office.Interop.Excel.Application = New Microsoft.Office.Interop.Excel.Application()&#xA;&#xA;    ' Disable alerts and screen updating for faster execution&#xA;    excelApp.DisplayAlerts = False&#xA;    excelApp.ScreenUpdating = False&#xA;&#xA;    ' Open the Excel workbook in read-only mode&#xA;    Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(filePath, ReadOnly:=True)&#xA;&#xA;    ' Select the specified worksheet&#xA;    Dim worksheet As Microsoft.Office.Interop.Excel.Worksheet = DirectCast(workbook.Sheets(sheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#xA;    ' Get the used range of the worksheet&#xA;    Dim usedRange As Microsoft.Office.Interop.Excel.Range = worksheet.UsedRange&#xA;&#xA;    ' Create a DataTable to store the Excel data&#xA;    Dim dataTable As New DataTable(sheetName)&#xA;&#xA;    ' Get values from the used range into a 2D array for faster access&#xA;    Dim values As Object(,) = DirectCast(usedRange.Value, Object(,))&#xA;    Dim rowCount As Integer = values.GetLength(0)&#xA;    Dim colCount As Integer = values.GetLength(1)&#xA;&#xA;    ' Add columns to DataTable using values from the first row&#xA;    For colIndex As Integer = 1 To colCount&#xA;        Dim columnName As String = values(1, colIndex).ToString()&#xA;        dataTable.Columns.Add(columnName, GetType(String))&#xA;    Next&#xA;&#xA;    ' Populate data starting from the second row&#xA;    For rowIndex As Integer = 2 To rowCount&#xA;        Dim dataRow As DataRow = dataTable.NewRow()&#xA;        For colIndex As Integer = 1 To colCount&#xA;            Dim cellValue As Object = values(rowIndex, colIndex)&#xA;            If cellValue IsNot Nothing Then&#xA;                dataRow(colIndex - 1) = cellValue.ToString()&#xA;            Else&#xA;                dataRow(colIndex - 1) = &quot;&quot;&#xA;            End If&#xA;        Next&#xA;        dataTable.Rows.Add(dataRow)&#xA;    Next&#xA;&#xA;    ' Close the Excel workbook and release resources&#xA;    workbook.Close(False)&#xA;&#xA;    ' Enable alerts and screen updating&#xA;    excelApp.DisplayAlerts = True&#xA;    excelApp.ScreenUpdating = True&#xA;&#xA;&#xA;    ' Log a message indicating successful execution&#xA;    Console.WriteLine(&quot;Excel file read successfully, and data is saved to DataTable.&quot;)&#xA;    out_datatable = dataTable&#xA;&#xA;Catch ex As Exception&#xA;    ' Log the exception message&#xA;    Console.WriteLine(&quot;Error reading Excel file: &quot; &amp; ex.Message)&#xA;    Throw ex&#xA;End Try&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="954,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="954,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[in_PDP_ReportFile]" />
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xD;&#xA;    ' Define the Excel file path and sheet name&#xD;&#xA;    Dim filePath As String = System.IO.Path.GetFullPath(in_FilePath)&#xD;&#xA;&#x9;MsgBox(filePath)&#xD;&#xA;&#x9;Console.WriteLine(&quot;File Path : &quot;+filepath)&#xD;&#xA;&#x9;Dim sheetName As String = in_SheetName&#xD;&#xA;&#xD;&#xA;    ' Initialize Excel application&#xD;&#xA;    Dim excelApp As Microsoft.Office.Interop.Excel.Application = New Microsoft.Office.Interop.Excel.Application()&#xD;&#xA;&#xD;&#xA;    ' Disable alerts and screen updating for faster execution&#xD;&#xA;    excelApp.DisplayAlerts = False&#xD;&#xA;    excelApp.ScreenUpdating = False&#xD;&#xA;&#xD;&#xA;    ' Open the Excel workbook in read-only mode&#xD;&#xA;    Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Open(filePath, ReadOnly:=True)&#xD;&#xA;&#xD;&#xA;    ' Select the specified worksheet&#xD;&#xA;    Dim worksheet As Microsoft.Office.Interop.Excel.Worksheet = DirectCast(workbook.Sheets(sheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xD;&#xA;&#xD;&#xA;    ' Get the used range of the worksheet&#xD;&#xA;    Dim usedRange As Microsoft.Office.Interop.Excel.Range = worksheet.UsedRange&#xD;&#xA;&#xD;&#xA;    ' Create a DataTable to store the Excel data&#xD;&#xA;    Dim dataTable As New DataTable(sheetName)&#xD;&#xA;&#xD;&#xA;    ' Get values from the used range into a 2D array for faster access&#xD;&#xA;    Dim values As Object(,) = DirectCast(usedRange.Value, Object(,))&#xD;&#xA;    Dim rowCount As Integer = values.GetLength(0)&#xD;&#xA;    Dim colCount As Integer = values.GetLength(1)&#xD;&#xA;&#xD;&#xA;    ' Add columns to DataTable using values from the first row&#xD;&#xA;    For colIndex As Integer = 1 To colCount&#xD;&#xA;        Dim columnName As String = values(1, colIndex).ToString()&#xD;&#xA;        dataTable.Columns.Add(columnName, GetType(String))&#xD;&#xA;    Next&#xD;&#xA;&#xD;&#xA;    ' Populate data starting from the second row&#xD;&#xA;    For rowIndex As Integer = 2 To rowCount&#xD;&#xA;        Dim dataRow As DataRow = dataTable.NewRow()&#xD;&#xA;        For colIndex As Integer = 1 To colCount&#xD;&#xA;            Dim cellValue As Object = values(rowIndex, colIndex)&#xD;&#xA;            If cellValue IsNot Nothing Then&#xD;&#xA;                dataRow(colIndex - 1) = cellValue.ToString()&#xD;&#xA;            Else&#xD;&#xA;                dataRow(colIndex - 1) = &quot;&quot;&#xD;&#xA;            End If&#xD;&#xA;        Next&#xD;&#xA;        dataTable.Rows.Add(dataRow)&#xD;&#xA;    Next&#xD;&#xA;&#xD;&#xA;    ' Close the Excel workbook and release resources&#xD;&#xA;    workbook.Close(False)&#xD;&#xA;&#xD;&#xA;    ' Enable alerts and screen updating&#xD;&#xA;    excelApp.DisplayAlerts = True&#xD;&#xA;    excelApp.ScreenUpdating = True&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;    ' Log a message indicating successful execution&#xD;&#xA;    Console.WriteLine(&quot;Excel file read successfully, and data is saved to DataTable.&quot;)&#xD;&#xA;    out_datatable = dataTable&#xD;&#xA;&#xD;&#xA;Catch ex As Exception&#xD;&#xA;    ' Log the exception message&#xD;&#xA;    Console.WriteLine(&quot;Error reading Excel file: &quot; &amp; ex.Message)&#xD;&#xA;    Throw ex&#xD;&#xA;End Try&#xD;&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="954,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
         <ui:InvokeCode.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Sheet1</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_PDP_ReportFile]</InArgument>
@@ -272,7 +273,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <Assign DisplayName="Assign - Coping All Costomer Codes from Excel Sheet" sap:VirtualizedContainerService.HintSize="954,83" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign DisplayName="Assign - Coping All Costomer Codes from Excel Sheet" sap:VirtualizedContainerService.HintSize="954,85" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:List(x:String)">[str_CopyColumn]</OutArgument>
         </Assign.To>
@@ -281,7 +282,7 @@
                                            Select row.Field(Of String)("Distributor Code")).ToList()]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign - Removing Empty or Null Values" sap:VirtualizedContainerService.HintSize="954,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign DisplayName="Assign - Removing Empty or Null Values" sap:VirtualizedContainerService.HintSize="954,81" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:List(x:String)">[str_CopyColumn]</OutArgument>
         </Assign.To>
@@ -318,7 +319,7 @@
             </ui:Click>
             <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,319" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,297" sap2010:WorkflowViewState.IdRef="Sequence_15">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
